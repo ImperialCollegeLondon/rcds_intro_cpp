@@ -1,6 +1,5 @@
-// Chapter 1. C++ tutorial. Hello
-
-// Pre-processes directives. 
+// Chapter 1. Variable types and input by user.
+// Pre-processing directives. 
 #include <cstdlib>
 #include <iostream>
 #include <string>
@@ -9,12 +8,16 @@
 #include <limits>
 
 // When we create a variable, we are telling the computer how much memory to set aside.
-// Global variables, that can be accessed from anywhere, and constant values.
+// Global variables, that can be accessed from anywhere, vs constant values.
 int g_iRandNum = 0;
 const double PI = 3.14159;
 
 int main()
 {
+    std::cout << "Chapter 1\n";
+    std::cout << "\n";
+
+    std::cout << "1. Variable types in cpp.\n";
     // 1. Variable types in cpp.
     bool bMarried = true;
     char chMyGrade = 'A';
@@ -28,22 +31,26 @@ int main()
     auto whatWillBe = true;
 
     // Check the limits of my variables.
-    std::cout << "Min bool" << std::numeric_limits<bool>::min() << "\n";
-    std::cout << "Max bool" << std::numeric_limits<bool>::max() << "\n";
+    std::cout << "Min bool " << std::numeric_limits<bool>::min() << "\n";
+    std::cout << "Max bool " << std::numeric_limits<bool>::max() << "\n";
     
     // Check the number of bytes.
-    std::cout << "int size " << sizeof(int) << "\n";
+    std::cout << "int size: " << sizeof(int) << " bytes\n";
+    std::cout << "double size: " << sizeof(double) << " bytes\n";
+    std::cout << "float size: " << sizeof(float) << " bytes\n";
 
     // Precision.
     double fBigFloat1 = 1.11111111111111111;     
     double fBigFloat2 = 1.11111111111111111;
     float fFloatSum = fBigFloat1 + fBigFloat2;
-    printf("fFloatSum precision: %.10f\n", fFloatSum);
+    printf("FloatSum precision: %.5f\n", fFloatSum);
+    printf("FloatSum precision: %.10f\n", fFloatSum);
 
     // Using printf.
-    printf("%c %d %5d %.3f %s\n", 'A', 10, 5, 3.1234, "Hi\n");
+    printf("%c, %d, %5d, %.3f, %s\n", 'A', 10, 5, 3.1234, "Hi\n");
 
     // 2. Receiving input from the user.
+    std::cout << "2. Receiving input from the user.\n";
     std::string sQuestion1 ("Enter number 1: ");
     std::string sQuestion2 ("Enter number 2: ");
     std::string sNum1, sNum2;
