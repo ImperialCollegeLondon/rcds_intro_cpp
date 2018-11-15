@@ -1,6 +1,4 @@
-// Chapter 2. C++ tutorial.
-
-// Pre-processes directives. 
+// Chapter 2. Conditionals, loops and arrays.
 #include <cstdlib>
 #include <iostream>
 #include <string>
@@ -10,13 +8,15 @@
 
 int main()
 {
-    // 1. Conditionals. Receive string, convere to int, use if, else, etc.
+    std::cout << "Chapter 2\n";
+    std::cout << "\n";
+
+    // 1. Conditionals. Receive a string, convert it to int, use if/else to provide an output.
     std::cout << "1. Conditionals.\n";
     std::string sAge;
     std::cout << "Enter your age: ";
     getline(std::cin, sAge);
     int nAge = std::stoi(sAge);
-
     // Combine conditional and logical operators.
     if((nAge >= 1) && (nAge <= 18))
     {
@@ -30,13 +30,14 @@ int main()
     {
         "Not an important Birthday\n";
     }
+    std::cout << "\n";
 
-    // Test. age 5 -> go to kindergarden. 6 through 17 -> 1 through 12. greater to 17, go to college
+    // Problem 1. Assign different output depending on the age of the user.
     std::string sAge2;
     std::cout << "Enter your age: ";
     getline(std::cin, sAge2);
     int nAge2 = std::stoi(sAge2);
-    
+    // Combine conditional and logical operators.
     if (nAge < 5)
     {
         "To young for school\n";
@@ -53,9 +54,10 @@ int main()
     {
         std::cout << "Go to college\n";
     }
+    std::cout << "\n";
 
     // 2. Arrays.
-    std::cout << "\n1. Arrays.\n";
+    std::cout << "2. Arrays.\n";
     int arrNums[10] = {1};
     int arrNums2[] = {1,2,3};
     int arrNums3[5] = {8,9};
@@ -68,22 +70,22 @@ int main()
     int arrNums4[2][2][2] = {{{1,2}, {3,4}},
                             {{5,6}, {7,8}}};
     std::cout << arrNums4[1][1][1] << "\n";
-    
-    // 2. Vectors. Re-sizeable.
-    std::cout << "\n1. Vectors.\n";    
+    std::cout << "\n";
+
+    // 3. Vectors. Re-sizeable.
+    std::cout << "\3. Vectors.\n";    
     std::vector<int> vecRandNums(2);
     vecRandNums[0] = 10;
     vecRandNums[1] = 20;
     vecRandNums.push_back(30);
     std::cout << "Last index: " << vecRandNums[vecRandNums.size()-1] << "\n";
-    // convert string to vectr
+    // convert string to vector.
     std::string sSentence = "This is a random string";
     std::vector<std::string> vecWords;
-    // stringstream. object who receives strings and allows to manipulate.
+    // To receives strings and manipulate them, use stringstream.
     std::stringstream ss(sSentence);
     std::string sIndivStr;
     char cSpace = ' ';
-
     // While ss has words to spit out, and throw in sIndivStr, while cspace spare.
     while(getline(ss, sIndivStr, cSpace))
     {
@@ -93,13 +95,14 @@ int main()
     {
         std::cout << vecWords[i] << "\n";
     }
+    std::cout << "\n";
 
-    // 3. Test. Calculator.
-    std::cout << "\n1. Calculator.\n";
+    // 4. Problem 2. Calculator.
+    std::cout << "4. Calculator.\n";
     double Num1, Num2;
     std::string sOperation;
     std::vector<std::string> vecOp;
-
+    
     std::cout << "Enter operation (e.g. 2+3):";
     getline(std::cin, sOperation);
     std::stringstream ss2(sOperation);
