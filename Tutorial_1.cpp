@@ -1,4 +1,4 @@
-// Chapter 1. C++ tutorial.
+// Chapter 1. C++ tutorial. Hello
 
 // Pre-processes directives. 
 #include <cstdlib>
