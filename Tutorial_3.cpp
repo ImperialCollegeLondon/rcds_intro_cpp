@@ -17,15 +17,21 @@ std::vector<int> Range(int start, int max, int step);
 
 int main()
 {
+    std::cout << "Chapter 3\n";
+    std::cout << "\n";
+
     // 1. Functions.
+    std::cout << "1. Functions.\n";
     double num1, num2;
     std::cout << "Enter num1: ";
     std::cin >> num1;
     std::cout << "Enter num2: ";
     std::cin >> num2;
     printf("%.1f + %.1f = %.1f\n", num1, num2, AddNumbers(num1,num2));
+    std::cout << "\n";
 
     // 2.Pointers. store an adress in memory
+    std::cout << "2. Pointers.\n";
     int age = 43;
     int *pAge = NULL; 
     // Reference operator &. Return the address for the variable in front.
