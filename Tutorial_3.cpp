@@ -1,6 +1,4 @@
-// Chapter 3. Pointers and functions (Incomplete).
-
-// Pre-processes directives. 
+// Chapter 3. Pointers and functions. 
 #include <cstdlib>
 #include <iostream>
 #include <string>
@@ -26,9 +24,9 @@ int main()
     // 1. Functions.
     std::cout << "1. Functions.\n";
     double num1, num2;
-    std::cout << "Enter num1: ";
+    std::cout << "Enter num 1: ";
     std::cin >> num1;
-    std::cout << "Enter num2: ";
+    std::cout << "Enter num 2: ";
     std::cin >> num2;
     printf("%.1f + %.1f = %.1f\n", num1, num2, AddNumbers(num1,num2));
     std::cout << "\n";
