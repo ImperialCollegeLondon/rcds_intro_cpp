@@ -1,4 +1,4 @@
-// Chapter 3. Pointers and functions.
+// Chapter 3. Pointers and functions (Incomplete).
 
 // Pre-processes directives. 
 #include <cstdlib>
@@ -8,11 +8,14 @@
 #include <sstream>
 #include <limits>
 
-// Function declaration.
+// Function declarations.
+// Add two numbers.
 double AddNumbers(double num1, double num2);
+// Assigns age.
 void AssignAge(int *pAge);
+// Multiplies by 2 the elements of an array.
 void DoubleArray(int *array, int size);
-
+// Range function. Iterates from given limit to a maximum by a given step.
 std::vector<int> Range(int start, int max, int step);
 
 int main()
@@ -59,20 +62,20 @@ int main()
         std::cout << "Array " << intArray   [i] << "\n";
     }
 
-    // Problem.Create function receive starting value, max and increment.
+    // Problem. Create a function that receives starting value, max and increment.
     // Vector as a return.
     std::vector<int> range = Range(1, 10, 2);
     for(auto y: range) std::cout << y << "\n";
 
     // Problem. How much to invest 1000
-    //  interest rate 8
+    // Interest rate 8
     // value after 10 years.
     // use the range function.
 
     return 0;
 }
 
-// Function definition.
+// Function definitions.
 double AddNumbers(double num1, double num2)
 {
     return num1 + num2;
@@ -102,6 +105,4 @@ std::vector<int> Range(int start, int max, int step)
     }
     return range;
 }
-
-
 // End functions.
