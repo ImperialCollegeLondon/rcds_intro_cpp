@@ -8,12 +8,17 @@
 #include <ctime>
 
 // Function declarations.
+// Range function.
 std::vector<int> Range(int start, int max, int step);
 
 int main()
 {
+    std::cout << "Chapter 4\n";
+    std::cout << "\n";
+
+    // 1. Check if a number is even and skip it.
+    std::cout << "1. Check if a number is even and skip it.\n";
     int i = 1;
-    // Check if a number is even. If not, skip it.
     while(i <= 20)
     {
         if((i % 2) == 0)
@@ -25,8 +30,9 @@ int main()
         std::cout << i << "\n"; 
         i += 1;
     }
+    std::cout << "\n";
 
-    // Pine trees, how many rows
+    // 2. Pine trees, how many rows.
     // How tall is a tree : 5
     /*
     #
@@ -96,25 +102,10 @@ int main()
     {
         std::cout << "Error: " << exp << "\n";
     }
+    std::cout << "\n";
 
-    // Problem 3. Exceptions.
+    // Problem 3. Do while loops. At least 1.
     std::cout << "Problem 3\n";
-/*
-    try
-    {
-    std::cout << "Throwing exception \n";
-    throw std::runtime_error("Error Ocurred:");
-    std::cout << "Can you print me?\n";
-    }
-
-    catch(std::exception &exp)
-    {
-        std::cout << "Handle Exception : " << exp.what() << "\n"; // print the exception we built
-    }
-*/
-
-    // Problem 4. Do while loops. At least 1.
-    std::cout << "Problem 4\n";
     srand(time(NULL));
     // create our secret number (from 0 to 10)
     int secretNum = std::rand() % 11; // impossible to get a remainder greater than 11
