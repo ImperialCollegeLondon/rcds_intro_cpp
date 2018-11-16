@@ -11,32 +11,13 @@ int main()
     std::cout << "Chapter 2\n";
     std::cout << "\n";
 
-    // 1. Conditionals. Receive a string, convert it to int, use if/else to provide an output.
+    // 1. Conditionals. Receive a string, convert to an integer.
+    // Assign a different output depending on the age of the user.
     std::cout << "1. Conditionals.\n";
     std::string sAge;
     std::cout << "Enter your age: ";
     getline(std::cin, sAge);
     int nAge = std::stoi(sAge);
-    // Combine conditional and logical operators.
-    if((nAge >= 1) && (nAge <= 18))
-    {
-        std::cout << "Important Birthday\n";
-    }
-    else if ((nAge == 21) || (nAge == 50))
-    {
-        std::cout << "Special Birthday\n";
-    }
-    else if (nAge >= 65)
-    {
-        "Not an important Birthday\n";
-    }
-    std::cout << "\n";
-
-    // Problem 1. Assign different output depending on the age of the user.
-    std::string sAge2;
-    std::cout << "Enter your age: ";
-    getline(std::cin, sAge2);
-    int nAge2 = std::stoi(sAge2);
     // Combine conditional and logical operators.
     if (nAge < 5)
     {
@@ -64,29 +45,29 @@ int main()
     std::cout << "1st value: " << arrNums3[0] << "\n";
     arrNums3[0] = 7;
     std::cout << "1st value: " << arrNums3[0] << "\n";
-    // How many bytes are we working with. Data at this memory adree (*)
+    // How many bytes are we working with. Data at this memory address (*)
     std::cout << "Array size: " << sizeof(arrNums3) / sizeof(*arrNums3) << "\n";
-    // Multidim arrays. pages set aside, colums, rows.
+    // Multidimensional arrays. Square brackets mean "Pages" set aside, colums, rows respectively.
     int arrNums4[2][2][2] = {{{1,2}, {3,4}},
                             {{5,6}, {7,8}}};
     std::cout << arrNums4[1][1][1] << "\n";
     std::cout << "\n";
 
-    // 3. Vectors. Re-sizeable.
-    std::cout << "\3. Vectors.\n";    
+    // 3. Vectors. Re-sizeable arrays.
+    std::cout << "3. Vectors.\n";    
     std::vector<int> vecRandNums(2);
     vecRandNums[0] = 10;
     vecRandNums[1] = 20;
     vecRandNums.push_back(30);
     std::cout << "Last index: " << vecRandNums[vecRandNums.size()-1] << "\n";
-    // convert string to vector.
-    std::string sSentence = "This is a random string";
+    // Convert string to vector.
+    std::string sSentence = "This is a string converted to a vector";
     std::vector<std::string> vecWords;
     // To receives strings and manipulate them, use stringstream.
     std::stringstream ss(sSentence);
     std::string sIndivStr;
     char cSpace = ' ';
-    // While ss has words to spit out, and throw in sIndivStr, while cspace spare.
+    // While ss has words to spit out (...).
     while(getline(ss, sIndivStr, cSpace))
     {
         vecWords.push_back(sIndivStr);
@@ -102,7 +83,6 @@ int main()
     double Num1, Num2;
     std::string sOperation;
     std::vector<std::string> vecOp;
-    
     std::cout << "Enter operation (e.g. 2+3):";
     getline(std::cin, sOperation);
     std::stringstream ss2(sOperation);
