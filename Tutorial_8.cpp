@@ -6,6 +6,7 @@
 #include <sstream>
 #include <limits>
 #include <ctime>
+#include <cmath>
 
 // Function declarations:
 // Generate a vector of random numbers.
@@ -14,6 +15,12 @@ std::vector<int> GenerateRandVec(int numOfnums, int min, int max);
 void BubbleSort(std::vector<int>& theVec);
 // Get factorials.
 int Factorial(int numumber);
+// Generate Fibonacci.
+int Fibonacci(int index);
+// Compute area of circles.
+double Area(double radius);
+// Compute area of rectangles.
+double Area(double heigh, double width);
 
 int main()
 {
@@ -23,18 +30,50 @@ int main()
     // Problem 1. Bubble sort.
     std::cout << "Problem 1. Bubble Sort\n";
     std::vector<int> vecVals = GenerateRandVec(10, 1, 50);
+    for(auto x: vecVals) std::cout << x << "\n";
     BubbleSort(vecVals);
-    for(auto x: vecVals)
-    {
-        std::cout << x << "\n";
-    }
+    for(auto x: vecVals) std::cout << x << "\n";
 
     // Problem 2. Recursion and calculating factorials.
     std::cout << "\nProblem 2. Recursion & Factorials\n";
     int num;
     std::cout << "Enter a number: ";
-    std::cin >> num;
-    std::cout << "Factorial" << num << " = " << Factorial(num) << "\n";
+    std::cin >> num;    
+    std::cout << "Factorial " << num << " = " << Factorial(num) << "\n";
+
+    // Problem 3. Fibonacci numbers.
+    std::cout << "\nProblem 3. Recursion & Fibonacci numbers\n";
+    int index;
+    std::cout << "Enter a Fibonacci index: ";
+    std::cin >> index; 
+    printf("Fib(%d) = %d\n", index, Fibonacci(index));
+
+    // Problem 4. Overloaded functions.
+    // Functions with same function name and same return type, but different parameters.
+    std::cout << "\nProblem 4. Overloaded functions\n";
+    // Switch statement
+    char areaType;
+    std::cout << "Type c for circle, and r for rectanclge: ";
+    std::cin >> areaType;
+    switch(areaType)
+    {
+        case 'c': 
+            std::cout << "Enter radius: ";
+            double radius;
+            std::cin >> radius;
+            std::cout << "Area = " << Area(radius) << "\n";
+            break;
+        case 'r': 
+            std::cout << "Enter height: ";
+            double height;
+            std::cin >> height;
+            std::cout << "Enter width: ";
+            double width;
+            std::cin >> width;
+            std::cout << "Area = " << Area(height, width) << "\n";
+            break;
+        default : std::cout << "Please enter c or r";
+    }
 
     return 0;
 }
@@ -91,7 +130,7 @@ void BubbleSort(std::vector<int>& theVec)
 
 int Factorial(int number)
 {
-    if(number == 1)
+    if(number == 0 || number == 1)
     {
         return 1;
     }
@@ -102,4 +141,23 @@ int Factorial(int number)
     }
 }
 
+int Fibonacci(int index)
+{
+    int num1 = 1;
+    int num2 = 1;
+    int next;
+    if(index < 2) return index;
+    else return Fibonacci(index-1) + Fibonacci(index-1);
+}
+
+double Area(double radius)  
+{
+    std::cout << "ok";
+    return 3.141592*pow(radius, 2);
+}
+
+double Area(double heigh, double width)
+{
+    return heigh*width;
+}
 
