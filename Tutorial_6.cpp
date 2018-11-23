@@ -19,9 +19,11 @@ std::vector<int> FindSubstringMatches(std::string MyString, std::string substrin
 // Replace
 std::string ReplaceSubstrings(std::string MyString, std::string substring, std::string newString);
 
-
 int main()
 {
+    std::cout << "Chapter 6\n";
+    std::cout << "\n";
+
     std::vector<std::string> vec1 = StringToVector("This is a random string", ' ');
     for(int i=0; i<vec1.size(); i++)
     {
@@ -119,6 +121,5 @@ std::string ReplaceSubstrings(std::string MyString, std::string substring, std::
 
     return MyString;
 }
-
 
 
