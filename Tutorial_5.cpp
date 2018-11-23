@@ -11,6 +11,9 @@
 
 int main()
 {
+    std::cout << "Chapter 5\n";
+    std::cout << "\n";
+
     // c character String = array of characters with a no caracter \0 at the end
     char cString[] = {'A', ' ', 'S','t','r','i','n','g','\0'};
 
@@ -37,6 +40,8 @@ int main()
 
     strVec[4] = str.append(" and you are not");
 
+    // Problem 1. Find a string and change some characters
+    std::cout << "\nFind a string and change some characters\n";
     for(auto x: strVec) 
         std::cout << x << "\n";
 
