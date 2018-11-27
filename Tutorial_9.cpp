@@ -1,4 +1,4 @@
-// Chapter 8. Lambda expressions. Perform list operatons.
+// Chapter 9. Lambda expressions. Perform list operatons.
 #include <cstdlib>
 #include <iostream>
 #include <string>
