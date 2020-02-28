@@ -6,7 +6,7 @@
 
 Find the content of the course:
 
-  [https://github.com/JesusUrtasun/CppCourse]( https://github.com/JesusUrtasun/CppCourse)
+  [https://github.com/JesusUrtasun/CppCourse](https://github.com/JesusUrtasun/CppCourse)
 
 - Navigate on the menu `Applications` and open the text editor. 
 
@@ -120,73 +120,62 @@ As an exercise create the following folder structure:
 
 ## Exercise 4 - Copy and move files
 
-Per copiare e spostare files utilizziamo i seguenti comandi:
-- Per copiare:
+For copying and moving files we will use the following commands:
+- For copying:
   ```bash
-  ~$ cp <file_da_copiare> <directory_in_cui_copiare>
+  ~$ cp <file_to_copy> <folder_where_to_copy>
   ```
-  (copy). Se vogliamo copiare una cartella basta aggiungere l'opzione recursive, i.e. `cp -r`.
-- Se vogliamo muovere un file oppure rinominare un file, usiamo:
+  (copy). If we want to copy a folder is enough to add the option, i.e. `cp -r`.
+- If instead of moving a file we want to just rename it we can use:
   ```bash
-  ~$ mv <file> <nuovo_nome_file>
+  ~$ mv <file> <new_name_file>
   ```
- Ricordare che le directories possono essere rappresentate da notazione relativa rispetto
- alla cartella attuale sia in notazione assoluta.
 
-Provate a copiare il file `data.txt` creato nell'esercizio precedente dentro la
-cartella `Lezione1` e poi cambiate il suo nome da `data.txt` a `README.md`.
+Try to copy the dile `data.txt` created in the previous exercise inside the folder
+`Chapter01` and then change its name from `data.txt` to `README.md`.
 
-## Esercizio 5 - Editor di testo
+## Exercise 5 - Text editor
 
-Esistono innumerevoli programmi per editare files su Linux, che capiscono il tipo
-di contenuto in base al suffisso del file. Per esempio un file con suffisso `.txt` è
-considerato come puro testo, invece un file con `.cc` è un file di programmazione in C++, quindi si attiveranno dei colori per la sintassi utilizzata.
+There exist plenty of programs to edit files in Linux. For instance with the suffix `.txt` a file is interpreted as apure tect,
+otherwise with `.cc` is a program file in C++, so colors and messaged concering indentation will appear.
+We will review these concepts in detail in the following sessions.
 
-Sono disponibili su tutte le macchine i seguenti editor di testo:
-- `gedit`: editor generale, user-friendly, molto facile e intuitivo da usare.
-- `vim`: editor molto flessibile e con supporto a innumerevoli plug-ins. Richiede tempo
-  per imparare ad utilizzare in modo proficuo.
-- `emacs`: editor molto flessibile, contestualmente simile a vim, richiede però tempo
-  per imparare ad utilizzare in modo proficuo.
+In all machines the following text editors are availabl:
+- `gedit`: general editor,user-friendly, easy and intuitive.
+- `vim`: very flexible editor with plenty of supports. Time is needed in order to learn how use it properly.
+- `emacs`: very flexible editor, similar to vim. Time is needed in order to learn how to use it properly.
+- `gedit`: not installed. The one I use.  I dont like either of those mentioned :/
 
-Come esercizio proviamo a creare un file usando gedit:
-1. aprire il terminale, scegliere una cartella dentro la propria home e eseguire:
+As an exercise try to create a folder using gedit:
+1. Open the terminal, choose a folder inside the home directory and write:
   ```bash
   ~$ gedit file1.txt
   ```
-  scrivere un contenuto qualunque, salvare il file e chiudere `gedit`.
+  write any content, save and close `gedit`.
 
-2. controllare il contenuto di questo nuovo file con `cat`.
+2. Check the content of this file with `cat`.
 
-3. lanciare nuovamente `gedit` ma in modalità *background*, cioè il terminale
-  resterà libero per ricevere nuovi comandi mentre `gedit` è attivo.
+3. Open again `gedit` in mode *background*, in such a way thet the terminal remains free for receiving commands while `gedit` is active.
   ```bash
   ~$ gedit file1.txt &
   ```
 
-4. Cancellare `file1.txt`.
+4. Delete `file1.txt`.
 
-A questo punto proviamo a creare un file per codice in C++:
-1. aprire il terminale e eseguire
+At this point try to create a file for C++ code:
+1. Open the terminal and write
   ```bash
   ~$ gedit file.cc
   ```
 
-2. scrivere la seguente riga
+2. Write the folloing row
   ```c++
   #include <iostream>
   ```
-  noterete che si attiveranno dei colori diversi per ogni parola: `gedit` ha
-  riconosciuto che il vostro file contiene sintassi del C++.
+  you will notice that colors will activate for each word: `gedit` has
+  recognized the file as contianing syntax C++.
 
-3. Cancellare `file.cc`.
-
-Con la tastiera italiana i seguenti simboli utili per programmazione sono:
-```
-{ = Alt Gr + Shift + è
-} = Alt Gr + Shift + +
-~ = Alt Gr + ì
-```
+3. Delete `file.cc`.
 
 ## Exercise 6 - Clone with git
 
@@ -215,37 +204,26 @@ For obtaining the updated versions is enought to perform a `pull`, i.e.:
 
 At this point you can try opening the documents just cloned with `gedit` or `code`, and for PDFs use `evince`.
 
-## Esercizio 7 - Accesso remoto e copia dei file
+## Exercise 7 - Remote access and copy files
 
-Siccome programmare richiede allenamento e studio, vi capiterà di lavorare
-su diverse macchine, sia in laboratorio che sul vostro computer personale. Il
-metodo che raccomandiamo per salvare il vostro lavoro consiste in utilizzare una semplice *chiavetta USB* in cui saranno copiati tali files.
+There are ways for copying files remotely using `ssh` e `scp`. For security reasons remote connections ara not always possible due to firewall rules or the lack of oportune software for such operations.
 
-Detto ciò, esistono metodi per la copia di files da remoto utilizzando la rete
-usando `ssh` e `scp`. Da notare però che per motivi di sicurezza le connessioni
-dirette da remoto non sono sempre possibili dovuti a regole firewall oppure la
-mancanza di software opportuno per tali operazioni.
-
-- Per accedere da remoto ad un computer raggiungibile sulla rete usiamo il comando:
+- For accessing remotely to a computer online we use:
   ```bash
-  ~$ ssh <username>@<indirizzo_computer>
+  ~$ ssh <username>@<address_computer>
   ```
-  dove per `<indirizzo_computer>` intendiamo l'IP oppure il suo dominio da rete.
-  Questo metodo vi permetterà di entrare nella macchina remota e lavorare.
-  Eseguendo il comando `ssh -X <username>@<indirizzo_computer>` sarete capaci
-  di inoltrare l'output delle applicazioni grafiche da remoto.
+  where for `<address_computer>` we understand the IP or its online domine.
 
-- Per copiare files da remoto utilizziamo il comando `scp`:
+- For copying files remotely we use `scp`:
   ```bash
-  ~$ scp <username>@<indirizzo_computer>:<file> <file_destinazione>
+  ~$ scp <username>@<address_computer>:<file> <file_destination>
   ```
-  Questo comando funziona in modo analogo a `cp`, quindi si possono copiare
-  intere cartelle aggiungendo l'opzione `cp -r`.
+  This command works in an analogous way to `cp`, so there can be copied inside folders using also `cp -r`.
 
-Loggarsi sulle macchine del laboratorio di calcolo del dipartimento di fisica usando ssh e copiare i propri files.
+Logg in computers of the lab of the department of physics ussing ssh and copy files.
 
-1. Loggarsi con `ssh <username>@tolab.fisica.unimi.it`.
+1. Log in with `ssh <username>@tolab.fisica.unimi.it`.
 
-2. Verificare il contenuto della propria home directory.
+2. Verify the content of the proper home directory.
 
-3. Copiare alcuni files e folders tra la vostra macchina e tolab usando `scp` e `scp -r` rispettivamente.
+3. Copy some files and folders between our machine and tolab using `scp` e `scp -r` respectively.
