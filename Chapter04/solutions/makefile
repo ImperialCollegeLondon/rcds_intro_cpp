@@ -5,7 +5,7 @@
 CC=g++
 
 # All programs to be generated
-all: program1 program2 program3 program4 program5
+all: program1 program2 program3 program4
 
 program1: exercise1.cc
 	$(CC) -o $@ $<
@@ -17,9 +17,6 @@ program3: exercise3.cc
 	$(CC) -o $@ $<
 
 program4: exercise4.cc
-	$(CC) -o $@ $<
-
-program5: exercise5.cc
 	$(CC) -o $@ $<
 
 clean:
