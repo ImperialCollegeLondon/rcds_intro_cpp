@@ -28,3 +28,19 @@ Course on C++ programming
 - Statements for, while do/while.
 - Computing mean value.
 - Fibonacci series.
+
+## Chapter 6
+
+- Arrays and linear algebra operations.
+- Rectilinear movement.
+- Histograms. Estimate Higgs mass.
+
+## Chapter 7
+
+- Pointers and functions.
+- Numerical integration.
+
+## Chapter 8
+
+- Data structure.
+- First steps with ROOT.
