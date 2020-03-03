@@ -2,9 +2,7 @@
 
 ### Jesús Urtasun Elizari - Uiverisity of Milan - 2019/20
 
-**Note:** Esercizi di base in C++: arrays.
-
-**Note:** Base exercises in C++: for loop, while, do/while.
+**Note:** Base exercises in C++: arrays.
 
 Before starting we suggest to create a folder for Lesson 4 where you can save all files that will be created for the exercise
 ```bash
