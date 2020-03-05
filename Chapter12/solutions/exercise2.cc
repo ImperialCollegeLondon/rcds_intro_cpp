@@ -9,6 +9,7 @@
 #include <vector>
 #include <ctime>
 #include <cmath>
+using namespace std;
 
 // Abstract class Warrior
 class Warrior {
@@ -54,13 +55,13 @@ class Battle {
                 // If the result is equal to "Game Over", kill the loop and end the fight
                 if(Battle::GetAttackResult(warrior1, warrior2).compare("Game Over") == 0)
                 {
-                    std::cout << "Game Over \n";
+                    cout << "Game Over" << endl;
                     break;
                 }
                 // If the result is equal to "Game Over", kill the loop and end the fight
                 if(Battle::GetAttackResult(warrior2, warrior1).compare("Game Over") == 0)
                 {
-                    std::cout << "Game Over \n";
+                    cout << "\nGame Over" << endl;
                     break;
                 }
             }
@@ -96,11 +97,11 @@ class Battle {
 // Main method
 int main() {
 
-    std::cout << "Chapter 12. Part II" << endl;
+    cout << "Chapter 12. Part II" << endl;
 
     srand(time(NULL));
 
-    std::cout << "Let's fight! \n";
+    cout << "\nLet's fight!" << endl;
     // Objectr of the class Warrior
     Warrior thor("Thor", 100, 30, 15);
     Warrior hulk("Hulk", 135, 25, 10);

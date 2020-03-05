@@ -8,6 +8,7 @@
 #include <string>
 #include <vector>
 #include <ctime>
+using namespace std;
 
 // Absrtact class Animal
 class Animal {
@@ -77,13 +78,13 @@ Animal::Animal()
 // De-constructor
 Animal::~Animal()
 {
-    std::cout << "Animal " << this -> name << " destroyed\n";
+    cout << "Animal " << this -> name << " destroyed" << endl;
 }
 
 // Print out method
 void Animal::PrintAtributes()
 {
-    std::cout << this -> name << " is " << this -> height << " cm tall and " << this -> weight << " kg in weight\n";
+    cout << this -> name << " is " << this -> height << " cm tall and " << this -> weight << " kg in weight" << endl;
 }
 
 // Inherited class from Animal
@@ -96,7 +97,7 @@ class Cat : public Animal
         // New private methods, in addition to the ones already in Animal
         void MakeSound()
         {  
-            std::cout << "The cat " << this -> GetName() << " says " << this -> sound << "\n";
+            cout << "The cat " << this -> GetName() << " says " << this -> sound << endl;
         }
         // Constructor, specific to our cat
         Cat(std::string name, double height, double weight, std::string sound);
@@ -112,14 +113,14 @@ Cat::Cat(std::string name, double height, double weight, std::string sound) :
 // Print out method
 void Cat::PrintAtributes()
 {
-    std::cout << this -> GetName() << " is " << this -> GetHeight() << " cm tall and " << this -> GetWeight() 
-        << " kg in weight and says " << this -> sound << "\n";
+    cout << this -> GetName() << " is " << this -> GetHeight() << " cm tall and " << this -> GetWeight() 
+        << " kg in weight and says " << this -> sound << endl;
 }
 
 // Main method
 int main() {
 
-    std::cout << "Chapter 12. Part I" << endl;
+    cout << "Chapter 12. Part I" << endl;
 
     // Define a new animal fred, who whill have the default values
     Animal Fred;
@@ -136,7 +137,7 @@ int main() {
     Cat Syd("Syd", 50, 5, "Miaaaau");
     Syd.PrintAtributes();
 
-    std::cout << "Number of Animals " << Animal::GetNumOfAnimals() << "\n";
+    cout << "Number of Animals " << Animal::GetNumOfAnimals() << endl;
 
     return 0;
 
