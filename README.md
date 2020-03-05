@@ -44,3 +44,33 @@ Course on C++ programming
 
 - Data structure.
 - First steps with ROOT.
+
+## Chapter 9
+
+ROOT objects:
+- Functions of 1 variable, TF1.
+- Canvas, multi canvas.
+- Program in C++ with ROOT as a library.
+- Fitting.
+
+## Chapter 10
+
+ROOT objects:
+- TMultiGraph.
+- Fitting and TGraphErrors.
+
+## Chapter 11
+
+ROOT objects:
+- Histogram TH1F.
+- Fitting histograms.
+- Filling histograms from data files
+- Template function
+
+## Chapter 12
+
+Back to C++. Object Oriented Programming (OOP)
+
+- Basic operations in OOP paradigm.
+- Classes and methods.
+- Abstract classes and Inheritance.
