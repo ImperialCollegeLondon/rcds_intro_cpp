@@ -13,3 +13,4 @@ clean:
 	rm -rf program3
 	rm -rf program4
 	rm -rf program5
+	rm -f *.png
