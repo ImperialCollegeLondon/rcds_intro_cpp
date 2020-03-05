@@ -1,4 +1,7 @@
-// Chapter 10. Object Oriented Programming (II)
+/*
+  Exercise: Object Oriented Programming
+  Author: Jesús - 2020
+*/
 
 #include <cstdlib>
 #include <iostream>
@@ -7,22 +10,25 @@
 #include <ctime>
 #include <cmath>
 
+// Abstract class Warrior
 class Warrior {
 
+    // Private attributes
     private:
         int attackMax;
         int blockMax;
     
+    // Public attributes
     public:
         std::string name;
         int health;
         // Constructor
         Warrior(std::string name, int health, int attackMax, int blockMax)
         {
-            this->name = name;
-            this->health = health;
-            this->attackMax = attackMax;
-            this->blockMax = blockMax;
+            this -> name = name;
+            this -> health = health;
+            this -> attackMax = attackMax;
+            this -> blockMax = blockMax;
         }
         int Attack()
         {
@@ -35,6 +41,7 @@ class Warrior {
         
 };
 
+// Abstract class Battle
 class Battle {
 
     // Pass the warriors by reference, to change their values while they remain the same
@@ -87,10 +94,9 @@ class Battle {
 };
 
 // Main method
-int main()
-{
-    std::cout << "Chapter 10. Part II\n";
-    std::cout << "\n";
+int main() {
+
+    std::cout << "Chapter 12. Part II" << endl;
 
     srand(time(NULL));
 

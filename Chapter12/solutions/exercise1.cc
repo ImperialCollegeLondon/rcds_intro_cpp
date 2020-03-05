@@ -1,4 +1,7 @@
-// Chapter 10. Object Oriented Programming
+/*
+  Exercise: Object Oriented Programming
+  Author: Jesús - 2020
+*/
 
 #include <cstdlib>
 #include <iostream>
@@ -6,9 +9,10 @@
 #include <vector>
 #include <ctime>
 
+// Absrtact class Animal
 class Animal {
 
-    // Only accesible form inside the class
+    // Private attributes are only accesible form inside the class
     private:
         // Atributes of the animal class
         std::string name;
@@ -17,7 +21,7 @@ class Animal {
         // Static variable. Share the same value for all objects
         static int numOfAnimals;
 
-    // Public fields/methods. Accesible from outside the class
+    // Public fields/methods are ccesible from outside the class
     public:
         std::string GetName(){return name;}
         void SetName(std::string name){this->name = name;}
@@ -113,10 +117,9 @@ void Cat::PrintAtributes()
 }
 
 // Main method
-int main()
-{
-    std::cout << "Chapter 10. Part I\n";
-    std::cout << "\n";
+int main() {
+
+    std::cout << "Chapter 12. Part I" << endl;
 
     // Define a new animal fred, who whill have the default values
     Animal Fred;
