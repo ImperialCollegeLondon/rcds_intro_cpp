@@ -2,42 +2,47 @@
 
 ### Jesús Urtasun Elizari - Uiverisity of Milan - 2019/20
 
-Course on C++ programming
+Course on C++ and ROOT programming for 1st year Physics students.
 
 ## Chapter 1
 
-- Get used to Linux, terminal and bash.
-- Manipulate files, Text editor.
+- Get used to Linux operative system, terminal and bash.
+- Manipulate files, text editors.
 - Git and remote access.
 
 ## Chapter 2
 
-- Basics of C++. Hello world, makefile, and input/output.
+- First steps with C++.
+- Hello world, makefile and input/output statements.
 
 ## Chapter 3
 
-- Strings, cin, cout. File manipulation.
+- Strings and C++ formats, cin, cout.
+- Input/output files manipulation.
 
 ## Chapter 4
 
-- Statements if/else and for.
-- Solving second order equaion.
+- Conditional statements if/else and for.
+- First steps with computer sciences.
+- Solving second order equations.
 
 ## Chapter 5
 
-- Statements for, while do/while.
-- Computing mean value.
+- Looping wih for, while do/while statements.
+- Basic statistics. Computing mean value and std.
 - Fibonacci series.
 
 ## Chapter 6
 
 - Arrays and linear algebra operations.
 - Rectilinear movement.
-- Histograms. Estimate Higgs mass.
+- Histograms.
+- Example: estimate Higgs mass.
 
 ## Chapter 7
 
-- Pointers and functions.
+- Pointers Memory allocation and reference.
+- Functions.
 - Numerical integration.
 
 ## Chapter 8
@@ -64,12 +69,12 @@ ROOT objects:
 ROOT objects:
 - Histogram TH1F.
 - Fitting histograms.
-- Filling histograms from data files
-- Template function
+- Filling histograms from data files.
+- Template function.
 
 ## Chapter 12
 
-Back to C++. Object Oriented Programming (OOP)
+Back to C++. Object Oriented Programming (OOP).
 
 - Basic operations in OOP paradigm.
 - Classes and methods.
