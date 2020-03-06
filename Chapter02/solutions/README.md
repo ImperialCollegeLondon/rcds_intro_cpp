@@ -1,5 +1,5 @@
 ## README
 
-Download folder and write make for compiling all exercises
+Download this folder and write make for compiling all exercises
 
-Author: Jesus
+Author: Jesús Urtasun Elizari - University of Milan

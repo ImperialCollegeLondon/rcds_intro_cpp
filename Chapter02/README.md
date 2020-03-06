@@ -1,8 +1,8 @@
 # Chapter 2
 
-### Jesús Urtasun Elizari - Uiverisity of Milan - 2019/20
+### Jesús Urtasun Elizari - University of Milan - 2019/20
 
-**Note:** Basic exercises for C++ programming.
+**Subject:** Basic exercises for C++ programming.
 
 Before starting we suggest to create a folder for Chapter 2 in which you can save 
 all files that will be used for the exercises.
@@ -11,14 +11,14 @@ all files that will be used for the exercises.
 
 ## Exercise 1 - Hello World in C++
 
-Write a program in C++ where the words "Hello Wodld!" are shown in the screen.
+Write a program in C++ where the words "Hello World!" are shown in the screen.
 
 1. Open a terminal and create a new file called `exercise1.cc`, whith `gedit` or `code`
 write a program in C++ that shows on the screen the sentence "Hello World!".
 
 2. Compile using:
 ```bash
-g++ -o program1 exercise01.cc
+g++ -o program1 exercise1.cc
 ```
 where `g++` is the compiler for C++, `-o` the option to determine the name of the
 executable that will be created by `g++`.
@@ -103,7 +103,7 @@ Copy the file `exercise2.cc` (area/perimeter rectangle) in a new file `exercise5
 
 Modify the program in such a way that the variables correspong to the base and hieght are read from terminal. Use the command `cin`.
 
-## Exercise 6 - Notation for per cout
+## Exercise 6 - Notation for cout
 
 Copy file of the previous exercise in `exercise6.cc` and add it to the makefile.
 
