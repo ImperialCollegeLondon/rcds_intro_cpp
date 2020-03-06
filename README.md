@@ -1,14 +1,14 @@
 # C++ course
 
-### Jesús Urtasun Elizari - Uiverisity of Milan - 2019/20
+### Jesús Urtasun Elizari - University of Milan - 2019/20
 
-Course on C++ and ROOT programming for 1st year Physics students.
+Roadmap of the course. Basic of C++ and ROOT programming for 1st year Physics students.
 
 ## Chapter 1
 
 - Get used to Linux operative system, terminal and bash.
-- Manipulate files, text editors.
-- Git and remote access.
+- Manipulate files and directories. Text editors.
+- First steps on Git and remote access.
 
 ## Chapter 2
 
