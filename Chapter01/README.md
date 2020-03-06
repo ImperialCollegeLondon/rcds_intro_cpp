@@ -1,6 +1,6 @@
 # Chapter 1
 
-### Jesús Urtasun Elizari - Uiverisity of Milan - 2019/20
+### Jesús Urtasun Elizari - University of Milan - 2019/20
 
 ## Exercise 1 - Get used to Linux
 
@@ -10,7 +10,7 @@ Find the content of the course:
 
 - Navigate on the menu `Applications` and open the text editor. 
 
-- All commands for exploration of a file and manipulation of files can be done directly from the terminal.
+- All commands for exploration and manipulation of files can be done directly from the terminal.
 
 ## Exercise 2 - Terminal and bash
 
@@ -18,7 +18,7 @@ For programming we will use the Linux command window or terminal, for which we u
 
 - Create and open the `Terminal`.
 
-- Try launching the bash comand that prints the text directly on screen.
+- Try launching some bash basic comands such as `~$ echo`, that prints the text directly on screen.
 
   - Write
     ```bash
@@ -65,12 +65,12 @@ For all comands the use of the command `man` is allowed, and also the option `<c
   ```
   (print working directory)
 
-2. Fro watching all files in the present folder:
+2. For watching all files in the present folder:
   ```bash
   ~$ ls
   ```
   (list). If instead we use the command `ls -l` (that means `ls` with extra option `-l`)
-  more details will be shown, as owner, persmissions, file dimension, etc.
+  more details will be shown, as owner, permissions, file dimension, etc.
 
 3. For creating a folder:
   ```bash
@@ -94,7 +94,7 @@ For all comands the use of the command `man` is allowed, and also the option `<c
 
 6. For going to a new directory:
   ```bash
-  ~$ cd <cartella>
+  ~$ cd <directory>
   ```
   (change directory) also for going back to the previous directory:
   ```bash
@@ -113,7 +113,7 @@ For all comands the use of the command `man` is allowed, and also the option `<c
 
 As an exercise create the following folder structure:
 ```bash
-  /home/<username>/cpp_course
+  /home/<username>/CppCourse
     |- Chapter01
           |- data.txt # leave it empty
 ```
@@ -136,15 +136,15 @@ Try to copy the dile `data.txt` created in the previous exercise inside the fold
 
 ## Exercise 5 - Text editor
 
-There exist plenty of programs to edit files in Linux. For instance with the suffix `.txt` a file is interpreted as apure tect,
-otherwise with `.cc` is a program file in C++, so colors and messaged concering indentation will appear.
+There are plenty of programs to edit files in Linux. As an example, with the suffix `.txt` a file is interpreted as pure text file,
+otherwise with `.cc` it is a program file in C++, so colors and messaged concering indentation will appear.
 We will review these concepts in detail in the following sessions.
 
-In all machines the following text editors are availabl:
-- `gedit`: general editor,user-friendly, easy and intuitive.
-- `vim`: very flexible editor with plenty of supports. Time is needed in order to learn how use it properly.
-- `emacs`: very flexible editor, similar to vim. Time is needed in order to learn how to use it properly.
-- `gedit`: not installed. The one I use.  I dont like either of those mentioned :/
+In all machines the following text editors are available:
+- `gedit`: General editor, user-friendly, easy and intuitive.
+- `vim`: Very flexible editor with plenty of supports. Time is needed in order to learn how use it properly.
+- `emacs`: Very flexible editor, similar to vim. Time is needed in order to learn how to use it properly.
+- `visual studio code`: Not installed. The one I use.  I dont like either of those mentioned above :/ More information at (https://code.visualstudio.com/)
 
 As an exercise try to create a folder using gedit:
 1. Open the terminal, choose a folder inside the home directory and write:
@@ -155,20 +155,20 @@ As an exercise try to create a folder using gedit:
 
 2. Check the content of this file with `cat`.
 
-3. Open again `gedit` in mode *background*, in such a way thet the terminal remains free for receiving commands while `gedit` is active.
+3. Open `gedit` in mode *background*, such that the terminal remains free for receiving commands while `gedit` remains active.
   ```bash
   ~$ gedit file1.txt &
   ```
 
 4. Delete `file1.txt`.
 
-At this point try to create a file for C++ code:
+At this point you can try to create a file for C++ code:
 1. Open the terminal and write
   ```bash
   ~$ gedit file.cc
   ```
 
-2. Write the folloing row
+2. Write the folloing line:
   ```c++
   #include <iostream>
   ```
@@ -179,9 +179,8 @@ At this point try to create a file for C++ code:
 
 ## Exercise 6 - Clone with git
 
-Git is a very useful instrument when programming. It allows for saving files on a remote server,
-keep the history of modifications and work in collaborative mode. For instance, [https://github.com](https://github.com)
-is quite popular for open-source projectr at big scale.
+Git is a very useful instrument when programming. Even though we will not cover this topic in detail, at least mention that it allows for saving files on a remote server, keep the history of modifications and work in collaborative mode. For instance, [https://github.com](https://github.com)
+is quite popular for open-source project at big scale.
 
 Going through the details of `git` in this tutorial is beyond need.
 We will use only as a place to save your codes and acces to the solutions in an efficient way.
@@ -195,8 +194,8 @@ and then going through the folder `Chapter01` with
 ~$ cd Chapter01
 ```
 
-Every week the new chapter will be published here in the `git` repository.
-For obtaining the updated versions is enought to perform a `pull`, i.e.:
+Every week a new chapter will be published here in the `git` repository.
+For obtaining the updated versions it will be enought to perform a `pull`, i.e.:
 ```bash
 ~$ cd CppCourse
 ~$ git pull
@@ -206,21 +205,21 @@ At this point you can try opening the documents just cloned with `gedit` or `cod
 
 ## Exercise 7 - Remote access and copy files
 
-There are ways for copying files remotely using `ssh` e `scp`. For security reasons remote connections ara not always possible due to firewall rules or the lack of oportune software for such operations.
+There are ways for copying files remotely using `ssh` e `scp`. For security reasons remote connections are not always possible due to firewall rules or the lack of proper software for such operations.
 
 - For accessing remotely to a computer online we use:
   ```bash
   ~$ ssh <username>@<address_computer>
   ```
-  where for `<address_computer>` we understand the IP or its online domine.
+  where for `<address_computer>` we understand the IP or its online domain.
 
 - For copying files remotely we use `scp`:
   ```bash
   ~$ scp <username>@<address_computer>:<file> <file_destination>
   ```
-  This command works in an analogous way to `cp`, so there can be copied inside folders using also `cp -r`.
+  This command works in an analogous way to `cp`, so there can be copied instead folders using also `cp -r`.
 
-Logg in computers of the lab of the department of physics ussing ssh and copy files.
+Log in computers of the lab of the department of physics ussing ssh and copy files.
 
 1. Log in with `ssh <username>@tolab.fisica.unimi.it`.
 
