@@ -1,14 +1,14 @@
 # Chapter 4
 
-### Jesús Urtasun Elizari - Uiverisity of Milan - 2019/20
+### Jesús Urtasun Elizari - University of Milan - 2019/20
 
-**Note:** Base exercises in C++: if/else, switch and for.
+**Subject:** Base exercises in C++: if/else, switch and for.
 
 Before starting we suggest to create a folder for Lesson 4 where you can save all files that will be created for the exercise
 ```bash
 cd ~/           # go the home directory
-mkdir Chapter03  # create the directory Chapter03 in home
-cd lezione3     # go inside Chapter03
+mkdir Chapter04  # create the directory Chapter04 in home
+cd Chapter04     # go inside Chapter04
 ```
 Create a `makefile` to compile all exercises
 
