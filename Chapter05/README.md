@@ -1,14 +1,14 @@
 # Chapter 5
 
-### Jesús Urtasun Elizari - Uiverisity of Milan - 2019/20
+### Jesús Urtasun Elizari - University of Milan - 2019/20
 
-**Note:** Base exercises in C++: for loop, while, do/while.
+**Subject:** Base exercises in C++: for loop, while, do/while.
 
 Before starting we suggest to create a folder for Lesson 4 where you can save all files that will be created for the exercise
 ```bash
-cd ~/           # go the home directory
-mkdir Chapter03  # create the directory Chapter03 in home
-cd lezione3     # go inside Chapter03
+cd ~/
+mkdir Chapter05
+cd Chapter05
 ```
 Create a `makefile` to compile all exercises
 
