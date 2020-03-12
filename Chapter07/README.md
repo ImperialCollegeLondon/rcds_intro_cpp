@@ -1,14 +1,14 @@
 # Chapter 7
 
-### Jesús Urtasun Elizari - Uiverisity of Milan - 2019/20
+### Jesús Urtasun Elizari - University of Milan - 2019/20
 
 **Subject:** Base exercies in C++: pointers and functions.
 
 Before starting we suggest to create a folder for Lesson 4 where you can save all files that will be created for the exercise
 ```bash
-cd ~/           # go the home directory
-mkdir Chapter03  # create the directory Chapter03 in home
-cd lezione3     # go inside Chapter03
+cd ~/
+mkdir Chapter07
+cd Chapter07
 ```
 Create a `makefile` to compile all exercises
 
