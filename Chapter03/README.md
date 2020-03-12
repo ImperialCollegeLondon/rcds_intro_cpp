@@ -1,14 +1,14 @@
 # Chapter 3
 
-### Jesús Urtasun Elizari - Uiverisity of Milan - 2019/20
+### Jesús Urtasun Elizari - University of Milan - 2019/20
 
-**Note:** Basics of C++: strings, cin, cout, file IO, if and else.
+**Subject:** Basics of C++: strings, cin, cout, input/output files, if and else.
 
 Before starting we suggest to create a folder for Lesson 3 where you can save all files that will be created for the exercise
 ```bash
 cd ~/           # go the home directory
 mkdir Chapter03  # create the directory Chapter03 in home
-cd lezione3     # go inside Chapter03
+cd Chapter03     # go inside Chapter03
 ```
 Create a `makefile` with targets:
 - `all`: compile all programs in this folder.
@@ -24,7 +24,7 @@ program1: exercise1.cc
   # also: g++ -o $@ $<
 
 clean:
-  rm prog1
+  rm program1
 ```
 
 in this way all programs will be compiled using the following command in the terminal:
