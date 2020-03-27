@@ -1,5 +1,7 @@
 # Chapter 7
 
+# Pointers and functions
+
 ### Jesús Urtasun Elizari - University of Milan - 2019/20
 
 **Subject:** Base exercies in C++: pointers and functions.
