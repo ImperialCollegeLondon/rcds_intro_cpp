@@ -27,3 +27,4 @@ clean:
 	rm -f program2
 	rm -f program3
 	rm -f program4
+	rm -f program5
