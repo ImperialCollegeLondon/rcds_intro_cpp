@@ -1,14 +1,16 @@
 # Chapter 10
 
+## ROOT - TF1, TGraph, TGraphErrors and TH1F
+
 ### Jesús Urtasun Elizari - University of Milan - 2019/20
 
 **Subject:** Base exercises in C++: TF1, TGraph, TGraphErrors and TH1F.
 
-Before starting we suggest to create a folder for Lesson 4 where you can save all files that will be created for the exercise
+Before starting we suggest to create a folder for Chapter 10 where you can save all files that will be created for the exercise
 ```bash
 cd ~/           # go the home directory
-mkdir Chapter09  # create the directory Chapter09 in home
-cd Chapter09     # go inside Chapter09
+mkdir Chapter10  # create the directory Chapter10 in home
+cd Chapter10     # go inside Chapter10
 ```
 Create a `makefile` to compile all exercises
 
