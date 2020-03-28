@@ -1,6 +1,6 @@
 /*
   Exercise: Object Oriented Programming
-  Author: Jesús - 2020
+  Author: Jesús Urtasun - 2020
 */
 
 #include <cstdlib>
