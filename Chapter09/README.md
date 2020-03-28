@@ -1,10 +1,12 @@
 # Chapter 9
 
+## ROOT - TF1, TCanvas and TAppliaction
+
 ### Jesús Urtasun Elizari - University of Milan - 2019/20
 
-**Subject:** Base exercises in C++: TF1, TGraph, TCanvas e TApplication.
+**Subject:** Base exercises in C++: TF1, TGraph, TCanvas and TApplication.
 
-Before starting we suggest to create a folder for Lesson 4 where you can save all files that will be created for the exercise
+Before starting we suggest to create a folder for Chapter 9 where you can save all files that will be created for the exercise
 ```bash
 cd ~/           # go the home directory
 mkdir Chapter09  # create the directory Chapter09 in home
