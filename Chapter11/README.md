@@ -1,14 +1,16 @@
 # Chapter 11
 
+## ssh, fitting a histogram with ROOT
+
 ### Jesús Urtasun Elizari - University of Milan - 2019/20
 
-**Subject:** Base exercises in C++: ssg, TH1F.
+**Subject:** Base exercises in C++: ssh, TH1F.
 
-Before starting we suggest to create a folder for Lesson 4 where you can save all files that will be created for the exercise
+Before starting we suggest to create a folder for Chapter11 where you can save all files that will be created for the exercise
 ```bash
 cd ~/           # go the home directory
-mkdir Chapter09  # create the directory Chapter09 in home
-cd Chapter09     # go inside Chapter09
+mkdir Chapter11  # create the directory Chapter11 in home
+cd Chapter11     # go inside Chapter11
 ```
 Create a `makefile` to compile all exercises
 
