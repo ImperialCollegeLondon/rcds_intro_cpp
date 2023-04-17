@@ -1,22 +1,20 @@
-# C++ course
+# Introduction to C++
 
-### Jesús Urtasun Elizari - University of Milan - 2019/20
+## Dr. Jesús Urtasun Elizari & Dr. Katerina Michalickova
 
-Roadmap of the course. Basic of C++ and ROOT programming for 1st year Physics students.
+## Imperial College London - Spring term 2023
+
+Roadmap of the course. Introduction of C++ and computer sciences.
 
 ## Chapter 1
 
-- Get used to Linux operative system, terminal and bash.
-- Manipulate files and directories. Text editors.
-- First steps on Git and remote access.
-
-## Chapter 2
-
-- First steps with C++.
-- Hello world, makefile and input/output statements.
+- Introduction to Linux operative system, terminal and bash.
+- Programing languages and performance comparison. Text editors.
+- First steps with C++. Hello world.
+- Variables, input / output statements, basic maths.
 
 ## Chapter 3
-
+- makefile
 - Strings and C++ formats, cin, cout.
 - Input/output files manipulation.
 
@@ -49,33 +47,3 @@ Roadmap of the course. Basic of C++ and ROOT programming for 1st year Physics st
 
 - Data structure.
 - First steps with ROOT.
-
-## Chapter 9
-
-ROOT objects:
-- Functions of 1 variable, TF1.
-- Canvas, multi canvas.
-- Program in C++ with ROOT as a library.
-- Fitting.
-
-## Chapter 10
-
-ROOT objects:
-- TMultiGraph.
-- Fitting and TGraphErrors.
-
-## Chapter 11
-
-ROOT objects:
-- Histogram TH1F.
-- Fitting histograms.
-- Filling histograms from data files.
-- Template function.
-
-## Chapter 12
-
-Back to C++. Object Oriented Programming (OOP).
-
-- Basic operations in OOP paradigm.
-- Classes and methods.
-- Abstract classes and Inheritance.
