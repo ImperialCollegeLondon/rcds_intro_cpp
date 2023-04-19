@@ -20,15 +20,15 @@ Roadmap of the course. Introduction of C++ and computer sciences.
 
 ## Chapter 3
 
+- Conditional statements if /else
+- Loops for, while, do while
 - Reading / writing files manipulation.
-- Loops / conditional statements
-- Arrays and vectors
 
 ## Chapter 4
 
-- Conditional statements if/else and for.
-- First steps with computer sciences.
-- Solving second order equations.
+- Arrays and vectors
+- Functions
+- Real problem. Solving second order equations.
 
 ## Chapter 5
 

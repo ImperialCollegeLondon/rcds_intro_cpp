@@ -1,22 +1,44 @@
 # Chapter 4
 
-## Conditionals and first steps to computer sciences
+## Arrays & vectors, functions
 
-### Jesús Urtasun Elizari - University of Milan - 2019/20
+**Subject:** Basic exercises for C++ programming.
 
-**Subject:** Base exercises in C++: if/else, switch and for.
-
-Before starting we suggest to create a folder for Lesson 4 where you can save all files that will be created for the exercise
+Before starting we suggest to create a folder for Lesson 3 where you can save all files that will be created for the exercise
 ```bash
-cd ~/           # go the home directory
-mkdir Chapter04  # create the directory Chapter04 in home
-cd Chapter04     # go inside Chapter04
+cd ~/           # Go the home directory
+mkdir Chapter4  # Create the directory Chapter4
+cd Chapter4     # Go inside Chapter4
 ```
-Create a `makefile` to compile all exercises
+Create a `makefile` with targets:
+- `all`: compile all programs in this folder.
+- `clean`: delete all programs created by `all`.
+
+Example of `makefile`:
+
+```makefile
+all: program1
+
+program1: exercise1.cc
+  g++ exercise1.cc -o program1
+  # also: g++ $< -o $@
+
+clean:
+  rm program1
+```
+
+in this way all programs will be compiled using the following command in the terminal:
+```bash
+$ make
+```
+while all programs will be eliminated by using the folloing one:
+```bash
+$ make clean
+```
 
 ## Exercise 1 - Conversion temperature
 
-Write a C++ program where it is possible to convert a temperature from Celsius to Kelvin or Farenheit (using two-way selection `if` / `else`).
+Recap of previous chapter. Write a C++ program where it is possible to convert a temperature from Celsius to Kelvin or Farenheit (using two-way selection `if` / `else`).
 
 1. Ask the user for introducing on the terminal the temperature in Celsius using `cin`.
 
@@ -68,34 +90,4 @@ Verify the implementation for the following coefficients:
 
 ## Exercise 3 - Chosing bycicle size
 
-Write a C++ program tha, depending on the age, height and wright of the user (introduced by terminal) 
-recommends a size for the bycicle (XS,S,M,L,XL) following the next criteria:
-
-- Minor or equal to 10 anni: XS
-
-- Between 10 and 18 year (included):
-  - Height minor equal to 1.10m: XS
-  - Height between 1.10m and 1.30m (included) and weight minor than 40kg (included): S
-  - Height between 1.10m and 1.30m (included) and weight greater than 40kg: M
-  - Height between 1.30m and 1.60m (inlcuded): M
-  - Height greater than 1.70m: L
-
-- More than 18 years:
-  - Heigh minor than 1.40m (included) or weight minor than 40kg (included): XS
-  - Height between 1.40m and 1.60m (included): S
-  - Height between 1.60m and 1.70m (included): M
-  - Height between 1.70m and 1.90m (included): L
-  - Height greater than 1.90m: XL
-
-Implement the conditions using the selection statements `if`, `else if`, `else`.
-
-## Exercise 4 - switch
-
-Use the control structure `switch` for printing your name given the enrollment number.
-
-1. Create a variable `int` for storing the enrollment number.
-
-2. Ask the enrollment number from the terminal.
-
-2. Create a `switch` condition prints your name given your enrollment number,
-otherwise it prints the error message: "Number not found".
+## Exercise 4 - Switch

@@ -1,6 +1,5 @@
 /*
   Exercise 1: Increasing / Decreasing
-  Author: Jesús Urtasun - 2020
 */
 
 #include <iostream>
@@ -27,6 +26,7 @@ int main() {
   
   // Print on screen
   cout << "number: " << number << endl;
+  cout << "ratio: " << r << endl;
   cout << "increased: " << increasing << endl;
   cout << "decreased: " << decreasing << endl;
   cout << "division : " << division << endl;
