@@ -2,8 +2,6 @@
 
 ## Data types and files
 
-### Jesús Urtasun Elizari - University of Milan - 2019/20
-
 **Subject:** Basics of C++: strings, cin, cout, input/output files, if and else.
 
 Before starting we suggest to create a folder for Lesson 3 where you can save all files that will be created for the exercise

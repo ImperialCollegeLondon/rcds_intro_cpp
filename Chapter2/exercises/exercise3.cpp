@@ -1,6 +1,5 @@
 /*
-  Exercise 5: Input/Output
-  Author: Jesús Urtasun - 2020
+  Exercise 3: Input / output
 */
 
 #include <iostream>

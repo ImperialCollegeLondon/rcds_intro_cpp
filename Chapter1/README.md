@@ -1,10 +1,6 @@
 # Chapter 1
 
-## Basics of Linux
-
-### Jesús Urtasun Elizari - University of Milan - 2019/20
-
-## Exercise 1 - Get used to Linux
+## Basics of Linux / UNIX operative systems
 
 Find the content of the course:
 
@@ -14,7 +10,7 @@ Find the content of the course:
 
 - All commands for exploration and manipulation of files can be done directly from the terminal.
 
-## Exercise 2 - Clone with git
+## Clone with git
 
 Git is a very useful instrument when programming. Even though we will not cover this topic in detail, at least mention that it allows for saving files on a remote server, keep the history of modifications and work in collaborative mode. For instance, [https://github.com](https://github.com)
 is quite popular for open-source project at big scale.
@@ -40,7 +36,7 @@ For obtaining the updated versions it will be enought to perform a `pull`, i.e.:
 
 At this point you can try opening the documents just cloned with `gedit` or `code`, and for PDFs use `evince`.
 
-## Exercise 2 - Terminal and bash
+## Exercise 1 - Terminal and bash
 
 For programming we will use the Linux command window or terminal, for which we use the language `bash`. For more information check: [this link](https://it.wikipedia.org/wiki/Bash)
 
@@ -186,3 +182,23 @@ At this point you can try to create a file for C++ code:
   recognized the file as contianing syntax C++.
 
 3. Delete `file.cc`.
+
+## Exercise 6 - Hello World in C++
+
+Write a program in C++ where the words "Hello World!" are shown in the screen.
+
+1. Open a terminal and create a new file called `exercise1.cc`, whith `gedit` or `code`
+write a program in C++ that shows on the screen the sentence "Hello World!".
+
+2. Compile using:
+```bash
+g++ exercise1.cc -o program1 
+```
+where `g++` is the compiler for C++, `-o` the option to determine the name of the
+executable that will be created by `g++`.
+
+3. Run the program with:
+```bash
+./program1
+```
+and check the output.

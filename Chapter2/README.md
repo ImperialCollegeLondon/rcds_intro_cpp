@@ -2,40 +2,34 @@
 
 ## First steps to C++
 
-### Jesús Urtasun Elizari - University of Milan - 2019/20
-
 **Subject:** Basic exercises for C++ programming.
 
 Before starting we suggest to create a folder for Chapter 2 in which you can save 
 all files that will be used for the exercises.
 
-*Example:* `cd ~/; mkdir Chapter02; cd Chapter02;`
+*Example:* `cd ~/; mkdir Chapter2; cd Chapter2;`
 
-## Exercise 1 - Hello World in C++
+## Exercise 1 - Variable in C++
 
-Write a program in C++ where the words "Hello World!" are shown in the screen.
+Write a program in C++ that declares an integer variable, two double variablesm, and prints them on screen.
 
-1. Open a terminal and create a new file called `exercise1.cc`, whith `gedit` or `code`
-write a program in C++ that shows on the screen the sentence "Hello World!".
+1. Create a new file `exercise1.cpp`.
 
-2. Compile using:
-```bash
-g++ -o program1 exercise1.cc
-```
-where `g++` is the compiler for C++, `-o` the option to determine the name of the
-executable that will be created by `g++`.
+2. Declare the variable `x` in integer precision (`int`) and assign it an integer value.
 
-3. Run the program with:
-```bash
-./program1
-```
-and check the output.
+2. Declare `y` and `z` in double precision (`double`) and assign them decimal values.
+
+4. Write the values on screen using `cout`.
+
+5. Compile the code with `g++`, calling the executable `program1`.
+
+6. Run the code and check the output.
 
 ## Exercise 2 - Compute area and pertimeter of a rectangle
 
 Write a program in C++ that computes the area and perimeter of a rectangle.
 
-1. Open a new file `exercise2.cc`, declare the variables in double precision (`double`) for the `base` and `height` of the rectangle.
+1. Open a new file `exercise2.cpp`, declare the variables in double precision (`double`) for the `base` and `height` of the rectangle.
 
 2. Assign a `base` of `5.0` and a height of `2.0`.
 
@@ -46,6 +40,34 @@ Write a program in C++ that computes the area and perimeter of a rectangle.
 5. Cimpile the code with `g++`, calling the executable `program2`.
 
 6. Run the code and check the output.
+
+
+## Exercise 3 - Input/output
+
+Copy the file `exercise2.cpp` (area/perimeter rectangle) in a new file `exercise3.cpp`.
+
+Modify the program in such a way that the variables correspong to the base and hieght are read from terminal. Use the command `cin`.
+
+## Exercise 4 - Notation for cout
+
+Copy file of the previous exercise in `exercise4.cc`.
+
+Print with `cout` the results of area and perimeter using 10 decimal digits, using the notation `fixed` and also `scientific`.
+
+Print with `cout`, in any notation, the area and perimeter of the rectangle in the same row, separed by tabulation `\t`.
+
+## Exercise 5 - Converting temperature
+
+Write a program in C++ where is possible to convert a temperature from
+Celsius to Kelvin using the equation:
+```
+T(Kelvin) = T(Celsius) + 273.15
+```
+where the user can introduce the temperature as input in Celsius using `cin`.
+
+Verify the next conversions:
+- 20 °C -> 293.15 K
+- 30 °C -> 303.15 K
 
 ## Exercise 3 - Makefile
 
@@ -62,7 +84,7 @@ make program2
 make
 ```
 
-3. `prog2` is also run automatically with:
+3. `program5` is also run automatically with:
 ```bash
 make all
 ```
@@ -71,57 +93,3 @@ make all
 ```bash
 make clean
 ```
-
-## Exercise 4 - Correct a program
-
-Identify and correct the syntax errors  present in the next program,
-also with the help of the output when compiling with `g++` after copying
-the content in a new file `exercise4.cc`:
-
-```c++
-// Content of the file exercise4.cc
-#include <iostream>
-#include <cmath>
-using namespace std
-
-int main() {
-
-  const double angle = 9;
-  const int a = 2, b = 3, sum = 0;  
-
-  sum = a + b
-
-  cout << "sin(9) = " <<sin(angle) << endl;
-  cout << "sum = " << sum << "\n";
-
-return   0;
-
-}
-```
-
-## Exercise 5 - Input/output
-
-Copy the file `exercise2.cc` (area/perimeter rectangle) in a new file `exercise5.cc` and add to the makefile the new program, i.e. `prog5`.
-
-Modify the program in such a way that the variables correspong to the base and hieght are read from terminal. Use the command `cin`.
-
-## Exercise 6 - Notation for cout
-
-Copy file of the previous exercise in `exercise6.cc` and add it to the makefile.
-
-Print with `cout` the results of area and perimeter using 10 decimal digits, using the notation `fixed` and also `scientific`.
-
-Print with `cout`, in any notation, the area and perimeter of the rectangle in the same row, separed by tabulation `\t`.
-
-## Exercise 7 - Converting temperature
-
-Write a program in C++ where is possible to convert a temperature from
-Celsius to Kelvin using the equation:
-```
-T(Kelvin) = T(Celsius) + 273.15
-```
-where the user can introduce the temperature as input in Celsius using `cin`.
-
-Verify the next conversions:
-- 20 °C -> 293.15 K
-- 30 °C -> 303.15 K

@@ -1,6 +1,6 @@
 /*
-  Esercizio 1: Hello World
-  Author: Jesús Urtasun - 2020
+  Exercise 1: Hello World
+  Print the "Hello World!" message on screen
 */
 
 #include <iostream>

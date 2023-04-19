@@ -1,6 +1,5 @@
 /*
-  Esercizio 2: Area and perimeter
-  Author: Jesús Urtasun - 2020
+  Esercise 2: Area and perimeter
 */
 
 #include <iostream>

@@ -1,6 +1,5 @@
 /*
-  Exercise 6: Nonation for cout
-  Author: Jesús Urtasun
+  Exercise 4: Notation for cout
 */
 
 #include <iostream>
@@ -13,9 +12,9 @@ int main() {
   double area, perimeter;
 
   // Assign values
-  cout << "Introduce value for base: ";
+  cout << "Introduce value for the base: ";
   cin >> base;
-  cout << "Introduce value for height: ";
+  cout << "Introduce value for the height: ";
   cin >> height;
   cout << "Rectangle base = " << base
        << ", height = " << height << endl;
@@ -26,8 +25,8 @@ int main() {
   // Compute perimeter
   perimeter = 2 * (base + height);
 
-  // Prepare cout with 10 decimal digits
-  cout.precision(10);
+  // Prepare cout with 5 decimal digits
+  cout.precision(5);
   
   // Print result with fixed
   cout << fixed;

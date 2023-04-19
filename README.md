@@ -1,4 +1,4 @@
-# Introduction to C++
+c++# Introduction to C++
 
 ## Dr. Jesús Urtasun Elizari & Dr. Katerina Michalickova
 
@@ -11,12 +11,18 @@ Roadmap of the course. Introduction of C++ and computer sciences.
 - Introduction to Linux operative system, terminal and bash.
 - Programing languages and performance comparison. Text editors.
 - First steps with C++. Hello world.
-- Variables, input / output statements, basic maths.
+
+## Chapter 2
+
+- Variables, input / output statements.
+- Basic mathematical operations.
+- Makefile
 
 ## Chapter 3
-- makefile
-- Strings and C++ formats, cin, cout.
-- Input/output files manipulation.
+
+- Reading / writing files manipulation.
+- Loops / conditional statements
+- Arrays and vectors
 
 ## Chapter 4
 

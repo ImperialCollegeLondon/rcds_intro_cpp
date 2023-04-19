@@ -1,6 +1,5 @@
 /*
-  Exercise 7: Converting temperature
-  Author: Jesús Urtasun - 2020
+  Exercise 5: Converting temperature
 */
 
 #include <iostream>
