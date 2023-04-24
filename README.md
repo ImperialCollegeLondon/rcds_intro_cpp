@@ -1,4 +1,4 @@
-c++# Introduction to C++ 
+# RCDS - Introduction to C++
 
 ## Dr. Jesús Urtasun Elizari & Dr. Katerina Michalickova
 
