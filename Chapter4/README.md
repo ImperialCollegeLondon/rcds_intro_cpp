@@ -36,7 +36,17 @@ while all programs will be eliminated by using the folloing one:
 $ make clean
 ```
 
-## Exercise 1 - Conversion temperature
+## Exercise 1 - Arrays
+
+## Exercise 2 - Multiplication table
+
+## Exercise 3 - Functions I
+
+## Exercise 4 - Functions II
+
+## Exercise 5 - Functions III
+
+## Exercise 5 - Conversion temperature
 
 Recap of previous chapter. Write a C++ program where it is possible to convert a temperature from Celsius to Kelvin or Farenheit (using two-way selection `if` / `else`).
 
@@ -68,7 +78,7 @@ Verify the next conversions:
 - 20 °C -> 68.0 °F
 - 20 °C -> 293.15 K
 
-## Esercizio 2 - Second order equations
+## Exercise 6 - Second order equations
 
 Write a program in C++ that solves a second order equation `a x^2 + b x + c = 0`
 for all discriminants (>, < e = 0) and where the variables `a`, `b` e `c` come assigned with `cin`.

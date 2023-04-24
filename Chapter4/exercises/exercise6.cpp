@@ -1,6 +1,5 @@
 /*
   Exercise: Conversion temperature.
-  Author: Jesús Urtasun - 2020
 */
 
 #include <iostream>

@@ -1,6 +1,5 @@
 /*
   Exercise 2: Second order equation.
-  Author: Jesús Urtasun - 2020
 */
 
 #include <iostream>

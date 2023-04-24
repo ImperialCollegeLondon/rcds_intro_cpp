@@ -5,7 +5,7 @@
 CC=g++
 
 # All programs to be generated
-all: program1 program2 program3 program4 program5
+all: program1 program2 program3 program4 program5 program6 program7
 
 program1: exercise1.cpp
 	$(CC) $< -o $@
@@ -20,8 +20,13 @@ program4: exercise4.cpp
 	$(CC) $< -o $@
 
 program5: exercise5.cpp
+	$(CC) $< function_sign.cpp function_abs.cpp -o $@
+
+program6: exercise6.cpp
 	$(CC) $< -o $@
 
+program7: exercise7.cpp
+	$(CC) $< -o $@
 
 clean:
 	rm -f program1
@@ -29,3 +34,5 @@ clean:
 	rm -f program3
 	rm -f program4
 	rm -f program5
+	rm -f program6
+	rm -f program7
