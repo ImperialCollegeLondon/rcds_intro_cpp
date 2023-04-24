@@ -1,38 +1,62 @@
 # Chapter 5
 
-## Loops
+## Pointers, classes and OOP
 
-### Jesús Urtasun Elizari - University of Milan - 2019/20
+**Subject:** Basic exercises for C++ programming.
 
-**Subject:** Base exercises in C++: for loop, while, do/while.
-
-Before starting we suggest to create a folder for Lesson 4 where you can save all files that will be created for the exercise
+Before starting we suggest to create a folder for Lesson 3 where you can save all files that will be created for the exercise
 ```bash
-cd ~/
-mkdir Chapter05
-cd Chapter05
+cd ~/           # Go the home directory
+mkdir Chapter5  # Create the directory Chapter5
+cd Chapter5     # Go inside Chapter5
 ```
-Create a `makefile` to compile all exercises
+Create a `makefile` with targets:
+- `all`: compile all programs in this folder.
+- `clean`: delete all programs created by `all`.
 
-## Exercise 1 - Hello World for, while e do/while
+Example of `makefile`:
 
-Write a C++ program that uses loops for printing a result in the terminal.
+```makefile
+all: program1
 
-1. Create a `for` loop tat prints 5 times the same message:
-```
-Hello World for index = {i}
-```
-where `{i}` corresponds to the integer number that represents loop index.
+program1: exercise1.cc
+  g++ exercise1.cc -o program1
+  # also: g++ $< -o $@
 
-2. Analogously, implement a `while` cycle where the following message is printed:
-```
-Hello World while index = {i}
+clean:
+  rm program1
 ```
 
-3. Finally, implement a `do/while` loop with message:
+in this way all programs will be compiled using the following command in the terminal:
+```bash
+$ make
 ```
-Hello World do/while index = {i}
+while all programs will be eliminated by using the folloing one:
+```bash
+$ make clean
 ```
+
+## Exercise 1 - Pointers
+
+Write a C++ program where pointers are used
+
+1. Create a variable `x` in a pointer `*p` of type `double` initialized with `5.5` and `NULL` respectively.
+
+2. Print on screen:
+   - the value in memory of the variables `x`.
+   - the memory address of the variable `x`.
+   - the memory address pointed by the pointer `p`.
+   - the memory address of the pointer `p`.
+
+3. Assign to the pointer `p` the memory address of the variable `x`, and print on terminal the address and print
+on screen the address pointed by `p` and its value.
+
+4. Ask on terminal a number of type `double` and assign it to the value pointed by `p`. Control that the value `x` has been modified.
+
+5. Create a dynamic array of type `double` and dimension 10, print the memory address for all components of the array. Print the memory
+address of all components of the array. Verify that the addresses are separated among each other with the number of bytes of type double `double`. (Remember to delete the array at the end of the main function)
+
+## Exercise 2 - Pointer arrays
 
 ## Exercise 2 - Compute mean value (input from terminal)
 
@@ -48,16 +72,9 @@ Write a C++ program that computes the mean value of a list of numbers using a `f
 
 5. Print the result on screen.
 
-## Esercizio 3 - Counting odd and even numbers
+## Exercise 3 - Counting odd and even numbers
 
-Write a C++ program that computes the total number of odds and evens in a list using a `for` or `while` loop.
 
-1. Create a `for` or `while` loop that asks the user to intriduce integer numbers. To finish use the condition CRTL+D (`cin.eof()`).
-
-2. For every introduced number determine if it is odd or even using the if/else condition.
-Use counters of type `int` for saving the total number of odds and evens introduced by the user.
-
-3. Print the result on screen.
 
 ## Exercise 4 - Compute mean value (input from file)
 

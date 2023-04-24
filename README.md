@@ -16,40 +16,33 @@ Roadmap of the course. Introduction of C++ and computer sciences.
 
 - Variables, input / output statements.
 - Basic mathematical operations.
-- Makefile
+- Makefile.
 
 ## Chapter 3
 
-- Conditional statements if /else
-- Loops for, while, do while
-- Reading / writing files manipulation.
+- Conditional statements if / else.
+- Loops for, while, do while.
+- File manipulation.
+- Fibonacci series.
+- Collatz conjecture.
 
 ## Chapter 4
 
-- Arrays and vectors
+- Arrays and vectors.
 - Functions
-- Real problem. Solving second order equations.
+- Compiling functions and header files.
 
 ## Chapter 5
 
-- Looping wih for, while do/while statements.
+- Pointers & memory allocation.
+- Classes and OOP.
 - Basic statistics. Computing mean value and std.
-- Fibonacci series.
 
 ## Chapter 6
 
-- Arrays and linear algebra operations.
+- Solving second order equations.
 - Rectilinear movement.
-- Histograms.
-- Example: estimate Higgs mass.
-
-## Chapter 7
-
-- Pointers Memory allocation and reference.
 - Functions.
 - Numerical integration.
-
-## Chapter 8
-
-- Data structure.
-- First steps with ROOT.
+- Arrays and linear algebra operations.
+- Histograms. Estimate Higgs mass.

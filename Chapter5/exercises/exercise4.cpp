@@ -1,6 +1,5 @@
 /*
   Exercise: Compute mean (input from file)
-  Author: Jesús Urtasun  - 2020
 */
 
 #include <iostream>
@@ -18,7 +17,7 @@ int main() {
   f.open("../data.dat", ios::in);
   if (!f.good())
     {
-      cout << "Problemi con il file data.dat" << endl;
+      cout << "Problems with the file data.dat" << endl;
       return -1;
     }
       

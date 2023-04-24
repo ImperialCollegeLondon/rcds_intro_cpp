@@ -97,7 +97,3 @@ Verify the implementation for the following coefficients:
 - `a = 2`, `b = 5`, `c = 2` -> solution `x1 = -0.5` e `x2 = -2`.
 - `a = 4`, `b = -4`, `c = 1` -> solutions`x1,2 = 0.5`.
 - `a = 1`, `b = 4`, `c = 5` -> solutions `x1 = -2 + i` e `x2 = -2 - i`.
-
-## Exercise 3 - Chosing bycicle size
-
-## Exercise 4 - Switch
