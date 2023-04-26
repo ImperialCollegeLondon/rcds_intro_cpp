@@ -4,7 +4,7 @@
 
 **Subject:** Basic exercises for C++ programming.
 
-Before starting we suggest to create a folder for Lesson 3 where you can save all files that will be created for the exercise
+Before starting we suggest to create a folder for Lesson 5 where you can save all files that will be created for the exercise
 ```bash
 cd ~/           # Go the home directory
 mkdir Chapter5  # Create the directory Chapter5

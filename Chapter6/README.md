@@ -1,43 +1,42 @@
 # Chapter 6
 
-# Arrays
+## Algebra, armadillo, real RCDS problems
 
-### Jesús Urtasun Elizari - University of Milan - 2019/20
+**Subject:** Basic exercises for C++ programming.
 
-**Subject:** Base exercises in C++: arrays.
-
-Before starting we suggest to create a folder for Lesson 4 where you can save all files that will be created for the exercise
+Before starting we suggest to create a folder for Lesson 6 where you can save all files that will be created for the exercise
 ```bash
-cd ~/
-mkdir Chapter06
-cd Chapter06
+cd ~/           # Go the home directory
+mkdir Chapter6  # Create the directory Chapter6
+cd Chapter6     # Go inside Chapter6
 ```
-Create a `makefile` to compile all exercises
+Create a `makefile` with targets:
+- `all`: compile all programs in this folder.
+- `clean`: delete all programs created by `all`.
 
-## Exercise 1 - Hello World arrays
+Example of `makefile`:
 
-Write a C++ program where arrays are used.
+```makefile
+all: program1
 
-1. Build next vector of type double using stack arrays:
-<img src = "images/ex1.png" width = "250">
+program1: exercise1.cc
+  g++ exercise1.cc -o program1
+  # also: g++ $< -o $@
 
-2. Print on the terminal the value of `v` and `w`, following the next format:
-```
-  v[0] = <value>
-  v[1] = <value>
-  ...
-  w[0] = <value>
-  w[1] = <value>
-  ...
+clean:
+  rm program1
 ```
 
-3. Create an array `double s[5]` and initialize `s` with the values of `v`.
+in this way all programs will be compiled using the following command in the terminal:
+```bash
+$ make
+```
+while all programs will be eliminated by using the folloing one:
+```bash
+$ make clean
+```
 
-4. Sum the values of `w` to `s`.
-
-5. Print `s` on screen, following the format of used on 2.
-
-## Exercsie 2 - Scalar product
+## Exercsie 1 - Scalar product
 
 Write a C++ program that computes the scalar product using dynamic arrays.
 
@@ -55,8 +54,6 @@ Write a C++ program that computes the scalar product using dynamic arrays.
 
 Write a C++ program that compute a matrix-vector product.
 
-<img src = "images/ex3.png" width = "400">
-
 1. Create stack arrays for all objects, i.e. `x`, `M`, `v`, write the matrices that that compose `M` in two different arrays `A` e `B`.
 
 2. Compute `M` applying the matrix product between `A` and `B`.
@@ -71,7 +68,7 @@ Write a C++ program that reads space and time coordinates of a falling particle 
 
 1. Download the data with:
 ```bash
-wget https://raw.githubusercontent.com/JesusUrtasun/CppCourse/master/Chapter06/data_moto.dat
+wget https://github.com/ImperialCollegeLondon/RCDS-intro-cpp/blob/main/Chapter6/data_moto.dat
 ```
 
 2. Read from the file the `N = 1000` (number of elements) points **(x y)** with the space (km) and times (h), and compute for each element the instant velocity. Save those values in an array of type `double`.
@@ -80,10 +77,7 @@ wget https://raw.githubusercontent.com/JesusUrtasun/CppCourse/master/Chapter06/d
 
 4. Compute the minimum and maximum velocity, and print the results on screen.
 
-5. Verify the results with the next plot:
-
-<img src = "images/moto.png" width = "400">
-
+5. Verify the results :
 
 ## Exercise 5 - Estimate the mass of the Higgs boson
 
@@ -95,7 +89,7 @@ La distribuzione in questione si presenta graficamente nel modo seguente:
 
 1. Download data with:
 ```bash
-wget https://raw.githubusercontent.com/JesusUrtasun/CppCourse/master/Chapter06/data_higgs.dat
+wget https://github.com/ImperialCollegeLondon/RCDS-intro-cpp/blob/main/Chapter6/data_higgs.dat
 ```
 
 2. Read all `N = 10000` values of invariant mass and save the data in an array `mass`.
@@ -111,3 +105,104 @@ wget https://raw.githubusercontent.com/JesusUrtasun/CppCourse/master/Chapter06/d
 7. Fill the histogram and print the values of the bins and frequence on screen.
 
 8. Determine the bin (lower-edge) of Higgs mass with highest frequence.
+
+
+
+## Exercise 1 - Hello World pointers
+
+Write a C++ program where pointers are used
+
+1. Create a variable `x` in a pointer `*p` of type `double` initialized with `5.5` and `NULL` respectively.
+
+2. Print on screen:
+   - the value in memory of the variables `x`.
+   - the memory address of the variable `x`.
+   - the memory address pointed by the pointer `p`.
+   - the memory address of the pointer `p`.
+
+3. Assign to the pointer `p` the memory address of the variable `x`, and print on terminal the address and print
+on screen the address pointed by `p` and its value.
+
+4. Ask on terminal a number of type `double` and assign it to the value pointed by `p`. Control that the value `x` has been modified.
+
+5. Create a dynamic array of type `double` and dimension 10, print the memory address for all components of the array. Print the memory
+address of all components of the array. Verify that the addresses are separated among each other with the number of bytes of type double `double`. (Remember to delete the array at the end of the main function)
+
+## Exercise 2 - Hello world funzions
+
+Write a C++ program where functions are used
+
+1. Create a stack array `int v[10] = {9,2,1,3,4,7,0,11,20,5};`.
+
+2. Write a function `print_array` of type `void` that takes as argument an int array and its respective dimension, and prints the content on screen. Test on the `main` the call of `print_array` with `v`.
+
+3. Write a function `max_array` of type `int` that obtains the maximum value present on an array.
+Test the implementation `v`, printing on the main its maximum value.
+
+4. Write a function `min_array` of type `int` that obtians the minumum value present on an array.
+Test the implementation `v`, printing on the main its minimum vlaue.
+
+5. Write a function `min_max_array` of type `void` that obtains the max an and also replaces them using two arguments `min` e `max` 
+of type `int` passed by reference.
+
+6. Write a function `sort_array` of type `void` that sorts out in increasing mode an array ot type `int`. Test the function with the array `v`.
+
+## Exercise 3 - Numerical integration
+
+Write a C++ program that computes the numerical integral of an analytical function usin the trapezoidal rule
+```
+ /b
+ |  f(x) dx =  d * Sum_{i=0,n-1} ( f(a + i * d) + f(a + (i + 1) * d) ) / 2
+ /a
+```
+where `d = (b-a)/n`.
+
+1. Implement a function `gauss` of type `double` that replaces tha value of a normalized Gaussian centered in `mu = 0` and  `sigma = 1`:
+```
+gauss(x) = 1/(sqrt(2*pi)) * exp(-x*x/2)
+```
+
+2. Implement a function `integrate_gaussian` of type `double` that takes arguments `a`, `b` and `n` (steps),
+and computes the integral of `gauss` between `a` and `b`.
+
+3. Test the function for `(a,b) = (-10, 10)` and `(a,b) = (-1,1)`, for each configuration change `n = [10,100]`.
+
+
+## Exercise 5 - Scalar product, norm, transposed matrix
+
+Write a C++ program that computes the following algebra operations.
+
+1. Create a 2 1D arrays of type `double` with `v = {1, 2, 3, 4, 5}, w = {10, 2, 4, 3, 2}`. 
+Create a 2D array of type `double` with `M = {{1, 2, 3}, {4, 5, 6}, {7, 8, 9}}`.
+
+2. Implement a function `scalar` of type `double` that computes the scalar product between 2 arrays.
+Test the function with `v` and `w` and print the result on screen.
+
+3. Implement a function `norm` of type `double` that computes the norm of an array using the function `scalar`. Test the implementation of`v` and print the result on screen.
+
+4. Implement a function `change` of type `void` that changes the values between 2 objects by reference.
+Apply this function to `M` (e.g. compute the transpose) and print the result on screen.
+
+
+## Exercise 1 - Hello World struct
+
+Write a C++ program where complex numbers are saved as data structure
+
+1. Create a data structure called `complex`. Inside this `struct` implement two members of type `double`,
+`real` for the real part, and `imag` for the imaginary one.
+
+2. Write a the function `main` and declare 2 variables of type `complex` called `a` and `b` respectively.
+
+3. Assign to `a` the complex number `7 + 2i`.
+
+4. Assign to `b` the value of `a`.
+
+5. Implement a function tha takes a `complex` and prints on terminal the real and imaginary part separated by a coma.
+
+6. Use the function above for printing the content of `a` and `b`.
+
+7. Implement a function `module` of type `double` that computes the module of a `complex`.
+Test the function directly on the main passing `a` as argument.
+
+8. Implement a function `sum` of type `complex` thakes as arguments 2 objects `complex` and returns a new `complex`
+where the real and imaginary parts correspond to those of the sum of the arguments.

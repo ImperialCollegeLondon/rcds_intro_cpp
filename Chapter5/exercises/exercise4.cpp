@@ -14,7 +14,7 @@ int main() {
   double sum = 0.0, n = 0.0; 
 
   // Ope file
-  f.open("../data.dat", ios::in);
+  f.open("data.dat", ios::in);
   if (!f.good())
     {
       cout << "Problems with the file data.dat" << endl;

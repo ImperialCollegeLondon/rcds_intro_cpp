@@ -40,9 +40,6 @@ Roadmap of the course. Introduction of C++ and computer sciences.
 
 ## Chapter 6
 
-- Solving second order equations.
-- Rectilinear movement.
-- Functions.
-- Numerical integration.
-- Arrays and linear algebra operations.
-- Histograms. Estimate Higgs mass.
+- Real algebra: scalar product, matrix-vector product
+- Armadillo library
+- Real RCDS problems: Rectilinear movement, estimate Higgs mass, umerical integration.

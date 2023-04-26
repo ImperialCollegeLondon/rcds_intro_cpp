@@ -97,3 +97,19 @@ Verify the implementation for the following coefficients:
 - `a = 2`, `b = 5`, `c = 2` -> solution `x1 = -0.5` e `x2 = -2`.
 - `a = 4`, `b = -4`, `c = 1` -> solutions`x1,2 = 0.5`.
 - `a = 1`, `b = 4`, `c = 5` -> solutions `x1 = -2 + i` e `x2 = -2 - i`.
+
+
+## Exercise 3 - Headers and source
+
+Write a C++ program that uses a header file.
+
+1. Create a header file named `functions.h` and declare a function `change1` of type `void` that takes as arguments
+the referiments to two numbers of type `double`.
+
+2. On the same header, declare a function called `change2` of type `void` that takes the pointers of two numbers of type `double`.
+
+3. Create a file `functions.cc` and implement and algorithm that changes variables of type double `double` for the functions `change1` and `change2`.
+
+4. Create a file `main.cc`, include the header `functions.h` and test the functions `change1` and `change2`.
+
+5. Add to the `makefile` the rules for compiling all tiles `*.cc`.
