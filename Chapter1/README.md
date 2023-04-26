@@ -1,14 +1,12 @@
-# Chapter 1
+# Chapter 1 - Basics of Linux / UNIX operative systems
 
-## Basics of Linux / UNIX operative systems
+- Introduction to Linux operative system, terminal and bash.
+- Programing languages and performance comparison. Text editors.
+- First steps with C++. Hello world.
 
-Find the content of the course:
+Find the content of the course in GitHub:
 
-  [https://github.com/JesusUrtasun/CppCourse](https://github.com/JesusUrtasun/CppCourse)
-
-- Navigate on the menu `Applications` and open the text editor. 
-
-- All commands for exploration and manipulation of files can be done directly from the terminal.
+  [https://github.com/ImperialCollegeLondon/RCDS-intro-cpp](https://github.com/ImperialCollegeLondon/RCDS-intro-cppe)
 
 ## Clone with git
 
@@ -20,7 +18,7 @@ We will use it only as a place to save your codes and acces to the solutions in 
 
 As an example you can try downloading this guide and all material from the course writing:
 ```bash
-~$ git clone https://github.com/JesusUrtasun/CppCourse.git
+~$ git clone git@github.com:ImperialCollegeLondon/RCDS-intro-cpp.git
 ```
 and then going through the folder `Chapter1` with
 ```bash
@@ -33,6 +31,27 @@ For obtaining the updated versions it will be enought to perform a `pull`, i.e.:
 ~$ cd CppCourse
 ~$ git pull
 ```
+
+## Setting up C++
+
+For some programming languages, like Python, R, Matlab - the so-called *interpreted* ones, there is just one program you need to open to write your code and then run it. For others, like C++, you will need one program to write your code, and then one program to *compile* it.
+
+A *compiler* is a program which takes the text file we have written and turns it into something we can run. Compilers do not look like normal programs, with windows and graphics. Instead they are run using the *command line*, or *terminal*.
+
+We are going to have two windows open at the same time:
+
+1. A text editor (we are going to use [VSCode](https://code.visualstudio.com/))
+2. The command line or terminal, where a C++ compiler has already been installed and is working
+
+*Integrated Development Environments* (IDEs) also exist, which often combine a text editor and compiler in one useful program: XCode, Code::Blocks and (to a lesser degree) Visual Studio Code are examples. In scientific computing, we typically develop on different machines to those we end up running on, so in this class we will keep the two ideas separate.
+
+### Getting C++ set up on the college computers running Windows
+1. Open a browser and navigate to Imperial College [Software Hub](https://softwarehub.imperial.ac.uk/?labs)
+2. Search for `Visual Studio Code` in the search box
+3. Visual Studio Code is one of the few search results. Just click `launch`  - done!
+4. Clear the search box and then search for `mingw` in the search box
+5. Among the small set of search results that pop up, launch `MinGW 1.0` (the newer version plays badly with Armadillo).
+6. You are all set!
 
 At this point you can try opening the documents just cloned with `gedit` or `code`, and for PDFs use `evince`.
 
@@ -52,7 +71,7 @@ For programming we will use the Linux command window or terminal, for which we u
 
     *Note: all bash commands must be followed by the key `Enter` to be executed.
 
-## Exercise 3 - The file system
+## Exercise 2 - The file system
 
 Data contained in the disc of the system is structured in folders (*directories*).
 In general, in Linux / UNIX systems, the base directory is called **root**, and it typically comes with the symbol `/`.
@@ -140,7 +159,7 @@ As an exercise try to create the following folder structure:
   ```
   Try to copy the file `file1.txt` created in the previous exercise inside `new_dir2`, and then rename it. Move `file2.txt` directly changing its name in the new destination.
 
-## Exercise 5 - Text editor
+## Exercise 3 - Text editor
 
 There are plenty of programs to edit files in Linux. As an example, with the suffix `.txt` a file is interpreted as pure text file,
 otherwise with `.cc` it is a program file in C++, so colors and messaged concering indentation will appear.
@@ -171,7 +190,7 @@ As an exercise try to create a folder using gedit:
 At this point you can try to create a file for C++ code:
 1. Open the terminal and write
   ```bash
-  ~$ gedit file.cc
+  ~$ gedit file.cpp
   ```
 
 2. Write the folloing line:
@@ -181,9 +200,41 @@ At this point you can try to create a file for C++ code:
   you will notice that colors will activate for each word: `gedit` has
   recognized the file as contianing syntax C++.
 
-3. Delete `file.cc`.
+3. Delete `file.cpp`.
 
-## Exercise 6 - Hello World in C++
+## Hello World in C++ - theory
+
+* Open up VSCode
+
+```c++
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+    cout << "Hello world!" << endl;
+    return 0;
+}
+```
+
+* Save as `helloworld.cpp` (colours!)
+* Compile by going to the command line and typing
+```bash
+c++ helloworld.cpp -o hello
+```
+(or possibly `g++` on your own machine)
+
+* Then run the program. On Windows this is done with
+```bash
+hello
+```
+and on Mac/Linux, with
+```bash
+./hello
+```
+
+## Hello World in C++ - exercise
 
 Write a program in C++ where the words "Hello World!" are shown in the screen.
 

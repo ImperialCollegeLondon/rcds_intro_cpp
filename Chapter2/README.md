@@ -1,6 +1,8 @@
-# Chapter 2
+# Chapter 2 - First steps to C++
 
-## First steps to C++
+- Variables, input / output statements.
+- Basic mathematical operations.
+- Makefile.
 
 **Subject:** Basic exercises for C++ programming.
 
@@ -9,9 +11,54 @@ all files that will be used for the exercises.
 
 *Example:* `cd ~/; mkdir Chapter2; cd Chapter2;`
 
-## Exercise 1 - Variable in C++
+## Variables in C++ - theory
 
-Write a program in C++ that declares an integer variable, two double variablesm, and prints them on screen.
+Join in:
+
+```c++
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+    int x;
+    x = 4;
+    cout << "The value of x is " << x << endl;
+    return 0;
+}
+```
+* Compile and run.
+
+Your turn:
+* Change the code so it prints 2*x* instead.
+* Let *x* = 3.9. What do you expect to happen? What happens?
+* What happens if you forget to add the semicolon?
+
+Join in:
+```c++
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+    double x;
+    double y;
+    x = 3.141;
+    y = 1.618;
+    cout << "The value of x is " << x << " and the value of y is " << y << endl;
+    return 0;
+}
+```
+* Compile and run.
+
+Your turn:
+* Change the code so that it also prints out the product of *x* and *y* on a new line.
+
+## Variables in C++ - exercise 1
+
+Write a program in C++ that declares an integer variable, two double variables, and prints them on screen.
 
 1. Create a new file `exercise1.cpp`.
 
@@ -25,7 +72,7 @@ Write a program in C++ that declares an integer variable, two double variablesm,
 
 6. Run the code and check the output.
 
-## Exercise 2 - Compute area and pertimeter of a rectangle
+## Variables in C++ - exercise 2 - Compute area and pertimeter of a rectangle
 
 Write a program in C++ that computes the area and perimeter of a rectangle.
 
@@ -41,14 +88,44 @@ Write a program in C++ that computes the area and perimeter of a rectangle.
 
 6. Run the code and check the output.
 
+## Input / output - theory
 
-## Exercise 3 - Input/output
+Join in:
+* New file! `height.cpp`. Note that we're going to use strings here, which need the `<string>` library.
+```c++
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+int main()
+{
+    string name;
+    double height;
+    cout << "What is your name?" << endl;
+    cin >> name;
+    cout << "What is your height?" << endl;
+    cin >> height;
+    cout << name << " is " << height << " metres tall." << endl;
+    return 0;
+}
+```
+* Compile and run.
+
+Your turn:
+* Convert the height into feet (1 metre = 3.28084 feet)
+* Harder: Convert the height into feet and inches (1 foot = 12 inches), rounding down to an integer number of inches. For example, entering 1.81 (metres) should produce "5 feet 11 inches".
+    * Hint 1: If `a` and `b` are integers, then `a%b` = *a* mod *b*.
+    * Hint 2: Convert to an integer number of inches first.
+* What happens if we type nonsense into the inputs?
+
+## Input/output - exercise 3
 
 Copy the file `exercise2.cpp` (area/perimeter rectangle) in a new file `exercise3.cpp`.
 
 Modify the program in such a way that the variables correspong to the base and hieght are read from terminal. Use the command `cin`.
 
-## Exercise 4 - Notation for cout
+## Input/output - exercise 4 - Notation for cout
 
 Copy file of the previous exercise in `exercise4.cc`.
 
@@ -56,7 +133,35 @@ Print with `cout` the results of area and perimeter using 10 decimal digits, usi
 
 Print with `cout`, in any notation, the area and perimeter of the rectangle in the same row, separed by tabulation `\t`.
 
-## Exercise 5 - Converting temperature
+Basic arithmetic works out of the box, as you've seen. For 'scientific calculator' stuff, we need the `<cmath>` library. Libraries are like toolboxes.
+
+## Basic maths - theory
+
+Join in:
+* New file! `calculator.cpp`
+```c++
+#include <iostream>
+#include <cmath>
+
+using namespace std;
+
+int main()
+{
+    double x;
+    cout << "Enter a number" << endl;
+    cin >> x;
+    cout << "That number squared is " << pow(x,2) << endl;
+    cout << "The square root of that number is " << sqrt(x) << endl;
+    return 0;
+}
+```
+
+Your turn:
+* Add a line displaying the sine of the inputted number.
+* Change the code so that it inputs two integers, *a* and *b*, and displays *a*/*b*.
+* Input *a* as 3, and *b* as 2. What do you notice?
+
+## Basic maths - exercise 5 - Converting temperature
 
 Write a program in C++ where is possible to convert a temperature from
 Celsius to Kelvin using the equation:
@@ -69,7 +174,7 @@ Verify the next conversions:
 - 20 °C -> 293.15 K
 - 30 °C -> 303.15 K
 
-## Exercise 3 - Makefile
+## Exercise 6 - Makefile
 
 Write a simple `makefile` where:
 
