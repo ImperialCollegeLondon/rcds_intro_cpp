@@ -31,8 +31,6 @@ Instructions are in the [appendix](#appendix).
 - Conditional statements if / else.
 - Loops for, while, do while.
 - File manipulation.
-- Fibonacci series.
-- Collatz conjecture.
 
 ## Chapter 4
 
@@ -42,7 +40,7 @@ Instructions are in the [appendix](#appendix).
 
 ## Chapter 5
 
-- Pointers & memory allocation.
+- Pointers and memory allocation.
 - Classes and OOP.
 - Basic statistics. Computing mean value and std.
 
@@ -50,7 +48,7 @@ Instructions are in the [appendix](#appendix).
 
 - Real algebra: scalar product, matrix-vector product
 - Armadillo library
-- Real RCDS problems: Rectilinear movement, estimate Higgs mass, umerical integration.
+- Real RCDS problems: Rectilinear movement, estimate Higgs mass, numerical integration.
 
 # Appendix
 

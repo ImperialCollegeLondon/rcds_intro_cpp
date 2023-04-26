@@ -1,10 +1,10 @@
-# Chapter 6
+# Chapter 6 - Algebra, armadillo, real RCDS problems
 
-## Algebra, armadillo, real RCDS problems
+- Real algebra: scalar product, matrix-vector product
+- Armadillo library
+- Real RCDS problems: Rectilinear movement, estimate Higgs mass, umerical integration.
 
-**Subject:** Basic exercises for C++ programming.
-
-Before starting we suggest to create a folder for Lesson 6 where you can save all files that will be created for the exercise
+Before starting we suggest to create a folder for Chapter  6 where you can save all files that will be created for the exercise
 ```bash
 cd ~/           # Go the home directory
 mkdir Chapter6  # Create the directory Chapter6
@@ -61,6 +61,80 @@ Write a C++ program that compute a matrix-vector product.
 3. Compute the product `M * x`.
 
 3. Print the result and verify the solution `r = {34, 39, 7}`.
+
+## Armadillo
+
+### 20. (Extra) Armadillo, for vectors and matrices
+
+[Armadillo](http://arma.sourceforge.net/) is a linear algebra library for C++ which uses syntax quite similar to that used in Matlab or Python (with NumPy). Setup is different for different operating systems but the instructions are pretty good.
+
+Here we are going to just include the library directly by downloading and linking to the library files. This doesn't take advantage of your computer's inbuilt fast linear algebra libraries, but it is enough for our purposes.
+
+Installation
+
+* Download the Armadillo zip file from this GitHub repository.
+* Extract it to the folder `armadillo-9.870.2` in your `cpp` folder.
+
+Join in:
+
+* New file: `armadillo_test.cpp`:
+
+```c++
+#include <iostream>
+#include <armadillo>
+
+using namespace std;
+using namespace arma;
+
+int main()
+{
+    arma_rng::set_seed_random();
+    mat A = randu<mat>(4,5);
+    mat B = randu<mat>(4,5);
+
+    cout << A*B.t() << endl;
+
+    return 0;
+}
+```
+
+Compile:
+* (On your own Mac/Linux machine) `c++ armadillo_test.cpp -o armadillo_test -I path_to_armadillo_include -llapack -lblas`
+* (On college machines or your own Windows machine) `g++ armadillo_test.cpp -o armadillo_test -I path_to_armadillo_include -llapack -lblas -static-libstdc++`
+
+* New file: `armadillo_equations.cpp`:
+
+Let's solve the system of equations
+* *x* + 5*z* = –1
+* 2*x* + *y* + 6z = 0
+* 3*x* + 4*y* = 1
+
+```c++
+#include <iostream>
+#include <armadillo>
+
+using namespace std;
+using namespace arma;
+
+int main()
+{
+    mat A = mat("1 0 5; 2 1 6; 3 4 0");
+    mat b = mat("-1; 0; 1");
+    mat x;
+
+    x = solve(A,b);
+
+    cout << x << endl;
+
+    return 0;
+}
+```
+
+Compile:
+* (On your own machine) `c++ armadillo_equations.cpp -o armadillo_equations -Ipath_to_armadillo_include -llapack -lblas`
+* (On college machines or your own Windows machine) `g++ armadillo_equations.cpp -o armadillo_equations -I path_to_armadillo_include -llapack -lblas -static-libstdc++`
+
+We should get the solution: *x* = 19, *y* = –14, *z* = –4.
 
 ## Exercise 4 - Rectilinear movement
 

@@ -174,7 +174,21 @@ Verify the next conversions:
 - 20 °C -> 293.15 K
 - 30 °C -> 303.15 K
 
-## Exercise 6 - Makefile
+## Makefile - theory
+
+* Long compilation scripts are a bit much:
+```bash
+c++ sign_function.cpp absolute_value.cpp learning_functions.cpp -o sign
+```
+* So let's put it in a makefile:
+```bash
+all:
+    c++ sign_function.cpp absolute_value.cpp learning_functions.cpp -o sign
+```
+* (note you need a tab at the beginning, not spaces. Might need to be careful in most text editors. If it doesn't work try disabling 'soft tab' setting or use another editor like Notepad++.)
+* Then run `make all`
+
+## Makefile - exercise 6
 
 Write a simple `makefile` where:
 
