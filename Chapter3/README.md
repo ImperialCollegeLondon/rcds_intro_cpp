@@ -1,10 +1,10 @@
-# Chapter 3
+# Chapter 3 - Conditional statements, loops, file manipulation
 
-## Conditional statements, loops, file manipulation
+- Conditional statements if / else.
+- Loops for, while, do while.
+- File manipulation.
 
-**Subject:** Basic exercises for C++ programming.
-
-Before starting we suggest to create a folder for Lesson 3 where you can save all files that will be created for the exercise
+Before starting we suggest to create a folder for Chapter 3 where you can save all files that will be created for the exercise
 ```bash
 cd ~/           # Go the home directory
 mkdir Chapter3  # Create the directory Chapter3
@@ -48,7 +48,48 @@ Recap of previous chapter. Write a program in C++ where:
 
 5. Print the result on the screen.
 
-## Exercise 2 - Conditionals - even and ood numbers
+## Conditionals - theory
+
+Join in:
+* New file! `bartender.cpp`
+```c++
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+    int age;
+    cout << "Welcome to the pub." << endl;
+    cout << "What is your age?" << endl;
+    cin >> age;
+    if(age >= 18){
+        cout << "Have a pint!" << endl;
+    }
+    cout << "Goodbye!" << endl;
+    return 0;
+}
+```
+* Compile and run!
+* Let's make it more fun with `else`
+```c++
+if(age > 18){
+    cout << "Have a pint!" << endl;
+} else if(age == 18){
+    cout << "Show me your ID and then have a pint!" << endl;
+} else {
+    cout << "I'm calling the police." << endl;
+}
+```
+* Compile and run!
+
+Your turn:
+* Also input the name of the customer
+* If the name of the customer does not equal your name, get the bartender to ask for money.
+    * Hint: `!=` is 'not equal to' in C++.
+    * Maybe useful: in `if` statements, `&&` is AND, `||` is OR.
+
+## Conditionals - exercise 2 - even and ood numbers
 
 Write a program in C++ that produces a different output depending on the input variable
 
@@ -68,7 +109,47 @@ Write a program in C++ that produces a different output depending on the input v
 
 3. Print the result on the screen.
 
-## Exercise 4 - Loops I - Hello World for, while, do/while
+## Loops I
+
+Join in:
+* New file! `square_numbers.cpp`
+```c++
+#include <iostream>
+#include <cmath>
+
+using namespace std;
+
+int main()
+{
+    int n = 10;
+    for(int i=0; i<n; ++i){
+        cout << pow(i,2) << endl;
+    }
+    return 0;
+}
+```
+* Compile and run!
+* Reference: [the difference between `++i` and `i++`](https://dev.to/somedood/the-difference-between-x-and-x-44dl)
+
+Try:
+* Save the script as `cube_numbers.cpp`
+* Change the script to display the 3rd to 9th cubes.
+
+Join in:
+* Change the file: let's **comment out** the for loop above and instead write it as a while loop.
+```c++
+int i=3; // We can define and initialise a variable at the same time.
+while(i<n){
+    cout << pow(i,3) << endl;
+    ++i;
+}
+```
+
+Try:
+* Replace `++i` with the more verbose command `i = i+1` and convince yourself that it is equivalent.
+* Change the script to display the 3rd, 5th, 7th and 9th cubes (i.e. go up in 2s, not in 1s)
+
+## Loops I - exercise 4 - Hello World for, while, do/while
 
 Write a C++ program that uses loops for printing a result in the terminal.
 
@@ -98,7 +179,63 @@ Write a C++ program that uses loops for raising input to a given power.
 
 3. Collatz conjecture
 
-## Exercise 6 - Output file
+## File manipulation - theory
+
+To save and read files, we need to include the `<fstream>` library.
+
+Join in:
+
+* New file! `save_to_file.cpp`
+
+```c++
+#include <iostream>
+#include <fstream>
+
+using namespace std;
+
+int main()
+{
+    ofstream myfile;
+    myfile.open ("greeting.txt");
+    myfile << "Hello there!" << endl;
+    myfile.close();
+
+    return 0;
+}
+```
+
+Your turn:
+* Create a new file, `save_to_file2.cpp`, where you print the first 10 squares to a text file called `square_numbers.txt`.
+* Run your program again. What can you say about how it writes to the text file?
+* Replace `myfile.open ("square_numbers.txt");` with `myfile.open ("square_numbers.txt", ios_base::app);` to make C++ append to the end of a text file, rather than overwrite.
+
+Join in:
+
+* Now let's read in!
+* New file! `read_from_file.cpp`
+
+```c++
+#include <iostream>
+#include <fstream>
+#include <string>
+
+using namespace std;
+
+int main()
+{
+    string line;
+    ifstream myfile;
+    myfile.open ("greeting.txt");
+    while (getline(myfile,line)){
+        cout << line << endl;
+    }
+    myfile.close();
+
+    return 0;
+}
+```
+
+## File manipulation - exercise 6
 
 Modify the previous exercise in such a way that the final output comes written over a file called `result.dat`.
 
@@ -108,7 +245,7 @@ followed by a success test with the method `good()`.
 3. Write the content in screen and in the file.
 4. Close the file with the method `close()`.
 
-## Exercise 7 - Input file
+## File manipulation - exercise 7
 
 Modify the previous exercise in such a way that the final output comes red from an input file called `myinput.dat`
 with the following content:
