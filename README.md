@@ -4,7 +4,6 @@
 
 ## Imperial College London - Spring term 2023
 
-<img src="/readme-images/imperial-college-logo.png">
 <img src="/readme-images/grad-school-logo.png">
 
 ### Find the content of the course in GitHub:
