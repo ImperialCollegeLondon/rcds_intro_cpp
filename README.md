@@ -7,10 +7,10 @@
 <img src="/readme-images/grad-school-logo.png">
 
 ### Find the content of the course in GitHub:
-[https://github.com/ImperialCollegeLondon/RCDS-intro-cpp](https://github.com/ImperialCollegeLondon/RCDS-intro-cppe)
+[https://github.com/ImperialCollegeLondon/RCDS-intro-cpp](https://github.com/ImperialCollegeLondon/RCDS-intro-cpp)
 
 ### Getting C++ set up on your own machine
-Instructions are in [the appendix](#appendix).
+Instructions are in the [appendix](#appendix).
 
 # Roadmap of the course
 
