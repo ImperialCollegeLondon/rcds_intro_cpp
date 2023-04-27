@@ -1,49 +1,21 @@
 # Chapter 1 - Basics of Linux / UNIX operative systems
 
-- Introduction to Linux operative system, terminal and bash.
+- Introduction to Linux operative systems, terminal and bash.
 - Programing languages and performance comparison. Text editors.
 - First steps with C++. Hello world.
 
-Find the content of the course in GitHub:
-
-  [https://github.com/ImperialCollegeLondon/RCDS-intro-cpp](https://github.com/ImperialCollegeLondon/RCDS-intro-cppe)
-
-## Clone with git
-
-Git is a very useful instrument when programming. Even though we will not cover this topic in detail, at least mention that it allows for saving files on a remote server, keep the history of modifications and work in collaborative mode. For instance, [https://github.com](https://github.com)
-is quite popular for open-source project at big scale.
-
-Going through the details of `git` in this tutorial is beyond need.
-We will use it only as a place to save your codes and acces to the solutions in an efficient way.
-
-As an example you can try downloading this guide and all material from the course writing:
-```bash
-~$ git clone git@github.com:ImperialCollegeLondon/RCDS-intro-cpp.git
-```
-and then going through the folder `Chapter1` with
-```bash
-~$ cd Chapter1
-```
-
-Every week a new chapter will be published here in the `git` repository.
-For obtaining the updated versions it will be enought to perform a `pull`, i.e.:
-```bash
-~$ cd CppCourse
-~$ git pull
-```
-
 ## Setting up C++
 
-For some programming languages, like Python, R, Matlab - the so-called *interpreted* ones, there is just one program you need to open to write your code and then run it. For others, like C++, you will need one program to write your code, and then one program to *compile* it.
+For some programming languages, like Python, R, Matlab - the so-called *interpreted* ones, there is just one program you need to open to write your code and then run it. For others, like C++, you will need one program to write your code, and then another to *compile* it.
 
-A *compiler* is a program which takes the text file we have written and turns it into something we can run. Compilers do not look like normal programs, with windows and graphics. Instead they are run using the *command line*, or *terminal*.
+A *compiler* is a program which takes the text file we have written and turns it into something we can run, that is, an *executable*. Compilers do not look like normal programs, with windows and graphics. Instead they run using the *command line*, or *terminal*.
 
-We are going to have two windows open at the same time:
+When programming, we are generally going to have two windows open at the same time:
 
-1. A text editor (we are going to use [VSCode](https://code.visualstudio.com/))
-2. The command line or terminal, where a C++ compiler has already been installed and is working
+- The text editor (for this code we are using as an example [VSCode](https://code.visualstudio.com/))
+- The command line, or terminal, where a C++ compiler has already been installed and set up
 
-*Integrated Development Environments* (IDEs) also exist, which often combine a text editor and compiler in one useful program: XCode, Code::Blocks and (to a lesser degree) Visual Studio Code are examples. In scientific computing, we typically develop on different machines to those we end up running on, so in this class we will keep the two ideas separate.
+*Integrated Development Environments* (IDEs) also exist, which often combine a text editor and compiler in one useful program: XCode, Code::Blocks and - to a lesser degree - Visual Studio Code are examples. In scientific computing, we typically develop on different machines to those we end up running on, so in this class we will keep the two ideas separate.
 
 ### Getting C++ set up on the college computers running Windows
 1. Open a browser and navigate to Imperial College [Software Hub](https://softwarehub.imperial.ac.uk/?labs)
@@ -53,25 +25,23 @@ We are going to have two windows open at the same time:
 5. Among the small set of search results that pop up, launch `MinGW 1.0` (the newer version plays badly with Armadillo).
 6. You are all set!
 
-At this point you can try opening the documents just cloned with `gedit` or `code`, and for PDFs use `evince`.
+## Terminal and bash
 
-## Exercise 1 - Terminal and bash
+For the purpose of this code we will use the Linux command window or terminal, which runs with the language `bash`.
+For more information check: [this link](https://it.wikipedia.org/wiki/Bash)
 
-For programming we will use the Linux command window or terminal, for which we use the language `bash`. For more information check: [this link](https://it.wikipedia.org/wiki/Bash)
-
-- Create and open the `Terminal`.
+- Open the `Terminal`.
 
 - Try launching some bash basic comands such as `~$ echo`, that prints the text directly on screen.
 
-  - Write
-    ```bash
-    ~$ echo "Hello World!"
-    ```
-    followed by the key `Enter`.
+  ```bash
+  ~$ echo "Hello World!"
+  ```
+followed by the key `Enter`.
 
-    *Note: all bash commands must be followed by the key `Enter` to be executed.
+*Note: all bash commands must be followed by the key `Enter` to be executed.
 
-## Exercise 2 - The file system
+## The file system
 
 Data contained in the disc of the system is structured in folders (*directories*).
 In general, in Linux / UNIX systems, the base directory is called **root**, and it typically comes with the symbol `/`.
@@ -159,7 +129,7 @@ As an exercise try to create the following folder structure:
   ```
   Try to copy the file `file1.txt` created in the previous exercise inside `new_dir2`, and then rename it. Move `file2.txt` directly changing its name in the new destination.
 
-## Exercise 3 - Text editor
+## Text editor
 
 There are plenty of programs to edit files in Linux. As an example, with the suffix `.txt` a file is interpreted as pure text file,
 otherwise with `.cc` it is a program file in C++, so colors and messaged concering indentation will appear.
@@ -202,6 +172,27 @@ At this point you can try to create a file for C++ code:
 
 3. Delete `file.cpp`.
 
+## Clone with git
+
+Git is a very useful instrument when programming. Even though we will not cover this topic in detail, at least mention that it allows for saving files on a remote server, keep the history of modifications and work in collaborative mode. For instance, [https://github.com](https://github.com) is quite popular for open-source projects at big scale.
+Going through the details of `git` in this tutorial is beyond need. We will use it only as a place to save your codes and access the solutions in an efficient way.
+
+As an example you can try downloading this guide and all material from the course writing:
+```bash
+~$ git clone git@github.com:ImperialCollegeLondon/RCDS-intro-cpp.git
+```
+and then going through the folder `Chapter1` with
+```bash
+~$ cd Chapter1
+```
+
+Every week a new chapter will be published here in the `git` repository.
+For obtaining the updated versions it will be enought to perform a `pull`, i.e.:
+```bash
+~$ cd CppCourse
+~$ git pull
+```
+
 ## Hello World in C++ - theory
 
 * Open up VSCode
@@ -234,7 +225,7 @@ and on Mac/Linux, with
 ./hello
 ```
 
-## Hello World in C++ - exercise
+## Hello World in C++ - exercise 1
 
 Write a program in C++ where the words "Hello World!" are shown in the screen.
 
