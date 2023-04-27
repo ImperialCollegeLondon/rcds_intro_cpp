@@ -37,9 +37,9 @@ For more information check: [this link](https://it.wikipedia.org/wiki/Bash)
   ```bash
   ~$ echo "Hello World!"
   ```
-followed by the key `Enter`.
+  followed by the key `Enter`.
 
-*Note: all bash commands must be followed by the key `Enter` to be executed.
+- Note: all bash commands must be followed by the key `Enter` to be executed.
 
 ## The file system
 
