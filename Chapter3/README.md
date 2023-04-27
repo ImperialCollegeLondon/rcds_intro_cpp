@@ -244,15 +244,16 @@ Write a program in C++ that asks for a number and computes all Fibonacci numbers
 Modify the previous exercise in such a way that the final output comes written over a file called `result.dat`.
 
 1. Create a copy of the previous exercise.
-2. Implement with `fstream` the creation of an output file with the method `open()`,
-followed by a success test with the method `good()`.
+
+2. Implement with `fstream` the creation of an output file with the method `open()`, followed by a success test with the method `good()`.
+
 3. Write the content in screen and in the file.
+
 4. Close the file with the method `close()`.
 
 ## File manipulation - exercise 7
 
-Modify the previous exercise in such a way that the final output comes red from an input file called `myinput.dat`
-with the following content:
+Modify the previous exercise in such a way that the final output comes red from an input file called `my_input.dat` with the following content:
 ```
 <your name>
 <your surname>
@@ -260,7 +261,11 @@ with the following content:
 ```
 
 1. Create a copy of the previous exercise.
-2. Implement with `fstream` the oppening of the file `myinput.dat`.
+
+2. Implement with `fstream` the oppening of the file `my_input.dat`.
+
 3. Read the data from the file.
+
 4. Close the file.
+
 5. Print the result on screen and in the file `result.dat`.
