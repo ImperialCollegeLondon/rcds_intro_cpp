@@ -1,37 +1,32 @@
 /*
-  Exercise: Loops i - Hello World for, while e do/while
+  Exercise: Collatz conjecture
 */
 
 #include <iostream>
+#include <cmath>
 using namespace std;
 
 int main() {
 
-  // for loop
-  cout << "for loop" << endl;
-  for (int i = 0; i < 5; i++)
-    {
-      cout << "Hello World; index = " << i << endl;
-    }
+  // Declara variables
+  int n;
+  int f;
 
-  // while loop
-  cout << "while loop" << endl;
-  int counter = 0;
-  while(counter < 5)
-    {
-      cout << "Hello World; index = " << counter << endl;
-      counter++;
-    }
+  // Ask input from keyboard
+  cout << "Input a number" << endl;
+  cin >> n;
 
-  // do/while loop
-  cout << "do/while loop" << endl;
-  counter = 0;
-  do {
-    cout << "Hello World; index = " << counter << endl;
-    counter++;
+  // Run Collatz algorithm
+  while(n != 1) {
+
+    if(n%2 == 0) {
+        f = n/2;
+    } else {
+        f = 3*n + 1;
+    }
+    n = f;
+    cout << n << endl;
   }
-  while(counter < 5);
   
   return 0;
-
 }

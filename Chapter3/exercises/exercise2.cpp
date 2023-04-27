@@ -1,5 +1,5 @@
 /*
-  Exercise 2: conditionals i - even and odd numbers
+  Exercise 2: even / odd numbers
 */
 
 #include <iostream>

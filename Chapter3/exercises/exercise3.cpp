@@ -1,5 +1,5 @@
 /*
-  Exercise 3: conditionals ii - bartender
+  Exercise: Hello World for, while e do/while
 */
 
 #include <iostream>
@@ -7,21 +7,31 @@ using namespace std;
 
 int main() {
 
-  // Declare variables
-  int age;
-  cout << "Welcome to the pub." << endl;
-  cout << "What is your age?" << endl;
+  // for loop
+  cout << "for loop" << endl;
+  for (int i = 0; i < 5; i++)
+    {
+      cout << "Hello World; index = " << i << endl;
+    }
 
-  // Store age
-  cin >> age;
+  // while loop
+  cout << "while loop" << endl;
+  int counter = 0;
+  while(counter < 5)
+    {
+      cout << "Hello World; index = " << counter << endl;
+      counter++;
+    }
 
-  // Conditional statement
-  if(age > 18) {
-      cout << "Have a pint!" << endl;
-  } else if(age == 18) {
-      cout << "Show me your ID and then have a pint!" << endl;
-  } else {
-      cout << "I'm calling the police." << endl;
+  // do/while loop
+  cout << "do/while loop" << endl;
+  counter = 0;
+  do {
+    cout << "Hello World; index = " << counter << endl;
+    counter++;
   }
+  while(counter < 5);
+  
+  return 0;
 
 }

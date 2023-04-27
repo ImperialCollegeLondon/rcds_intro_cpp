@@ -2,7 +2,7 @@
 
 - Conditional statements if / else.
 - Loops for, while, do while.
-- File manipulation.
+- File manipulation, reading and writing files.
 
 Before starting we suggest to create a folder for Chapter 3 where you can save all files that will be created for the exercise
 ```bash
@@ -15,7 +15,6 @@ Create a `makefile` with targets:
 - `clean`: delete all programs created by `all`.
 
 Example of `makefile`:
-
 ```makefile
 all: program1
 
@@ -26,14 +25,168 @@ program1: exercise1.cc
 clean:
   rm program1
 ```
-
-in this way all programs will be compiled using the following command in the terminal:
+In this way all programs will be compiled using the following command in the terminal:
 ```bash
-$ make
+$ make all
 ```
 while all programs will be eliminated by using the folloing one:
 ```bash
 $ make clean
+```
+
+## Conditionals
+
+One of the most powerful tools of computer algorithms is the ability of design decision making. Conditional statements allow precisely that, 
+by programing a given flow of operations depending on some conditions being fulfilled.
+* Join in the following syntax in a C++ file, and save it as `bartender.cpp`
+```c++
+#include <iostream>
+using namespace std;
+
+int main() {
+
+    // Declare variables
+    int age;
+
+    // Assign values
+    cout << "Welcome to the pub." << endl;
+    cout << "What is your age?" << endl;
+    cin >> age;
+
+    // Print different message depending on input
+    if (age >= 18) {
+        cout << "Have a pint!" << endl;
+    }
+    cout << "Goodbye!" << endl;
+
+    return 0;
+
+}
+```
+* Compile and run!
+* Let's make it more fun adding a third option by means of the `else` condition
+```c++
+    if (age > 18) {
+        cout << "Have a pint!" << endl;
+    } else if(age == 18) {
+        cout << "Show me your ID and then have a pint!" << endl;
+    } else {
+        cout << "I'm calling the police." << endl;
+    }
+```
+* Compile and run!
+
+Your turn:
+* Also input the name of the customer
+* If the name of the customer does not equal your name, get the bartender to ask for money.
+    * Hint: `!=` stands for 'not equal to' in C++.
+    * Maybe useful: in `if` statements, `&&` stands for AND, `||` for OR.
+
+## Loops
+
+The next tool we are going to put in practice is looping, which stands for the (in) finite repetition of a given task under a certain set of conditions being fulfilled.
+The most comonly used loops in most of programming languages are the so called `for`, `while`, and `do while`.
+* Join in the following syntax in a C++ file, and save it as `square_numbers.cpp`
+```c++
+#include <iostream>
+#include <cmath>
+using namespace std;
+
+int main() {
+
+    // Declare variables
+    int n = 10;
+
+    // Loop and print square
+    for (int i = 0; i < n; ++i) {
+        cout << pow(i, 2) << endl;
+    }
+
+    return 0;
+
+}
+```
+* Compile and run!
+* Reference: [the difference between `++i` and `i++`](https://dev.to/somedood/the-difference-between-x-and-x-44dl)
+
+Try:
+* Save the script as `cube_numbers.cpp`
+* Change the script to display the 3rd to 9th cubes.
+
+Join in:
+* Change the file: let's **comment out** the for loop above and instead write it as a while loop.
+```c++
+    // Declare initialise a variable at the same time
+    int i = 3;
+
+    // Loopp and print cube
+    while (i < n) {
+        cout << pow(i, 3) << endl;
+        ++i;
+    }
+```
+
+Try:
+* Replace `++i` with the more verbose command `i = i+1` and convince yourself that it is equivalent.
+* Change the script to display the 3rd, 5th, 7th and 9th cubes (i.e. go up in 2s, not in 1s)
+
+## File manipulation
+
+Most times, RCDS problems rely on reading data from a given input, or generating results in a specific format. To save and read files, we need to include the `<fstream>` library.
+* Join in the following syntax in a C++ file, and save it as `save_to_file.cpp`
+```c++
+#include <iostream>
+#include <fstream>
+using namespace std;
+
+int main() {
+
+    // Declare variables
+    ofstream myfile;
+
+    // Open file and write a message
+    myfile.open ("greetings.txt");
+    myfile << "Hello there!" << endl;
+
+    // Close file
+    myfile.close();
+
+    return 0;
+
+}
+```
+
+Your turn:
+* Create a new file, `save_to_file2.cpp`, where you print the first 10 squares to a text file called `square_numbers.txt`.
+* Run your program again. What can you say about how it writes to the text file?
+* Replace `myfile.open ("square_numbers.txt");` with `myfile.open ("square_numbers.txt", ios_base::app);` to make C++ append to the end of a text file, rather than overwrite.
+
+Now let's read in!
+* Join in the following syntax in a C++ file, and save it as `read_from_file.cpp`
+```c++
+#include <iostream>
+#include <fstream>
+#include <string>
+using namespace std;
+
+int main() {
+
+    // Declare variables
+    string line;
+    ifstream myfile;
+
+    // Open file and read lines
+    myfile.open ("greetings.txt");
+    while (getline(myfile, line)) {
+        cout << line << endl;
+    }
+
+    // Close file
+    myfile.close();
+
+    return 0;
+
+}
 ```
 
 ## Exercise 1 - Increasing / decreasing
@@ -48,48 +201,7 @@ Recap of previous chapter. Write a program in C++ where:
 
 5. Print the result on the screen.
 
-## Conditionals - theory
-
-Join in:
-* New file! `bartender.cpp`
-```c++
-#include <iostream>
-
-using namespace std;
-
-int main()
-{
-    int age;
-    cout << "Welcome to the pub." << endl;
-    cout << "What is your age?" << endl;
-    cin >> age;
-    if(age >= 18){
-        cout << "Have a pint!" << endl;
-    }
-    cout << "Goodbye!" << endl;
-    return 0;
-}
-```
-* Compile and run!
-* Let's make it more fun with `else`
-```c++
-if(age > 18){
-    cout << "Have a pint!" << endl;
-} else if(age == 18){
-    cout << "Show me your ID and then have a pint!" << endl;
-} else {
-    cout << "I'm calling the police." << endl;
-}
-```
-* Compile and run!
-
-Your turn:
-* Also input the name of the customer
-* If the name of the customer does not equal your name, get the bartender to ask for money.
-    * Hint: `!=` is 'not equal to' in C++.
-    * Maybe useful: in `if` statements, `&&` is AND, `||` is OR.
-
-## Conditionals - exercise 2 - even and ood numbers
+## Exercise 2 - Even / ood numbers
 
 Write a program in C++ that produces a different output depending on the input variable
 
@@ -99,57 +211,7 @@ Write a program in C++ that produces a different output depending on the input v
 
 3. Print the result on the screen.
 
-## Exercise 3 - Conditionals II - bartender
-
-Write a program in C++ that produces a different output depending on the input variable
-
-1. The program asks for the user to introduce an integer `n`.
-
-2. Uses the module operator and the conditional statements (`if`, `else`) do determine if it is even or odd.
-
-3. Print the result on the screen.
-
-## Loops I
-
-Join in:
-* New file! `square_numbers.cpp`
-```c++
-#include <iostream>
-#include <cmath>
-
-using namespace std;
-
-int main()
-{
-    int n = 10;
-    for(int i=0; i<n; ++i){
-        cout << pow(i,2) << endl;
-    }
-    return 0;
-}
-```
-* Compile and run!
-* Reference: [the difference between `++i` and `i++`](https://dev.to/somedood/the-difference-between-x-and-x-44dl)
-
-Try:
-* Save the script as `cube_numbers.cpp`
-* Change the script to display the 3rd to 9th cubes.
-
-Join in:
-* Change the file: let's **comment out** the for loop above and instead write it as a while loop.
-```c++
-int i=3; // We can define and initialise a variable at the same time.
-while(i<n){
-    cout << pow(i,3) << endl;
-    ++i;
-}
-```
-
-Try:
-* Replace `++i` with the more verbose command `i = i+1` and convince yourself that it is equivalent.
-* Change the script to display the 3rd, 5th, 7th and 9th cubes (i.e. go up in 2s, not in 1s)
-
-## Loops I - exercise 4 - Hello World for, while, do/while
+## Exercise 3 - Hello World for, while, do while
 
 Write a C++ program that uses loops for printing a result in the terminal.
 
@@ -169,71 +231,13 @@ Hello World while index = {i}
 Hello World do/while index = {i}
 ```
 
-## Exercise 5 - Loops II - Square and cube numbers
+## Exercise 4 - Collatz conjecture
 
-Write a C++ program that uses loops for raising input to a given power.
+Write a program in C++ that asks for a number and performs the Collatz algorithm
 
-1. Raise to the square.
+## Exercise 5 - Fibonacci series
 
-2. Raise to the cube.
-
-3. Collatz conjecture
-
-## File manipulation - theory
-
-To save and read files, we need to include the `<fstream>` library.
-
-Join in:
-
-* New file! `save_to_file.cpp`
-
-```c++
-#include <iostream>
-#include <fstream>
-
-using namespace std;
-
-int main()
-{
-    ofstream myfile;
-    myfile.open ("greeting.txt");
-    myfile << "Hello there!" << endl;
-    myfile.close();
-
-    return 0;
-}
-```
-
-Your turn:
-* Create a new file, `save_to_file2.cpp`, where you print the first 10 squares to a text file called `square_numbers.txt`.
-* Run your program again. What can you say about how it writes to the text file?
-* Replace `myfile.open ("square_numbers.txt");` with `myfile.open ("square_numbers.txt", ios_base::app);` to make C++ append to the end of a text file, rather than overwrite.
-
-Join in:
-
-* Now let's read in!
-* New file! `read_from_file.cpp`
-
-```c++
-#include <iostream>
-#include <fstream>
-#include <string>
-
-using namespace std;
-
-int main()
-{
-    string line;
-    ifstream myfile;
-    myfile.open ("greeting.txt");
-    while (getline(myfile,line)){
-        cout << line << endl;
-    }
-    myfile.close();
-
-    return 0;
-}
-```
+Write a program in C++ that asks for a number and computes all Fibonacci numbers up to that one
 
 ## File manipulation - exercise 6
 
