@@ -52,12 +52,14 @@ We propose now a list of commands / exercises which are useful for navigating an
 For all comands the use of the `man` command is allowed, displaying the manual and usage information, and also the option `<command> --help`.
 
 1. For watching the name of the directory in which we are, use the command:
+
   ```bash
   ~$ pwd
   ```
   (print working directory)
 
 2. For watching all files in the present folder:
+
   ```bash
   ~$ ls
   ```
@@ -65,31 +67,37 @@ For all comands the use of the `man` command is allowed, displaying the manual a
   more details will be shown, as owner, permissions, file dimension, etc.
 
 3. For creating a new directory:
+
   ```bash
   ~$ mkdir <new_diretory_name>
   ```
   (make directory).
 
 4. For entering a new directory:
+
   ```bash
   ~$ cd <directory>
   ```
   (change directory). Also for going back to the previous directory:
+
   ```bash
   ~$ cd ..
   ```
   if we use `cd` without a specific destination it will take us automatically to our home directory. Instead `cd -` will take us to the folder that we visited previously.
 
 5. For creating an empty file:
+
   ```bash
   ~$ touch <file_name>
   ```
 
 6. For watching the content of a file without open it:
+
   ```bash
   ~$ less <file>
   ~$ more <file>
   ```
+
   As an exercise try to create the following folder structure:
   ```bash
     /home/<username>/CppCourse
