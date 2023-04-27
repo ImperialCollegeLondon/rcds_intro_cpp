@@ -16,33 +16,33 @@ Instructions are in the [appendix](#appendix).
 
 ## Chapter 1
 
-- Introduction to Linux operative system, terminal and bash.
+- Introduction to Linux operative systems, terminal and bash.
 - Programing languages and performance comparison. Text editors.
 - First steps with C++. Hello world.
 
 ## Chapter 2
 
-- Variables, input / output statements.
+- Variable types in C++, input / output statements.
 - Basic mathematical operations.
-- Makefile.
+- Compiling in parallel. Makefile.
 
 ## Chapter 3
 
 - Conditional statements if / else.
 - Loops for, while, do while.
-- File manipulation.
+- Data file manipulation. Reading and writing files.
 
 ## Chapter 4
 
-- Arrays and vectors.
-- Functions
+- Arrays and vectors. Basic algebra.
+- Functions in C++.
 - Compiling functions and header files.
 
 ## Chapter 5
 
 - Pointers and memory allocation.
 - Classes and OOP.
-- Basic statistics. Computing mean value and std.
+- Basic statistics. Computing momenta of a distribution.
 
 ## Chapter 6
 
