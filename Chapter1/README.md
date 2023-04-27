@@ -79,7 +79,6 @@ For all comands the use of the `man` command is allowed, displaying the manual a
   ~$ cd <directory>
   ```
   (change directory). Also for going back to the previous directory:
-
   ```bash
   ~$ cd ..
   ```
@@ -97,7 +96,7 @@ For all comands the use of the `man` command is allowed, displaying the manual a
   ~$ less <file>
   ~$ more <file>
   ```
-
+  for closing the intergace and going back to the terminal, just press `q`. 
   As an exercise try to create the following folder structure:
   ```bash
     /home/<username>/CppCourse
@@ -108,6 +107,7 @@ For all comands the use of the `man` command is allowed, displaying the manual a
   ```
 
 7. For deleting a file or directory:
+
   ```bash
   ~$ rm <file>
   ~$ rm -r <directory>
@@ -116,6 +116,7 @@ For all comands the use of the `man` command is allowed, displaying the manual a
   As an example, it can also be used with `*` (everything), i.e. `rm -rf *` means delete all files present in the current directory.
 
 8. For copying a file to a specific path:
+
   ```bash
   ~$ cp <file_to_copy> <destination_path>
   ```
@@ -139,46 +140,50 @@ For all comands the use of the `man` command is allowed, displaying the manual a
 
 ## Text editor
 
-There are plenty of programs to edit files in Linux. As an example, with the suffix `.txt` a file is interpreted as pure text file,
-otherwise with `.cc` it is a program file in C++, so colors and messaged concering indentation will appear.
-We will review these concepts in detail in the following sessions.
+There are plenty of programs to edit files in Linux. As an example, with the suffix `.txt` a file is interpreted as pure text file, otherwise with `.cpp` it is a program file in C++,
+so colors and messaged concering indentation will appear. We will review these concepts in detail in the following sessions.
 
 In all machines the following text editors are available:
-- `gedit`: General editor, user-friendly, easy and intuitive.
-- `vim`: Very flexible editor with plenty of supports. Time is needed in order to learn how use it properly.
-- `emacs`: Very flexible editor, similar to vim. Time is needed in order to learn how to use it properly.
-- `visual studio code`: Not installed. The one I use.  I dont like either of those mentioned above :/ More information at (https://code.visualstudio.com/)
+- `Visual Studio Code`: Default editor recommended for this course. More information at (https://code.visualstudio.com/)
+- `Vim`: Very flexible editor with plenty of supports. Time is needed in order to learn how use it properly.
+- `Emacs`: Very flexible editor, similar to vim. Time is needed in order to learn how to use it properly.
 
-As an exercise try to create a folder using gedit:
+As an exercise try to open `Visual Studio Code` and follow the instructions:
+
 1. Open the terminal, choose a folder inside the home directory and write:
+
   ```bash
-  ~$ gedit file1.txt
+  ~$ code file1.txt
   ```
-  write any content, save and close `gedit`.
+  write any content, save and close the editor.
 
 2. Check the content of this file with `cat`.
 
-3. Open `gedit` in mode *background*, such that the terminal remains free for receiving commands while `gedit` remains active.
+3. Open `VSCode` in mode *background*, such that the terminal remains free for receiving commands while `VSCode` remains active.
   ```bash
-  ~$ gedit file1.txt &
+  ~$ code file1.txt &
   ```
 
 4. Delete `file1.txt`.
 
 At this point you can try to create a file for C++ code:
+
 1. Open the terminal and write
+
   ```bash
-  ~$ gedit file.cpp
+  ~$ code file1.cpp
   ```
 
 2. Write the folloing line:
+
   ```c++
   #include <iostream>
   ```
-  you will notice that colors will activate for each word: `gedit` has
-  recognized the file as contianing syntax C++.
+  you will notice that colors will activate for each word: `VSCode` has recognized the file as contianing syntax C++.
 
-3. Delete `file.cpp`.
+3. Delete `file1.cpp`.
+
+You are now ready to dowload the content of the course and follow the first exercises.
 
 ## Clone with git
 
@@ -197,32 +202,33 @@ and then going through the folder `Chapter1` with
 Every week a new chapter will be published here in the `git` repository.
 For obtaining the updated versions it will be enought to perform a `pull`, i.e.:
 ```bash
-~$ cd CppCourse
+~$ cd RCDS-intro-cpp
 ~$ git pull
 ```
 
-## Hello World in C++ - theory
+## Hello World in C++
 
-* Open up VSCode
-
+* Open up VSCode and write the following syntax:
 ```c++
 #include <iostream>
-
 using namespace std;
 
-int main()
-{
-    cout << "Hello world!" << endl;
-    return 0;
+int main() {
+
+  // Print on screen
+  cout << "Hello world!" << endl;
+  return 0;
+
 }
 ```
 
-* Save as `helloworld.cpp` (colours!)
+* Save the file as `helloworld.cpp`. As said, `VSCode` should recognice the C++ syntax and print colours accordingly.
+
 * Compile by going to the command line and typing
 ```bash
 c++ helloworld.cpp -o hello
 ```
-(or possibly `g++` on your own machine)
+where `c++` - or `g++` - is the compiler for C++, `-o` the option to determine the name of output, or *executable* that will be created by `c++` / `g++`.
 
 * Then run the program. On Windows this is done with
 ```bash
@@ -232,23 +238,3 @@ and on Mac/Linux, with
 ```bash
 ./hello
 ```
-
-## Hello World in C++ - exercise 1
-
-Write a program in C++ where the words "Hello World!" are shown in the screen.
-
-1. Open a terminal and create a new file called `exercise1.cc`, whith `gedit` or `code`
-write a program in C++ that shows on the screen the sentence "Hello World!".
-
-2. Compile using:
-```bash
-g++ exercise1.cc -o program1 
-```
-where `g++` is the compiler for C++, `-o` the option to determine the name of the
-executable that will be created by `g++`.
-
-3. Run the program with:
-```bash
-./program1
-```
-and check the output.
