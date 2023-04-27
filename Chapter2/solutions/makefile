@@ -5,35 +5,31 @@
 CC=g++
 
 # All executables to be generated
-all: program1 program2 program4 program5 program6 program7
+all: program1 program2 program3 program4 program5
 
-# Exercise 3
-program1: exercise1.cc
+# Instructions for compiling
+program1: exercise1.cpp
 	$(CC) -o $@ $<
 
-program2: exercise2.cc
+program2: exercise2.cpp
+	$(CC) -o $@ $<
+
+program3: exercise3.cpp
+	$(CC) -o $@ $<
+
+program4: exercise4.cpp
+	$(CC) -o $@ $<
+
+program5: exercise5.cpp
 	$(CC) -o $@ $<
 
 # program2 is also run automatically
-all: program2
-	./program2
-
-program4: exercise4.cc
-	$(CC) -o $@ $<
-
-program5: exercise5.cc
-	$(CC) -o $@ $<
-
-program6: exercise6.cc
-	$(CC) -o $@ $<
-
-program7: exercise7.cc
-	$(CC) -o $@ $<
+all: program5
+	./program5
 
 clean:
 	rm program1
 	rm program2
+	rm program3
 	rm program4
 	rm program5
-	rm program6
-	rm program7
