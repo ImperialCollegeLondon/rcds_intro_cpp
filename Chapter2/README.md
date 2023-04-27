@@ -42,7 +42,7 @@ Your turn:
 * Let *x* = 3.9. What do you expect to happen? What happens?
 * What happens if you forget to add the semicolon?
 
-Join in the following syntax in a C++ file:
+* Join in the following syntax in a C++ file:
 ```c++
 #include <iostream>
 using namespace std;
