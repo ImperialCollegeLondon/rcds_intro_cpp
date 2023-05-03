@@ -4,7 +4,6 @@
 - Classes and OOP.
 - Basic statistics. Computing mean value and std.
 
-
 Before starting we suggest to create a folder for Chapter 5 where you can save all files that will be created for the exercise
 ```bash
 cd ~/           # Go the home directory
