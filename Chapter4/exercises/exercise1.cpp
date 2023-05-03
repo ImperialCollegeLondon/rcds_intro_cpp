@@ -1,29 +1,32 @@
 /*
-  Exercise: Arrays.
+  Exercise: Multiplication table.
 */
 
 #include <iostream>
+#include <cmath>
 using namespace std;
 
 int main() {
 
-  // Declare variables
-  int n = 10;
-  int square_numbers[10];
-  int favourite_numbers[10] = {3, 1, -4, 1}; // Note we haven't defined them all.;
+    // Declare variables
+    int n;
+    int f;
 
-  for(int i = 0; i < n; ++i) {
-      square_numbers[i] = pow(i, 2);
-  }
+    // Ask input from keyboard
+    cout << "Input a number" << endl;
+    cin >> n;
 
-  for(int i = 0; i < n; ++i) {
-      cout << square_numbers[i] << endl;
-  }
+    // Run Collatz conjecture
+    while (n !=1 ) {
+        if (n%2 == 0) {
+            f = n/2;
+        } else {
+            f = 3*n+1;
+        }
+        n = f;
+        cout << n << endl;
+    }
 
-  for(int i = 0; i < n; ++i) {
-      cout << favourite_numbers[i] << endl;
-  }        
-
-  return 0;
+    return 0;
 
 }

@@ -1,4 +1,3 @@
-// Implementation
 #include "functions.h"
 
 void change1(double &a, double &b)

@@ -11,14 +11,14 @@ int main() {
   const int n = 10;
   int product[n][n];
 
-  // 
+  // Run multiplication
   for(int i = 0; i < n; ++i){
     for (int j = 0; j < n; ++j){
         product[i][j] = (i+1)*(j+1);
     }
   }
 
-  //
+  // Run multiplication
   for(int i = 0; i < n; ++i){
     for (int j = 0; j < n; ++j){
         cout << product[i][j] << "\t";

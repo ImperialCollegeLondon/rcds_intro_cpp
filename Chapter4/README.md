@@ -36,51 +36,59 @@ while all programs will be eliminated by using the folloing one:
 $ make clean
 ```
 
-## Arrays - theory
+## Arrays
 
-Join in:
-
-* Edit `square_numbers.cpp`
+In today;'s chapter in we will discuss arrays and vectors, as a way of storing and manipulating high dimensional data.
+* Edit the `square_numbers.cpp` file to store the square numbers in a 10-dimensional array
 ```c++
 #include <iostream>
 #include <cmath>
-
 using namespace std;
 
-int main()
-{
+int main() {
+
+    // Declare variables
     int n = 10;
     int square_numbers[10];
-    for(int i=0; i<n; ++i){
-        square_numbers[i] = pow(i,2);
+
+    // Iterate storing squares in array
+    for (int i = 0; i < n; ++i) {
+        square_numbers[i] = pow(i, 2);
     }
-    for(int i=0; i<n; ++i){
+    for (int i = 0; i < n; ++i) {
         cout << square_numbers[i] << endl;
-    }    
+    }
+
     return 0;
 }
 ```
-* Note you can't `cout` an array
-* We can also define arrays like this:
+* Note you can't `cout` an array. The way to do it would be to print the values element-wise
+* We can also define arrays with explicit values as follows:
 ```c++
-int main()
-{
+int main() {
+
+    // Declare and initialize
     int n = 10;
     int square_numbers[10];
-    int favourite_numbers[10] = {3, 1, -4, 1}; // Note we haven't defined them all.;
+    int favourite_numbers[10] = {3, 1, -4, 1}; // Note we haven't defined them all
 
-    for(int i=0; i<n; ++i){
-        square_numbers[i] = pow(i,2);
+    // Iterate storing squares in array
+    for (int i = 0; i < n; ++i) {
+        square_numbers[i] = pow(i, 2);
     }
 
-    for(int i=0; i<n; ++i){
+    // Iterate printing elements
+    for (int i = 0; i < n; ++i) {
         cout << square_numbers[i] << endl;
-    }    
-    for(int i=0; i<n; ++i){
+    }
+
+    // Iterate printing elements
+    for (int i = 0; i < n; ++i) {
         cout << favourite_numbers[i] << endl;
     }        
 
     return 0;
+
 }
 ```
 * You can only use curly brackets like this at initialisation time.
@@ -90,127 +98,136 @@ int main()
 * Multidimensional arrays work too
     * `int magic_square[3][3] = {{4,9,2},{3,5,7},{8,1,6}};`
 
-Try:
-* Create a new file `multiplication_table.cpp`. We are going to make it print a 10x10 multiplication table. Make it:
-    * Set up a 10x10 array `product`.
-    * Loop through all rows and columns, so that `product[row][col] = row * col;`
-    * Loop through all rows and columns again, `cout`ing appropriately the elements of the table.
+## Functions - I
 
-## Arrays - exercise 1 - Multiplication table
-
-## Functions I
-
-Writing functions allows us to do more complicated things.
-
-Join in:
-
-* New file! `learning_functions.cpp`
-
+Writing functions allows us to split computations and perform complicated tasks.
+* Join in the following syntax in a C++ file, and save it as`learning_functions.cpp`
 ```c++
 #include <iostream>
-
 using namespace std;
 
-int sign_function(int n)
-{
+// Function returning the sign of an integer
+int function_sign(int n) {
+
+    // Declare variables
     int sign;
-    if(n>0){
+
+    if (n > 0) {
         sign = 1;
-    } else if(n==0){
+    } else if (n == 0) {
         sign = 0;
     } else {
         sign = -1;
     }
+
     return sign;
+
 }
 
-int main()
-{
+// Main function
+int main() {
+
+    // Declare variables
     int n;
     n = 3;
-    cout << sign_function(n) << endl;
+
+    // Call sign function
+    cout << function_sign(n) << endl;
 
     return 0;
+
 }
 ```
 * Global and local variables.
-* Note: order is important. What happens if you define `sign_function` after `main`?
+* Note: order is important. What happens if you define `function_sign` after `main`?
 
 Your turn:
 
-* Add an extra function to this file, `absolute_value`, which returns the absolute value of an integer which is passed to it.
+* Add an extra function to this file, `function_abs`, which returns the absolute value of an integer which is passed to it.
 * Add an extra line to the `main` function so that it also displays the absolute value of *n*.
 
-## Functions II
+## Functions - II
 
-Join in:
-
-* There is a way to define functions with `main` first: it's called 'forward declaration'.
+* A code with many functions can easy become lengthy and difficult to read.
+Hence, there is a standard way of organizing functions with `main` first: it's called 'forward declaration'.
 * In general, this is better because it allows more flexible code.
 
 ```c++
 #include <iostream>
-
 using namespace std;
 
-int sign_function(int n);
+// Function declaration
+int function_sign(int n);
 
-int main()
-{
+// Main function
+int main() {
+
+    // Declare variables
     int n;
     n = 3;
-    cout << sign_function(n) << endl;
+
+    // Call sign function
+    cout << function_sign(n) << endl;
 
     return 0;
+
 }
 
-int sign_function(int n)
-{
+// Function definition
+int function_sign(int n) {
+
+    // Declare variables
     int sign;
-    if(n>0){
+
+    if (n > 0) {
         sign = 1;
-    } else if(n==0){
+    } else if(n == 0) {
         sign = 0;
     } else {
         sign = -1;
     }
+
     return sign;
+
 }
 
 ```
 * Compile and run!
-* Now we're going to split our `sign_function` and `absolute_value` functions into separate files, and call them from our main file.
 
-## Functions III
+## Functions - III
 
-`learning_functions.cpp`:
+* Now we're going to split our `function_sign` and `function_abs` functions into separate files, and call them from our main file.
+* Join in the following syntax in a C++ file, and save it as `learning_functions.cpp`:
 ```c++
 #include <iostream>
-
 using namespace std;
 
-int sign_function(int n);
-int absolute_value(int n);
+// Function declarations
+int function_sign(int n);
+int function_abs(int n);
 
-int main()
-{
+int main() {
+
+    // Declare variables
     int n;
     n = 3;
-    cout << sign_function(n) << endl;
-    cout << absolute_value(n) << endl;
+
+    // Call functions
+    cout << function_sign(n) << endl;
+    cout << function_abs(n) << endl;
 
     return 0;
+
 }
 ```
 
-`sign_function.cpp`:
+`function_sign.cpp`:
 ```c++
 #include <iostream> // not strictly necessary
-
 using namespace std;
 
-int sign_function(int n)
-{
+int function_sign(int n) {
+
     int sign;
     if(n>0){
         sign = 1;
@@ -220,65 +237,90 @@ int sign_function(int n)
         sign = -1;
     }
     return sign;
+
 }
 ```
 
-`absolute_value.cpp`:
+`function_abs.cpp`:
 ```c++
 #include <iostream> // not strictly necessary
-
 using namespace std;
 
-int absolute_value(int n)
-{
+int function_abs(int n) {
+
     return abs(n);
+
 }
 ```
 
 * And now we compile like this:
 ```bash
-c++ sign_function.cpp absolute_value.cpp learning_functions.cpp -o sign
+c++ function_sign.cpp function_abs.cpp learning_functions.cpp -o learning_functions
 ```
-* All these forward declarations can be tiresome, so we can put them in a header file and `#include` it:
+* All these forward declarations can be tiresome, so as a last step we can put them in a header file and `#include` it:
 
 `learning_functions.hpp`:
 ```c++
-int sign_function(int n);
-int absolute_value(int n);
+int function_sign(int n);
+int function_abs(int n);
 ```
 
 `learning_functions.cpp`:
 ```c++
 #include <iostream>
-#include "learning_functions.hpp" // double quotes for user-defined header files
+#include "learning_functions.hpp" // Double quotes for user-defined header files
 
 using namespace std;
 
-int main()
-{
+int main() {
+
+    // Declare variables
     int n;
     n = 3;
-    cout << sign_function(n) << endl;
-    cout << absolute_value(n) << endl;
+
+    // Call functions
+    cout << function_sign(n) << endl;
+    cout << function_abs(n) << endl;
 
     return 0;
+
 }
 ```
 
-(`sign_function.cpp` and `absolute_value.cpp` unchanged)
+(`function_sign.cpp` and `function_abs.cpp` unchanged)
 
 * Compile and run, remembering to include all files in the compile command:
 ```bash
-c++ sign_function.cpp absolute_value.cpp learning_functions.cpp -o sign
+c++ function_sign.cpp function_abs.cpp learning_functions.cpp -o sign
 ```
 * The header file is also a good place to put constants you want to have pre-defined in all of the files in your project.
 
 Your turn:
-* Add a function `is_absolute_value_less_than_1`. Put it in its own file, add its declaration to the header file, make the main file output `is_absolute_value_less_than_1(n)`,  compile, and check that it works.
+* Add a function `is_function_abs_less_than_1`. Put it in its own file, add its declaration to the header file, make the main file output `is_function_abs_less_than_1(n)`,  compile, and check that it works.
 * Harder version: Look up the data type for `true` and `false` in C++
 
 
-## Functions 3 - headers and source
+## Exercise 1 - Collatz conjecture
+
+1. Challenge to see if you remember what we did last time
+
+2. Try to run the Collatz conjecture: create a new script, `collatz_conjecture.cpp`, which inputs a number *n*, and while *n* does not equal 1:
+    * Let *f* = *n*/2 if *n* is even
+    * Let *f* = 3*n* + 1 if *n* is odd
+    * Display *f*
+    * Let *n* = *f*
+
+## Exercise 2 - Multiplication table
+
+* Create a new file that prints a 10x10 multiplication table. Make it:
+    
+2. Set up a 10x10 array `product`.
+
+3. Loop through all rows and columns, so that `product[row][col] = row * col;`
+
+4. Loop through all rows and columns again, `cout`ing appropriately the elements of the table.
+
+## Exercise 3 - Function headers
 
 Write a C++ program that uses a header file.
 
@@ -293,7 +335,7 @@ the referiments to two numbers of type `double`.
 
 5. Add to the `makefile` the rules for compiling all tiles `*.cc`.
 
-## Exercise 5 - Conversion temperature
+## Exercise 4 - Conversion temperature
 
 Recap of previous chapter. Write a C++ program where it is possible to convert a temperature from Celsius to Kelvin or Farenheit (using two-way selection `if` / `else`).
 
@@ -325,7 +367,7 @@ Verify the next conversions:
 - 20 °C -> 68.0 °F
 - 20 °C -> 293.15 K
 
-## Exercise 6 - Second order equations
+## Exercise 5 - Second order equations
 
 Write a program in C++ that solves a second order equation `a x^2 + b x + c = 0`
 for all discriminants (>, < e = 0) and where the variables `a`, `b` e `c` come assigned with `cin`.
