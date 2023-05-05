@@ -101,7 +101,7 @@ int main() {
 ## Functions - I
 
 Writing functions allows us to split computations and perform complicated tasks.
-* Join in the following syntax in a C++ file, and save it as`learning_functions.cpp`
+* Join in the following syntax in a C++ file, and save it as `learning_functions.cpp`
 ```c++
 #include <iostream>
 using namespace std;
