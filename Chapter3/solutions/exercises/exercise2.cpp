@@ -1,6 +1,5 @@
 /*
-  Exercise 2: even and odd numbers
-  Author: Jesús Urtasun - 2020
+  Exercise 2: even / odd numbers
 */
 
 #include <iostream>

@@ -239,7 +239,7 @@ Write a program in C++ that asks for a number and performs the Collatz algorithm
 
 Write a program in C++ that asks for a number and computes all Fibonacci numbers up to that one
 
-## File manipulation - exercise 6
+## Exercise 6 - File manipulation
 
 Modify the previous exercise in such a way that the final output comes written over a file called `result.dat`.
 
@@ -251,7 +251,7 @@ Modify the previous exercise in such a way that the final output comes written o
 
 4. Close the file with the method `close()`.
 
-## File manipulation - exercise 7
+## - Exercise 7 - File manipulation
 
 Modify the previous exercise in such a way that the final output comes red from an input file called `my_input.dat` with the following content:
 ```

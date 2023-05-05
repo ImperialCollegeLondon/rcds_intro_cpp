@@ -1,7 +1,5 @@
 /*
-  Esercizio 5: Input
-
-  Author: Stefano Carrazza - 2018
+  Exercise 7: Input file
 */
 
 #include <iostream>
@@ -11,14 +9,14 @@ using namespace std;
 
 int main() {
 
-  // Declare variabili
+  // Declare variables
   char name[20];
   string surname;
   int number;
   fstream finput, foutput;
 
-  // Prepare input stream
-  finput.open("myinput.dat", ios::in);
+  // Prepare input file
+  finput.open("my_input.dat", ios::in);
 
   // Check if file exists
   if (!finput.good())
@@ -35,6 +33,7 @@ int main() {
   // Close input file
   finput.close();
   
+  // Print on screen
   cout << surname << ", " << name << " is registered with number " << number << ".\n";  
 
   // Print to file
