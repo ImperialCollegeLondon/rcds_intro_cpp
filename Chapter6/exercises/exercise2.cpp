@@ -1,6 +1,5 @@
 /*
-  Esercizio: Prodotto scalare
-  Author: Jesús Urtasun - 2020
+  Exercise: Scalar product
 */
 
 #include <iostream>

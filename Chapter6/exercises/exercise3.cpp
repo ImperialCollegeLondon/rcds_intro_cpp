@@ -1,6 +1,5 @@
 /*
   Exercise: Vector-matrix product
-  Author: Jesús Urtasun - 2020
 */
 
 #include <iostream>

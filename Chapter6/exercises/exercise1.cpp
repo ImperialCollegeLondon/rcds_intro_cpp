@@ -1,6 +1,5 @@
 /*
   Exercise: Hello World arrays
-  Author: Jeśús Urtasun - 2020
 */
 
 #include <iostream>

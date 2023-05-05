@@ -36,6 +36,8 @@ while all programs will be eliminated by using the folloing one:
 $ make clean
 ```
 
+Let's practice now what we have learned so far. Go directly to the exercises folder and try solving the first two.
+
 ## Exercsie 1 - Scalar product
 
 Write a C++ program that computes the scalar product using dynamic arrays.
@@ -64,7 +66,7 @@ Write a C++ program that compute a matrix-vector product.
 
 ## Armadillo
 
-### 20. (Extra) Armadillo, for vectors and matrices
+### (Extra) Armadillo, for vectors and matrices
 
 [Armadillo](http://arma.sourceforge.net/) is a linear algebra library for C++ which uses syntax quite similar to that used in Matlab or Python (with NumPy). Setup is different for different operating systems but the instructions are pretty good.
 
