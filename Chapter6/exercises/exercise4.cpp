@@ -1,72 +1,64 @@
 /*
-  Exercise: Rectilinear movement
-  Author: Jesús Urtasun - 2020
+  Exercise: Scalar product, norm, transpose matrix
 */
 
 #include <iostream>
-#include <fstream>
 #include <cmath>
 using namespace std;
 
-#define N 1000
+double scalar(const double a[], const double b[], int n);
+double norm(const double a[], int n);
+void change(double &a, double &b);
 
 int main() {
 
-  // Decalre variables;
-  double v[N];
-  double spazio, tempo;
+  // Create variables
+  const int n = 5;
+  const double v[n] = {1,2,3,4,5};
+  const double w[n] = {10,2,4,3,2};
+  double M[3][3] = {{1,2,3},{4,5,6},{7,8,9}};
 
-  // Open datafile
-  fstream f;
-  f.open("../data_moto.dat", ios::in);
+  // Compute scalar product
+  cout << scalar(v, w, n) << endl;
 
-  if (!f.good())
-    {
-      cerr << "Error reading file data_moto.dat" << endl;
-      return 1;
-    }
+  // Compute norm
+  cout << norm(v, n) << endl;
 
-  // Reading data
-  for (int i = 0; i < N; i++)
-    {
-      f >> spazio >> tempo;
-      v[i] = spazio / tempo;
-    }
-  
-  f.close();
+  // Compute transpose matrix
+  for (int i = 0; i < 3; i++)
+    for (int j = i; j < 3; j++)
+      change(M[i][j], M[j][i]);
 
-  // Compute mean velocity
-  double sum = 0;
-  for (int i = 0; i < N; i++)
-    sum += v[i];
+  // Print transpose matrix
+  for (int i = 0; i < 3; i++) {
 
-  double vmedia = sum / N;
-  cout << "Mean velocity = " << vmedia << endl;
+    for (int j = 0; j < 3; j++)
+      cout << M[i][j] << " ";
+    cout << endl;
 
-  // Compute std.dev of v
-  double sum2 = 0;
-  for (int i = 0; i < N; i++)
-    sum2 += pow(v[i] - vmedia, 2);
+  }
 
-  double sigma = sqrt(sum2/(N-1));
-  cout << "Standard dev = " << sigma << endl;
-
-  // Compute minumum velocity
-  double vmin = v[0];
-  for (int i = 1; i < N; i++)
-    if (v[i] < vmin)
-      vmin = v[i];
-
-  cout << "Minimum velocity = " << vmin << endl;
-
-  // Compute maximum velocity
-  double vmax = v[0];
-  for (int i = 1; i < N; i++)
-    if (v[i] > vmax)
-      vmax = v[i];
-
-  cout << "Maximum velocity = " << vmax << endl;
-  
   return 0;
 
+}
+
+// Scalar product
+double scalar(const double a[], const double b[], int n) {
+  double s = 0;
+  for (int i = 0; i < n; i++)
+    s += a[i] * b[i];
+  return s;
+}
+
+// Compute the norm of an array
+double norm(const double a[], int n) {
+  double s = scalar(a, a, n);
+  return sqrt(s);
+}
+
+// Change a with b
+void change(double &a, double &b) {
+  const double dep = a;
+  a = b;
+  b = dep;
 }

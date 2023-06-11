@@ -234,22 +234,23 @@ Modify the program in such a way that the variables correspong to the base and h
 
 Copy file of the previous exercise in `exercise4.cc`.
 
-Print with `cout` the results of area and perimeter using 10 decimal digits, using the notation `fixed` and also `scientific`.
+1. Print with `cout` the results of area and perimeter using 10 decimal digits, using the notation `fixed` and also `scientific`.
 
-Print with `cout`, in any notation, the area and perimeter of the rectangle in the same row, separed by tabulation `\t`.
+2. Print with `cout`, in any notation, the area and perimeter of the rectangle in the same row, separed by tabulation `\t`.
 
-Basic arithmetic works out of the box, as you've seen. For 'scientific calculator' stuff, we need the `<cmath>` library. Libraries are like toolboxes.
+3. Basic arithmetic works out of the box, as you've seen. For 'scientific calculator' stuff, we need the `<cmath>` library. Libraries are like toolboxes.
 
 ## Exercise 5 - Converting temperature
 
 Write a program in C++ where is possible to convert a temperature from
-Celsius to Kelvin using the equation:
+
+1. Use the following conversion equation:
 ```
 T(Kelvin) = T(Celsius) + 273.15
 ```
-where the user can introduce the temperature as input in Celsius using `cin`.
+2. where the user can introduce the temperature as input in Celsius using `cin`.
 
-Verify the next conversions:
+3. Verify the next conversions:
 - 20 °C -> 293.15 K
 - 30 °C -> 303.15 K
 

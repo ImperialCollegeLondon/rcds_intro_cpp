@@ -16,8 +16,7 @@ int main() {
   cin >> base;
   cout << "Introduce value for the height: ";
   cin >> height;
-  cout << "Rectangle base = " << base
-       << ", height = " << height << endl;
+  cout << "Rectangle base = " << base << ", height = " << height << endl;
   
   // Compute area
   area = base * height;
@@ -37,4 +36,5 @@ int main() {
   cout << "Area = " << area << "\tPerimeter = " << perimeter << endl;
 
   return 0;
+  
 }

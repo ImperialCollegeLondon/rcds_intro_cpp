@@ -38,8 +38,10 @@ $ make clean
 
 ## Arrays
 
-In today;'s chapter in we will discuss arrays and vectors, as a way of storing and manipulating high dimensional data.
-* Edit the `square_numbers.cpp` file to store the square numbers in a 10-dimensional array
+The use of arrays is a very powerful tool for both mathematical computations, and also for storing informationin an efficient way.
+Basic algebra is deeply relying in vector and matrix manipulation, so today we will focus on how to deal with multidimensional objects in C++. 
+Let's begin by editing the square numbers exercise of previos chapter, such that the square numbers are now stored in an array
+* Join in the following syntax in a C++ file, and save it as `square_numbers.cpp`.
 ```c++
 #include <iostream>
 #include <cmath>
@@ -51,45 +53,51 @@ int main() {
     int n = 10;
     int square_numbers[10];
 
-    // Iterate storing squares in array
-    for (int i = 0; i < n; ++i) {
+    // Iterate and store values in the array
+    for(int i = 0; i < n; ++i) {
         square_numbers[i] = pow(i, 2);
     }
-    for (int i = 0; i < n; ++i) {
+
+    // Print elements of the array
+    for(int i = 0; i < n; ++i) {
         cout << square_numbers[i] << endl;
     }
 
     return 0;
+
 }
 ```
-* Note you can't `cout` an array. The way to do it would be to print the values element-wise
-* We can also define arrays with explicit values as follows:
+* Note you can't `cout` an array
+* We can also define arrays like this:
 ```c++
 int main() {
 
-    // Declare and initialize
+    // Declare variables
     int n = 10;
     int square_numbers[10];
-    int favourite_numbers[10] = {3, 1, -4, 1}; // Note we haven't defined them all
+    int favourite_numbers[10] = {3, 1, -4, 1}; // Note we haven't defined them all.;
 
-    // Iterate storing squares in array
-    for (int i = 0; i < n; ++i) {
+    // Iterate and store values in the array
+    for(int i = 0; i < n; ++i) {
         square_numbers[i] = pow(i, 2);
     }
 
-    // Iterate printing elements
-    for (int i = 0; i < n; ++i) {
+    // Print elements of the array
+    cout << "Square numbers: " << endl;
+    for(int i = 0; i < n; ++i) {
         cout << square_numbers[i] << endl;
     }
 
-    // Iterate printing elements
-    for (int i = 0; i < n; ++i) {
+    // Print elements of the array
+    cout << "Favourite numbers: " << endl;
+    for(int i = 0; i < n; ++i) {
         cout << favourite_numbers[i] << endl;
     }        
 
     return 0;
 
 }
+
 ```
 * You can only use curly brackets like this at initialisation time.
 * We can also declare:
@@ -98,28 +106,31 @@ int main() {
 * Multidimensional arrays work too
     * `int magic_square[3][3] = {{4,9,2},{3,5,7},{8,1,6}};`
 
-## Functions - I
+## Functions
 
-Writing functions allows us to split computations and perform complicated tasks.
+Until now, we have been always writing all our code inside the main function.
+Writing functions that perform specific tasks allows us to do more complicated things in a sequential way.
 * Join in the following syntax in a C++ file, and save it as `learning_functions.cpp`
 ```c++
 #include <iostream>
 using namespace std;
 
-// Function returning the sign of an integer
+// Function computing sign
 int function_sign(int n) {
 
     // Declare variables
     int sign;
 
-    if (n > 0) {
+    // Compute sign
+    if(n > 0) {
         sign = 1;
-    } else if (n == 0) {
+    } else if(n == 0) {
         sign = 0;
     } else {
         sign = -1;
     }
 
+    // Return sign
     return sign;
 
 }
@@ -129,10 +140,13 @@ int main() {
 
     // Declare variables
     int n;
-    n = 3;
 
-    // Call sign function
-    cout << function_sign(n) << endl;
+    // Assign value
+    cout << "Enter an integer number: ";
+    cin >> n;
+
+    // Call function
+    cout << "Sign: " << function_sign(n) << endl;
 
     return 0;
 
@@ -142,44 +156,47 @@ int main() {
 * Note: order is important. What happens if you define `function_sign` after `main`?
 
 Your turn:
-
+* Modify the code such that the n variables is stored from keyboard.
 * Add an extra function to this file, `function_abs`, which returns the absolute value of an integer which is passed to it.
 * Add an extra line to the `main` function so that it also displays the absolute value of *n*.
 
-## Functions - II
-
-* A code with many functions can easy become lengthy and difficult to read.
-Hence, there is a standard way of organizing functions with `main` first: it's called 'forward declaration'.
-* In general, this is better because it allows more flexible code.
+There is a way to define functions with `main` first: it's called 'forward declaration'. In general, this is better because it allows more flexible code.
+* Modify the file to implement forward declaration.
 
 ```c++
 #include <iostream>
 using namespace std;
 
-// Function declaration
+// Function computing sign
 int function_sign(int n);
+// Function computing absolute value
+int function_abs(int n);
 
 // Main function
 int main() {
 
     // Declare variables
     int n;
-    n = 3;
 
-    // Call sign function
-    cout << function_sign(n) << endl;
+    // Assign value
+    cout << "Enter an integer number: ";
+    cin >> n;
+
+    // Call function
+    cout << "Sign: " << function_sign(n) << endl;
+    cout << "Absolute value: " << function_abs(n) << endl;
 
     return 0;
 
 }
 
-// Function definition
 int function_sign(int n) {
 
     // Declare variables
     int sign;
 
-    if (n > 0) {
+    // Compute sign
+    if(n > 0) {
         sign = 1;
     } else if(n == 0) {
         sign = 0;
@@ -187,47 +204,30 @@ int function_sign(int n) {
         sign = -1;
     }
 
+    // Return sign
     return sign;
 
 }
 
-```
-* Compile and run!
+int function_abs(int n) {
 
-## Functions - III
-
-* Now we're going to split our `function_sign` and `function_abs` functions into separate files, and call them from our main file.
-* Join in the following syntax in a C++ file, and save it as `learning_functions.cpp`:
-```c++
-#include <iostream>
-using namespace std;
-
-// Function declarations
-int function_sign(int n);
-int function_abs(int n);
-
-int main() {
-
-    // Declare variables
-    int n;
-    n = 3;
-
-    // Call functions
-    cout << function_sign(n) << endl;
-    cout << function_abs(n) << endl;
-
-    return 0;
+    // Return absolute value
+    return abs(n);
 
 }
 ```
 
+Now we're going to split our sign_function and absolute_value functions into separate files, and call them from our main file.
+* Create two files, `function_sign.cpp` and  `function_abs.cpp` which implement the functions used before.
+* Modify `learning_functions.cpp` such that it includes the function files, and contains just the main function.
+
 `function_sign.cpp`:
 ```c++
-#include <iostream> // not strictly necessary
+#include <iostream> // Not strictly necessary
 using namespace std;
 
-int function_sign(int n) {
-
+int sign_function(int n)
+{
     int sign;
     if(n>0){
         sign = 1;
@@ -237,17 +237,16 @@ int function_sign(int n) {
         sign = -1;
     }
     return sign;
-
 }
 ```
-
 `function_abs.cpp`:
 ```c++
-#include <iostream> // not strictly necessary
+#include <iostream> // Not strictly necessary
 using namespace std;
 
 int function_abs(int n) {
 
+    // Return absolute value
     return abs(n);
 
 }
@@ -257,85 +256,77 @@ int function_abs(int n) {
 ```bash
 c++ function_sign.cpp function_abs.cpp learning_functions.cpp -o learning_functions
 ```
-* All these forward declarations can be tiresome, so as a last step we can put them in a header file and `#include` it:
-
+* All these forward declarations can be tiresome, so we can put them in a header file and `#include` it:
 `learning_functions.hpp`:
 ```c++
 int function_sign(int n);
 int function_abs(int n);
 ```
-
 `learning_functions.cpp`:
 ```c++
 #include <iostream>
-#include "learning_functions.hpp" // Double quotes for user-defined header files
-
+#include "learning_functions.hpp"
 using namespace std;
 
+// Main function
 int main() {
 
     // Declare variables
     int n;
-    n = 3;
 
-    // Call functions
-    cout << function_sign(n) << endl;
-    cout << function_abs(n) << endl;
+    // Assign value
+    cout << "Enter an integer number: ";
+    cin >> n;
+
+    // Call function
+    cout << "Sign: " << function_sign(n) << endl;
+    cout << "Absolute value: " << function_abs(n) << endl;
 
     return 0;
 
 }
 ```
 
-(`function_sign.cpp` and `function_abs.cpp` unchanged)
-
 * Compile and run, remembering to include all files in the compile command:
 ```bash
-c++ function_sign.cpp function_abs.cpp learning_functions.cpp -o sign
+c++ function_sign.cpp function_abs.cpp learning_functions.cpp -o learning_functions
 ```
 * The header file is also a good place to put constants you want to have pre-defined in all of the files in your project.
 
 Your turn:
-* Add a function `is_function_abs_less_than_1`. Put it in its own file, add its declaration to the header file, make the main file output `is_function_abs_less_than_1(n)`,  compile, and check that it works.
+* Add a function `is_absolute_value_less_than_1`. Put it in its own file, add its declaration to the header file, make the main file output `is_absolute_value_less_than_1(n)`,  compile, and check that it works.
 * Harder version: Look up the data type for `true` and `false` in C++
 
+## Exercise 1 - Multiplication table
 
-## Exercise 1 - Collatz conjecture
+Create a C++ code that prints a 10x10 multiplication table.
 
-1. Challenge to see if you remember what we did last time
+1. Set up a 10x10 array `product`.
 
-2. Try to run the Collatz conjecture: create a new script, `collatz_conjecture.cpp`, which inputs a number *n*, and while *n* does not equal 1:
-    * Let *f* = *n*/2 if *n* is even
-    * Let *f* = 3*n* + 1 if *n* is odd
-    * Display *f*
-    * Let *n* = *f*
+2. Loop through all rows and columns, so that `product[row][col] = row * col;`
 
-## Exercise 2 - Multiplication table
+3. Loop through all rows and columns again, `cout` ing appropriately the elements of the table.
 
-* Create a new file that prints a 10x10 multiplication table. Make it:
-    
-2. Set up a 10x10 array `product`.
+## Exercise 2 - Arrays and functions
 
-3. Loop through all rows and columns, so that `product[row][col] = row * col;`
+Write a C++ program where functions are used
 
-4. Loop through all rows and columns again, `cout`ing appropriately the elements of the table.
+1. Create a stack array `int v[10] = {9,2,1,3,4,7,0,11,20,5};`.
 
-## Exercise 3 - Function headers
+2. Write a function `print_array` of type `void` that takes as argument an int array and its respective dimension, and prints the content on screen. Test on the `main` the call of `print_array` with `v`.
 
-Write a C++ program that uses a header file.
+3. Write a function `max_array` of type `int` that obtains the maximum value present on an array.
+Test the implementation `v`, printing on the main its maximum value.
 
-1. Create a header file named `functions.h` and declare a function `change1` of type `void` that takes as arguments
-the referiments to two numbers of type `double`.
+4. Write a function `min_array` of type `int` that obtians the minumum value present on an array.
+Test the implementation `v`, printing on the main its minimum vlaue.
 
-2. On the same header, declare a function called `change2` of type `void` that takes the pointers of two numbers of type `double`.
+5. Write a function `min_max_array` of type `void` that obtains the max an and also replaces them using two arguments `min` e `max` 
+of type `int` passed by reference.
 
-3. Create a file `functions.cc` and implement and algorithm that changes variables of type double `double` for the functions `change1` and `change2`.
+6. Write a function `sort_array` of type `void` that sorts out in increasing mode an array ot type `int`. Test the function with the array `v`.
 
-4. Create a file `main.cc`, include the header `functions.h` and test the functions `change1` and `change2`.
-
-5. Add to the `makefile` the rules for compiling all tiles `*.cc`.
-
-## Exercise 4 - Conversion temperature
+## Exercise 3 - Conversion temperature
 
 Recap of previous chapter. Write a C++ program where it is possible to convert a temperature from Celsius to Kelvin or Farenheit (using two-way selection `if` / `else`).
 
@@ -366,23 +357,3 @@ T(Celsius) = <input_value> -> T(<option>) = <converted_value>
 Verify the next conversions:
 - 20 °C -> 68.0 °F
 - 20 °C -> 293.15 K
-
-## Exercise 5 - Second order equations
-
-Write a program in C++ that solves a second order equation `a x^2 + b x + c = 0`
-for all discriminants (>, < e = 0) and where the variables `a`, `b` e `c` come assigned with `cin`.
-
-1. Ask the user to introduce 3 numbers of type `double` representing the coefficients.
-
-2. Compute the discriminant `D = b^2 - 4ac` using the function `std::pow`.
-
-3. Create a condition `if/else if/else` corresponding to the 3 possible cases of the discriminant.
-
-4. Compute the solutions `x1` and `x2` using the quadratic formula for second order equations.
-Note that for `D < 0`, the function `std::sqrt()` operates in the real numbers, therefore its argument must be a positive number.
-Also in this case we will separe the computations of the real and imaginary part.
-
-Verify the implementation for the following coefficients:
-- `a = 2`, `b = 5`, `c = 2` -> solution `x1 = -0.5` e `x2 = -2`.
-- `a = 4`, `b = -4`, `c = 1` -> solutions`x1,2 = 0.5`.
-- `a = 1`, `b = 4`, `c = 5` -> solutions `x1 = -2 + i` e `x2 = -2 - i`.

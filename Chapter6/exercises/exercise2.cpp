@@ -1,5 +1,5 @@
 /*
-  Exercise: Scalar product
+  Exercise: Scalar product and normalization
 */
 
 #include <iostream>
@@ -53,6 +53,7 @@ int main() {
       else
 	      z[i] = v[i];
     }
+
   // Print z
   cout << "Array z:" << endl;
   for (int i = 0; i < n; i++)

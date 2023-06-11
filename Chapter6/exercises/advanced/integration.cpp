@@ -1,6 +1,5 @@
 /*
-  Exercise: Integration
-  Author: Jesús Urtasun - 2020
+  Exercise: Numerical integration
 */
 
 #include <iostream>

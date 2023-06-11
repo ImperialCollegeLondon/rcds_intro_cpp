@@ -1,5 +1,5 @@
 /*
-  Exercise: Hello World arrays
+  Exercise: Matrix manipulation
 */
 
 #include <iostream>
@@ -17,7 +17,7 @@ int main() {
   for (int i = 0; i < n; i++)
     cout << "v[" << i << "] = " << v[i] << endl;
 
-    cout << "Array w:" << endl;
+  cout << "Array w:" << endl;
   // Print values of w
   for (int i = 0; i < n; i++)
     cout << "w[" << i << "] = " << w[i] << endl;

@@ -5,8 +5,7 @@
 #include <iostream>
 using namespace std;
 
-int main()
-{
+int main() {
 
   // Declare variable of type integer
   int x;

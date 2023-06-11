@@ -1,32 +1,31 @@
 /*
-  Exercise: Multiplication table.
+  Exercise: Multiplication table
 */
 
 #include <iostream>
-#include <cmath>
 using namespace std;
 
 int main() {
 
-    // Declare variables
-    int n;
-    int f;
+  // Declare variables
+  const int n = 10;
+  int product[n][n];
 
-    // Ask input from keyboard
-    cout << "Input a number" << endl;
-    cin >> n;
-
-    // Run Collatz conjecture
-    while (n !=1 ) {
-        if (n%2 == 0) {
-            f = n/2;
-        } else {
-            f = 3*n+1;
-        }
-        n = f;
-        cout << n << endl;
+  // Loop filling array
+  for(int i = 0; i < n; ++i) {
+    for (int j = 0; j < n; ++j) {
+        product[i][j] = (i + 1) * (j + 1);
     }
+  }
 
-    return 0;
+  // Loop prining array elements
+  for(int i = 0; i < n; ++i) {
+    for (int j = 0; j < n; ++j) {
+        cout << product[i][j] << "\t";
+    }
+    cout << "\n";
+  }
+
+  return 0;
 
 }

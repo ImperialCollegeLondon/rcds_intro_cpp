@@ -1,41 +1,41 @@
 /*
-  Exercise 3: Classes and OOP
+  Exercise: Compute mean (input from file)
 */
 
 #include <iostream>
+#include <fstream>
 using namespace std;
-
-class Rectangle {
-
-  public:
-    double width;    // Width of rectangle
-    double height;   // Height of rectangle
-
-};
 
 int main() {
 
-  Rectangle Rec1;        // Declare Rec1 of type Rectangle
-  Rectangle Rec2;        // Declare Rec2 of type Rectangle
+  // Declare variables
+  fstream f;
+  double num;
+  double sum = 0.0, n = 0.0; 
 
-  // Rec1 specification
-  Rec1.height = 5.0;
-  Rec1.width = 6.0;
+  // Ope file
+  f.open("data.dat", ios::in);
+  if (!f.good()) {
 
-  // Rec2 specification
-  Rec2.height = 10.0;
-  Rec2.width = 12.0;
+      cout << "Problems with the file data.dat" << endl;
+      return -1;
+  
+  }
+      
+  // Read the numbers and compute sum 
+  for (;;) {
 
-  double area;
+      f >> num;
+      if (f.eof()) break;
+      sum += num;
+      n++;
+  }
+  
+  f.close();
 
-  // area of Rec1
-  area = Rec1.height * Rec1.width;
-  cout << "Area of Rec1: " << area << endl;
-
-  // area of Rec2
-  area = Rec2.height * Rec2.width;
-  cout << "Area of Rec2: " << area << endl;
-
+  // Compute mean
+  cout << "Mean = " << sum / n << endl;
+  
   return 0;
 
 }

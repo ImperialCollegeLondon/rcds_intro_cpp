@@ -5,26 +5,22 @@
 CC=g++
 
 # All programs to be generated
-all: program1 program2 program4 program5
+all: program1 program2 program3 program4
 
 program1: exercise1.cpp
 	$(CC) $< -o $@
 
 program2: exercise2.cpp
-	$(CC) $< -o $@
+	$(CC) $< functions.cpp exercise2.cpp -o $@
 
-# program3: exercise3.cpp
-# 	$(CC) $< -o $@
+program3: exercise3.cpp
+	$(CC) $< -o $@
 
 program4: exercise4.cpp
-	$(CC) $< -o $@
-
-program5: exercise5.cpp
 	$(CC) $< -o $@
 
 clean:
 	rm -f program1
 	rm -f program2
-#	rm -f program3
+	rm -f program3
 	rm -f program4
-	rm -f program5

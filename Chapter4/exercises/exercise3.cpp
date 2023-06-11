@@ -1,29 +1,47 @@
 /*
-  Exercise 3: Headers and source
+  Exercise: Conversion temperature
 */
 
 #include <iostream>
-#include "functions.h"
 using namespace std;
 
 int main() {
 
   // Declare variables
-  double a = 5, b = 2;
+  int option;
+  double T_Celsius;
 
-  cout << "Initial values:" << endl;
-  cout << a << " " << b << endl;
+  // Assign values
+  cout << "Introduce temperature value in Celsius: ";
+  cin >> T_Celsius;
 
-  // Call change1 function
-  cout << "First change with change1:" << endl;
-  change1(a, b);
-  cout << a << " " << b << endl;
+  // Ask for option
+  cout << "Press 1 for conversione to Kelvin." << endl;
+  cout << "Press 2 for conversion to Fahrenheit." << endl;
+  cout << "Option chosen: ";
+  cin >> option;
 
-  // Call change2 function
-  cout << "Second change with change2:" << endl;
-  change2(&a, &b);
-  cout << a << " " << b << endl;
+  // Preparare cout with 10 significant digits
+  cout.precision(3);
+  cout << fixed;
   
+  if (option == 1) {
+
+    // From Celsius to Kelvin
+    double T_Kelvin = T_Celsius + 273.15;
+    cout << "T(Celsius) = " << T_Celsius << " -> T(Kelvin) = " << T_Kelvin << endl;
+  
+  } else if (option == 2) {
+
+    // From Celsius to Fahrenheit
+    double T_Fahrenheit = T_Celsius * 9.0 / 5.0 + 32.0;
+    cout << "T(Celsius) = " << T_Celsius << " -> T(Fahrenheit) = " << T_Fahrenheit << endl;      
+    
+  } else {
+
+      cout << "Option not recognized." << endl;
+  }
+
   return 0;
 
 }

@@ -1,95 +1,72 @@
 /*
-  Exercise: Higgs mass
-  Author: Jesús Urtasun - 2020
+  Exercise: Hello World struct
 */
 
 #include <iostream>
-#include <fstream>
+#include <cmath>
 using namespace std;
+
+// Declare the complex structure
+struct complex {
+  double real;
+  double imag;
+};
+
+// Declaring print function
+void print(complex const& v);
+
+// Declaring module function
+double modulo(complex const& v);
+
+// Declare a new object with the sum
+complex sum(complex const& a, complex const& b);
 
 int main() {
 
-  // Declaring variables;
-  const int n = 10000;
-  double mass[n];
+  // Create variables
+  complex a, b;
 
-  // Open data file
-  fstream f;
-  f.open("../data_higgs.dat", ios::in);
+  // Assign the complex number to a
+  a.real = 7;
+  a.imag = 2;
 
-  if (!f.good())
-    {
-      cerr << "Error reading data_higgs.dat" << endl;
-      return 1;
-    }
+  // Assign b to a
+  b = a;
 
-  // Read data
-  for (int i = 0; i < n; i++)
-    f >> mass[i];
+  // Print a
+  cout << "Printing a:" << endl;
+  print(a);
 
-  f.close();
+  // Printing b
+  cout << "Printing b:" << endl;
+  print(b);
 
-  // Sor the vector in increading mode, selection sort O(n^2)
-  for (int i = 0; i < n-1; i++)
-    for (int j = i+1; j < n; j++)
-      if (mass[i] > mass[j])
-      {
-        double tmp = mass[i];
-        mass[i] = mass[j];
-        mass[j] = tmp;
-      }
+  // Compute the module of a
+  cout << "Module of a = " << modulo(a) << endl;
 
-  // Print minimum and maximum values
-  const double massmin = mass[0];
-  const double massmax = mass[sizeof(mass)/sizeof(*mass)-1]; // oppure mass[9999];
-  cout << "Minimum mass  = " << massmin << " GeV." << endl;
-  cout << "Maximum mass = " << massmax << " GeV." << endl;
-
-  // Build binning and fequence histogram
-  int nbins = int((massmax - massmin) / 5) + 1;
-  double *bins = new double[nbins];
-  int *freq = new int[nbins];
-
-  // Initialize bins
-  for (int i = 0; i < nbins; i++)
-    {
-      bins[i] = mass[0] + i*5.0; // binning con lower-edges
-      freq[i] = 0;
-    }
-
-  // Fill the histogram
-  for (int i = 0; i < n; i++)
-    for (int b = 0; b < nbins-1; b++)
-      if (mass[i] <= bins[b+1]) // Take the upper edge bin as limit
-	{
-	  freq[b]++;
-	  break;
-	}
-
-  // Print the histogram
-  cout << endl;
-  cout << "Histogram:" << endl;
-  for (int b = 0; b < nbins; b++)
-    cout << "M = " << bins[b] << " GeV -> " << freq[b] << endl;
-
-  // Determina the bin with the highest freq
-  int fmax = 0;
-  int freqmax = freq[0];
-
-  for (int i = 0; i < nbins; i++)
-    if (freq[i] > freqmax)
-      {
-        fmax = i;
-        freqmax = freq[i];
-      }
-
-  // Print result
-  cout << endl;
-  cout << "Most frequent value M = " << bins[fmax] << " GeV with freq = " << freq[fmax] << endl;
-
-  delete[] bins;
-  delete[] freq;
-
+  // Create the object sum
+  complex c = sum(a,b);
+  cout << "Printing c:" << endl;
+  print(c);
+  
   return 0;
 
+}
+
+void print(complex const& v)
+{
+  cout << "(" << v.real << "," << v.imag << ")" << endl;
+}
+
+double modulo(complex const& v)
+{
+  return sqrt(pow(v.real, 2) + pow(v.imag, 2));
+}
+
+complex sum(complex const& a, complex const& b)
+{
+  complex s;
+  s.real = a.real + b.real;
+  s.imag = a.imag + b.imag;
+  return s;
 }

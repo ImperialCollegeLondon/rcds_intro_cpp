@@ -1,32 +1,35 @@
 /*
-  Exercise 4: Collatz conjecture
+  Exercise 5: Fibonacci series
 */
 
 #include <iostream>
-#include <cmath>
 using namespace std;
 
 int main() {
 
-  // Declara variables
-  int n;
-  int f;
+  // Declare variables
+  int n, element;
+  int first = 0, second = 1;
 
-  // Ask input from keyboard
-  cout << "Input a number" << endl;
-  cin >> n;
+  // Determine the number of elements to compute
+  cout << "Introduce the number of elements to be generated from the Fibonacci series: ";
+  cin  >> n;
 
-  // Run Collatz algorithm
-  while(n != 1) {
-
-    if(n%2 == 0) {
-        f = n/2;
-    } else {
-        f = 3*n + 1;
+  // Run Fibonacci algorithm
+  cout << "First " << n << "elements of the Fibonacci series:" << endl;
+  for (int i = 0; i < n; i++)
+    {
+      if (i <= 1)
+	      element = i;
+      else
+      {
+        element = first + second;
+        first = second;
+        second = element;
+      }
+      cout << element <<  endl;
     }
-    n = f;
-    cout << n << endl;
-  }
 
   return 0;
+
 }

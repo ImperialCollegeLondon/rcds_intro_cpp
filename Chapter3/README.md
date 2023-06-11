@@ -109,8 +109,7 @@ int main() {
 * Compile and run!
 * Reference: [the difference between `++i` and `i++`](https://dev.to/somedood/the-difference-between-x-and-x-44dl)
 
-Try:
-* Save the script as `cube_numbers.cpp`
+Your turn:
 * Change the script to display the 3rd to 9th cubes.
 
 Join in:
@@ -128,7 +127,7 @@ Join in:
 
 Try:
 * Replace `++i` with the more verbose command `i = i+1` and convince yourself that it is equivalent.
-* Change the script to display the 3rd, 5th, 7th and 9th cubes (i.e. go up in 2s, not in 1s)
+* Change the script to display the 3rd, 5th, 7th and 9th cubes.
 
 ## File manipulation
 
@@ -157,7 +156,7 @@ int main() {
 ```
 
 Your turn:
-* Create a new file, `save_to_file2.cpp`, where you print the first 10 squares to a text file called `square_numbers.txt`.
+* Edit file to print the first 10 squares to a text file called `square_numbers.txt`.
 * Run your program again. What can you say about how it writes to the text file?
 * Replace `myfile.open ("square_numbers.txt");` with `myfile.open ("square_numbers.txt", ios_base::app);` to make C++ append to the end of a text file, rather than overwrite.
 
@@ -211,7 +210,7 @@ Write a program in C++ that produces a different output depending on the input v
 
 3. Print the result on the screen.
 
-## Exercise 3 - Hello World for, while, do while
+## Exercise 3 - Hello World with for, while, do while
 
 Write a C++ program that uses loops for printing a result in the terminal.
 
@@ -239,7 +238,7 @@ Write a program in C++ that asks for a number and performs the Collatz algorithm
 
 Write a program in C++ that asks for a number and computes all Fibonacci numbers up to that one
 
-## Exercise 6 - File manipulation
+## File manipulation - exercise 6
 
 Modify the previous exercise in such a way that the final output comes written over a file called `result.dat`.
 
@@ -251,7 +250,7 @@ Modify the previous exercise in such a way that the final output comes written o
 
 4. Close the file with the method `close()`.
 
-## - Exercise 7 - File manipulation
+## File manipulation - exercise 7
 
 Modify the previous exercise in such a way that the final output comes red from an input file called `my_input.dat` with the following content:
 ```
