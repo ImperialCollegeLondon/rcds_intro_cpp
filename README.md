@@ -1,6 +1,6 @@
 # Research Computing and Data Sciences (RCDS) - Introduction to C++
 
-## Dr. Jesús Urtasun Elizari & Dr. Katerina Michalickova
+## Dr. Jesús Urtasun Elizari
 
 ## Imperial College London - Spring term 2023
 

@@ -28,7 +28,7 @@ When programming, we are generally going to have two windows open at the same ti
 ## Terminal and bash
 
 For the purpose of this code we will use the Linux command window or terminal, which runs with the language `bash`.
-For more information check: [this link](https://it.wikipedia.org/wiki/Bash)
+For more information check: [this link](https://en.wikipedia.org/wiki/Bash_(Unix_shell))
 
 - Open the `Terminal`.
 
