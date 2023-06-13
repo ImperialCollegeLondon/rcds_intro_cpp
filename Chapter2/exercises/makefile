@@ -9,23 +9,17 @@ all: program1 program2 program3 program4 program5
 
 # Instructions for compiling
 program1: exercise1.cpp
-	$(CC) -o $@ $<
 
 program2: exercise2.cpp
-	$(CC) -o $@ $<
 
 program3: exercise3.cpp
-	$(CC) -o $@ $<
 
 program4: exercise4.cpp
-	$(CC) -o $@ $<
 
 program5: exercise5.cpp
-	$(CC) -o $@ $<
 
 # program2 is also run automatically
 all: program5
-	./program5
 
 clean:
 	rm program1

@@ -22,8 +22,7 @@ int main() {
   
   // Pring result with fixed
   cout << fixed;
-  cout << "T(Celsius) = " << T_Celsius
-       << " -> T(Kelvin) = " << T_Kelvin << endl;
+  cout << "T(Celsius) = " << T_Celsius << " -> T(Kelvin) = " << T_Kelvin << endl;
 
   return 0;
 
