@@ -8,7 +8,7 @@ using namespace std;
 
 int main() {
 
-  // Declara variables
+  // Declare variables
   int n;
   int f;
 
@@ -20,12 +20,18 @@ int main() {
   while(n != 1) {
 
     if(n%2 == 0) {
-        f = n/2;
+
+        f = n / 2;
+
     } else {
-        f = 3*n + 1;
+
+        f = 3 * n + 1;
+
     }
+
     n = f;
     cout << n << endl;
+
   }
 
   return 0;
