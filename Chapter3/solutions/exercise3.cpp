@@ -1,5 +1,5 @@
 /*
-  Exercise 3: Hello World for, while e do/while
+  Exercise 3: Hello World with for, while,  do while
 */
 
 #include <iostream>

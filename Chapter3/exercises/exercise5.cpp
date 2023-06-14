@@ -16,24 +16,6 @@ int main() {
   cin  >> n;
 
   // Run Fibonacci algorithm
-  cout << "First " << n << "elements of the Fibonacci series:" << endl;
-  for (int i = 0; i < n; i++) {
-    
-    if (i <= 1) {
-
-      element = i;
-      
-    } else {
-
-      element = first + second;
-      first = second;
-      second = element;
-    
-    }
-    
-    cout << element <<  endl;
-  
-  }
 
   return 0;
 
