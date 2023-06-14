@@ -7,17 +7,17 @@ CC=g++
 # All programs to be generated
 all: program1 program2 program3 program4
 
-program1: exercise1.cc
-	$(CC) -o $@ $<
+program1: exercise1.cpp
+	$(CC) $< -o $@
 
-program2: exercise2.cc
-	$(CC) -o $@ $<
+program2: exercise2.cpp
+	$(CC) $< -o $@
 
-program3: exercise3.cc
-	$(CC) -o $@ $<
+program3: exercise3.cpp
+	$(CC) $< -o $@
 
-program4: exercise4.cc
-	$(CC) -o $@ $<
+program4: exercise4.cpp
+	$(CC) $< -o $@
 
 clean:
 	rm -f program1

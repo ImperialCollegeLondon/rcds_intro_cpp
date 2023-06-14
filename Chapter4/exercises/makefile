@@ -11,7 +11,7 @@ program1: exercise1.cpp
 	$(CC) $< -o $@
 
 program2: exercise2.cpp
-	$(CC) $< functions.cpp exercise2.cpp -o $@
+	$(CC) $< -o $@
 
 program3: exercise3.cpp
 	$(CC) $< -o $@
