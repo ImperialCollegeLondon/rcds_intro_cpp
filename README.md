@@ -1,8 +1,8 @@
-# Research Computing and Data Sciences (RCDS) - Introduction to C++
+# RCDS - Introduction to C++
 
 ## Dr. Jesús Urtasun Elizari
 
-## Imperial College London - Spring term 2023
+## Imperial College London - 2023 / 2024
 
 <img src="/readme-images/grad-school-logo.png">
 
