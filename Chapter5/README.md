@@ -265,11 +265,48 @@ For extra practice:
 
 ## Optimisation
 
-* When compiling, use the flag `-O2` to optimise for speed a little bit. Use `-O3` for more optimisation. `-O0` is the default. Example:
+* The first level optimization we can try is at the level of compilation. That is, at the stage of building of bulding the executable program out of our c++ syntax.
+When compiling, use the flag `-O2` to optimise for speed a little bit. Use `-O3` for more optimisation. `-O0` is the default. Example:
 ```bash
 c++ helloworld.cpp -o hello -O3
 ```
 Note: This will make the compile time LONGER, but runtime faster and more efficient! 
+
+* Another way commonly used in C++ is called multi-threading. That is, allowing different parts of the code to be executed in parallel, at the same time.
+Not to be confused with multi tasking (*). Multi-threading is an available tool since c++ v11, back in 2011, and we will see a couple of simple examples.
+
+* Join in the following syntax in a C++ file, and save it as `multi_thread.cpp`:
+```c++
+#include <iostream>
+using namespace std;
+
+// Function 1 - write "+" symbol two hundred times
+void function1() {
+    for (int i = 0; i < 200; i++) {
+        cout << "+";
+    }
+}
+// Function 2 - write "-" symbol two hundred times
+void function2() {
+    for (int i = 0; i < 200; i++) {
+        cout << "-";
+    }
+}
+
+// Main function
+int main() {
+
+    // Call functions
+    function1();
+    function2();
+
+    return 0;
+
+}
+```
+
+This will print out a very predictable outcome. Let's now allow for function1 to be executed by one thread, and function2 by a different one in parallel.
+The first thing we will need to add is a thread heather, such as the `thread` one in the same way we include `iostream` library.
 
 ## Exercise 1 - Pointers
 
