@@ -306,7 +306,44 @@ int main() {
 ```
 
 This will print out a very predictable outcome. Let's now allow for function1 to be executed by one thread, and function2 by a different one in parallel.
-The first thing we will need to add is a thread heather, such as the `thread` one in the same way we include `iostream` library.
+The first thing we will need to add is a thread heather, such as the `thread` one in the same way we include the `iostream` library.
+
+```c++
+#include <iostream>
+#include <thread>
+using namespace std;
+
+// Function 1 - write "+" symbol two hundred times
+void function1() {
+    for (int i = 0; i < 200; i++) {
+        cout << "+";
+    }
+}
+// Function 2 - write "-" symbol two hundred times
+void function2() {
+    for (int i = 0; i < 200; i++) {
+        cout << "-";
+    }
+}
+
+// Main function
+int main() {
+
+    // Call two instances of the class thread
+    std::thread worker1(function1);
+    std::thread worker2(function2);
+
+    // Join for proper syncronization
+    // Avoid termination issues
+    worker1.join();
+    worker2.join();
+
+    cout << "" << endl;
+    
+    return 0;
+
+}
+```
 
 ## Exercise 1 - Pointers
 
