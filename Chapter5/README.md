@@ -74,9 +74,10 @@ int main() {
    p = &x;          
 
    // Check value and memory address
-   cout << "Value of x is " << x << endl;
-   cout << "Address stored in p is " << p << endl;
-   cout << "Value of *p variable is " << *p << endl;
+   cout << "Value of x: " << x << endl;
+   cout << "Address of x: " << &x << endl;
+   cout << "Address stored in p: " << p << endl;
+   cout << "Value of *p variable: " << *p << endl;
 
    return 0;
 
@@ -84,6 +85,46 @@ int main() {
 ```
 Your turn:
 * See what happens to the value of `*p` if we change the value of `x`.
+
+Pointers are a useful way of directly modifying the content of a variable inside a function.
+* Join in the following syntax in a C++ file, and save it as `pointer_array.cpp`
+
+```c++
+#include <iostream>
+using namespace std;
+
+// Function to swap the values of two integers using pointers
+void swap(int *a, int *b) {
+
+   int temp = *a;
+   *a = *b;
+   *b = temp;
+
+}
+
+int main() {
+
+   // Declare variables
+   int x = 10;
+   int y = 20;
+
+   // Print values
+   cout << "Before swapping:" << endl;
+   cout << "x = " << x << endl;
+   cout << "y = " << y << endl;
+
+   // Call the swap function, passing the addresses of x and y
+   swap(&x, &y);
+
+   // Print values
+   cout << "After swapping:" << endl;
+   cout << "x = " << x << endl;
+   cout << "y = " << y << endl;
+
+   return 0;
+
+}
+```
 
 Historically pointers were used instead of arrays.
 * Join in the following syntax in a C++ file, and save it as `pointer_array.cpp`
@@ -241,7 +282,7 @@ class Rectangle {
       // Method computing area
       double area() {return width*height;}
       // Method specifying dimensions
-      void set_dimensions (double,double);
+      void set_dimensions (double, double);
 
 };
 
@@ -329,7 +370,7 @@ void function2() {
 // Main function
 int main() {
 
-    // Call two instances of the class thread
+    // Instance two objects of the class thread
     std::thread worker1(function1);
     std::thread worker2(function2);
 
@@ -340,6 +381,69 @@ int main() {
 
     cout << "" << endl;
     
+    return 0;
+
+}
+```
+
+The main reason of using multi threading is for efficiency purposes. Let's now imagine we have two functions performing time-expensive tasks.
+We will use the `sleep_for` function from `thread` class to stop the code for some seconds, and we will call it twice as our expensive task.
+Then we will use the `chrono` library to compute the difference between the sequential and the parallel (i.e. multi-threaded) time, and compar performance.
+
+```c++
+#include <iostream>
+#include <thread>
+#include <chrono>
+using namespace std;
+
+// Function 1 - write "+" symbol two hundred times
+void function1() {
+
+    // Simulate an expensive task with a sleep
+    this_thread::sleep_for(chrono::seconds(2));
+    cout << "Task 1 completed\n";
+
+}
+// Function 2 - write "-" symbol two hundred times
+void function2() {
+
+   // Simulate an expensive task with a sleep
+    this_thread::sleep_for(chrono::seconds(3));
+    cout << "Task 2 completed\n";
+
+}
+
+// Main function
+int main() {
+
+    // Declare variables
+    double time_sequential;
+    double time_parallel;
+    chrono::high_resolution_clock::time_point start;
+    chrono::high_resolution_clock::time_point end;
+
+    // Measure time for sequential execution
+    start = chrono::high_resolution_clock::now();
+    function1();
+    function2();
+    end = chrono::high_resolution_clock::now();
+    time_sequential = chrono::duration_cast<chrono::milliseconds>(end - start).count();
+    cout << "Sequential execution time: " << time_sequential << " ms\n";
+
+    // Measure time for sequential execution
+    start = chrono::high_resolution_clock::now();
+    // Instance two objects of the class thread
+    thread worker1(function1);
+    thread worker2(function2);
+    // Join for proper syncronization
+    worker1.join();
+    worker2.join();
+    end = chrono::high_resolution_clock::now();
+    time_parallel = chrono::duration_cast<chrono::milliseconds>(end - start).count();
+    cout << "Parallel execution time: " << time_parallel << " ms\n";
+
+    cout << "" << endl;
+
     return 0;
 
 }
