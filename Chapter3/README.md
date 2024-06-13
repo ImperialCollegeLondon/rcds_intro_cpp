@@ -128,7 +128,27 @@ Join in:
 Try:
 * Replace `++i` with the more verbose command `i = i+1` and convince yourself that it is equivalent.
 * Change the script to display the 3rd, 5th, 7th and 9th cubes.
+* Join in the following syntax to explore how the increment of the index can change.
 
+```c++
+#include <iostream>
+#include <cmath>
+using namespace std;
+
+int main() {
+
+    // Post-increment
+    int i = 3;
+    int a = i++; // a = 3, i = 4
+
+    // Pre increment
+    int i = 3;
+    int a = ++i; // i = 4, a = 4
+
+    return 0;
+
+}
+```
 ## File manipulation
 
 Most times, RCDS problems rely on reading data from a given input, or generating results in a specific format. To save and read files, we need to include the `<fstream>` library.
