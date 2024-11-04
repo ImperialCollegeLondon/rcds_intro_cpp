@@ -2,7 +2,7 @@
 
 ## Dr. Jesús Urtasun Elizari
 
-## Imperial College London - 2024 / 2025
+## Imperial College London - 2024 / 2025 
 
 <img src="/readme-images/grad-school-logo.png">
 
