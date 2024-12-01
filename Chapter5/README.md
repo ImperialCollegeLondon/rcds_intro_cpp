@@ -1,4 +1,4 @@
-# Chapter 5 - Pointers, classes and OOP
+## Chapter 5 - Pointers, classes and OOP
 
 - Pointers and memory allocation.
 - Classes and OOP.
@@ -36,7 +36,7 @@ while all programs will be eliminated by using the folloing one:
 $ make clean
 ```
 
-## Pointers
+### Pointers
 
 Where in memory is a variable being stored?
 Today we will address memory allocation and the use of pointers, indeed one of the main features of the C++ language.
@@ -116,7 +116,7 @@ int main () {
 Your turn:
 * See what `*(primes + 2)` outputs.
 
-## Classes and OOP
+### Classes and OOP
 
 Classes are one of the main things that separate C++ from C. Classes are ways for us to set up objects that have properties and functions which are particular to that type of object. That is why programming relying on classes and objects is commonly referred to as "Object Oriented Programming", or OOP.
 * Join the following syntax in a C++ file, and save it as `rectangles.cpp`
@@ -345,7 +345,7 @@ int main() {
 }
 ```
 
-## Exercise 1 - Pointers
+### Exercise 1 - Pointers
 
 Write a C++ program where pointers are used.
 
@@ -364,7 +364,7 @@ Write a C++ program where pointers are used.
 5. Create a dynamic array of type `double` and dimension 10, print the memory address for all components of the array. Print the memory
 address of all components of the array. Verify that the addresses are separated among each other with the number of bytes of type double `double`. (Remember to delete the array at the end of the main function).
 
-## Exercise 2 - Classes
+### Exercise 2 - Classes
 
 Write a C++ program that instances two objects of the class Rectancle.
 
@@ -376,7 +376,7 @@ Write a C++ program that instances two objects of the class Rectancle.
 
 * Replace `area = Rec1.height * Rec1.width;` in theory session with `area = Rec1.area();`, and repeat for the perimeter.
 
-## Exercise 3 - Compute mean value (input from file)
+### Exercise 3 - Compute mean value (input from file)
 
 1. Download the datafile copying the next command and running in the terminal:
 ```bash
