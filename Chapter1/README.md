@@ -1,10 +1,10 @@
-# Chapter 1 - Basics of Linux / UNIX operative systems
+## Chapter 1 - Basics of Linux / UNIX operative systems
 
 - Introduction to Linux operative systems, terminal and bash.
 - Programing languages and performance comparison. Text editors.
 - First steps with C++. Hello world.
 
-## Setting up C++
+### Setting up C++
 
 For some programming languages, like Python, R, Matlab - the so-called *interpreted* ones, there is just one program you need to open to write your code and then run it. For others, like C++, you will need one program to write your code, and then another to *compile* it.
 
@@ -18,6 +18,7 @@ When programming, we are generally going to have two windows open at the same ti
 *Integrated Development Environments* (IDEs) also exist, which often combine a text editor and compiler in one useful program: XCode, Code::Blocks and - to a lesser degree - Visual Studio Code are examples. In scientific computing, we typically develop on different machines to those we end up running on, so in this class we will keep the two ideas separate.
 
 ### Getting C++ set up on the college computers running Windows
+
 1. Open a browser and navigate to Imperial College [Software Hub](https://softwarehub.imperial.ac.uk/?labs)
 2. Search for `Visual Studio Code` in the search box
 3. Visual Studio Code is one of the few search results. Just click `launch`  - done!
@@ -25,7 +26,7 @@ When programming, we are generally going to have two windows open at the same ti
 5. Among the small set of search results that pop up, launch `MinGW 1.0` (the newer version plays badly with Armadillo).
 6. You are all set!
 
-## Terminal and bash
+### Terminal and bash
 
 For the purpose of this code we will use the Linux command window or terminal, which runs with the language `bash`.
 For more information check: [this link](https://en.wikipedia.org/wiki/Bash_(Unix_shell))
@@ -41,7 +42,7 @@ For more information check: [this link](https://en.wikipedia.org/wiki/Bash_(Unix
 
 - Note: all bash commands must be followed by the key `Enter` to be executed.
 
-## The file system
+### The file system
 
 Data contained in the disc of the system is structured in folders, or *directories*. 
 In general, in Linux / UNIX systems, the base directory is called **root**, and it typically comes with the symbol `/`.
@@ -138,7 +139,7 @@ For all comands the use of the `man` command is allowed, displaying the manual a
   ```
   Try to copy the file `file1.txt` created in the previous exercise inside `new_dir2`, and then rename it. Move `file2.txt` directly changing its name in the new destination.
 
-## Text editor
+### Text editor
 
 There are plenty of programs to edit files in Linux. As an example, with the suffix `.txt` a file is interpreted as pure text file, otherwise with `.cpp` it is a program file in C++,
 so colors and messaged concering indentation will appear. We will review these concepts in detail in the following sessions.
@@ -185,7 +186,7 @@ At this point you can try to create a file for C++ code:
 
 You are now ready to dowload the content of the course and follow the first exercises.
 
-## Clone with git
+### Clone with git
 
 Git is a very useful instrument when programming. Even though we will not cover this topic in detail, at least mention that it allows for saving files on a remote server, keep the history of modifications and work in collaborative mode. For instance, [https://github.com](https://github.com) is quite popular for open-source projects at big scale.
 Going through the details of `git` in this tutorial is beyond need. We will use it only as a place to save your codes and access the solutions in an efficient way.
@@ -206,7 +207,7 @@ For obtaining the updated versions it will be enought to perform a `pull`, i.e.:
 ~$ git pull
 ```
 
-## Hello World in C++
+### Hello World in C++
 
 * Open up VSCode and write the following syntax:
 ```c++
