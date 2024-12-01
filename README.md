@@ -9,9 +9,6 @@
 ### Find the content of the course in GitHub:
 [https://github.com/ImperialCollegeLondon/RCDS-intro-cpp](https://github.com/ImperialCollegeLondon/RCDS-intro-cpp)
 
-### Getting C++ set up on your own machine
-Instructions are in the [appendix](#appendix).
-
 This course provides an introduction to the C++ programming language.
 The topics covered will include basic concepts on data science such as variable types, loops, conditional statements, arrays and vectors. 
 The aim of the course is to provide strong foundations at the mathematical and theoretical level, while providing practical exercises to work on real data.
@@ -19,6 +16,9 @@ The aim of the course is to provide strong foundations at the mathematical and t
 The course is organized in six chapters, covering the topics listed below. 
 It will involve practical sessions and hands-on coding, which you can do both in your computer or in the codespaces provided by the course github.
 No prior experience on programming is required for the attendance of this course.
+
+### Getting C++ set up on your own machine
+Instructions are in the [appendix](#appendix).
 
 ## Roadmap of the course
 
