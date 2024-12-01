@@ -1,4 +1,4 @@
-## RCDS - Introduction to probability & statistical inference
+## RCDS - Introduction to C++
 
 ### Dr. Jesús Urtasun Elizari
 
