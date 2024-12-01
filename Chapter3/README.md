@@ -1,4 +1,4 @@
-# Chapter 3 - Conditional statements, loops, file manipulation
+## Chapter 3 - Conditional statements, loops, file manipulation
 
 - Conditional statements if / else.
 - Loops for, while, do while.
@@ -34,7 +34,7 @@ while all programs will be eliminated by using the folloing one:
 $ make clean
 ```
 
-## Conditionals
+### Conditionals
 
 One of the most powerful tools of computer algorithms is the ability of design decision making. Conditional statements allow precisely that, 
 by programing a given flow of operations depending on some conditions being fulfilled.
@@ -82,7 +82,7 @@ Your turn:
     * Hint: `!=` stands for 'not equal to' in C++.
     * Maybe useful: in `if` statements, `&&` stands for AND, `||` for OR.
 
-## Loops
+### Loops
 
 The next tool we are going to put in practice is looping, which stands for the (in) finite repetition of a given task under a certain set of conditions being fulfilled.
 The most comonly used loops in most of programming languages are the so called `for`, `while`, and `do while`.
@@ -128,28 +128,8 @@ Join in:
 Try:
 * Replace `++i` with the more verbose command `i = i+1` and convince yourself that it is equivalent.
 * Change the script to display the 3rd, 5th, 7th and 9th cubes.
-* Join in the following syntax to explore how the increment of the index can change.
 
-```c++
-#include <iostream>
-#include <cmath>
-using namespace std;
-
-int main() {
-
-    // Post-increment
-    int i = 3;
-    int a = i++; // a = 3, i = 4
-
-    // Pre increment
-    int i = 3;
-    int a = ++i; // i = 4, a = 4
-
-    return 0;
-
-}
-```
-## File manipulation
+### File manipulation
 
 Most times, RCDS problems rely on reading data from a given input, or generating results in a specific format. To save and read files, we need to include the `<fstream>` library.
 * Join in the following syntax in a C++ file, and save it as `save_to_file.cpp`
@@ -208,7 +188,7 @@ int main() {
 }
 ```
 
-## Exercise 1 - Increasing / decreasing
+### Exercise 1 - Increasing / decreasing
 
 Recap of previous chapter. Write a program in C++ where:
 
@@ -220,7 +200,7 @@ Recap of previous chapter. Write a program in C++ where:
 
 5. Print the result on the screen.
 
-## Exercise 2 - Even / ood numbers
+### Exercise 2 - Even / ood numbers
 
 Write a program in C++ that produces a different output depending on the input variable
 
@@ -230,7 +210,7 @@ Write a program in C++ that produces a different output depending on the input v
 
 3. Print the result on the screen.
 
-## Exercise 3 - Hello World with for, while, do while
+### Exercise 3 - Hello World with for, while, do while
 
 Write a C++ program that uses loops for printing a result in the terminal.
 
@@ -250,7 +230,7 @@ Hello World while index = {i}
 Hello World do/while index = {i}
 ```
 
-## Exercise 4 - Collatz conjecture
+### Exercise 4 - Collatz conjecture
 
 Write a program in C++ that asks for a number and performs the Collatz algorithm
 
@@ -258,7 +238,7 @@ Write a program in C++ that asks for a number and performs the Collatz algorithm
 
 Write a program in C++ that asks for a number and computes all Fibonacci numbers up to that one
 
-## Exercise 6 - File manipulation
+### Exercise 6 - File manipulation
 
 Modify the previous exercise in such a way that the final output comes written over a file called `result.dat`.
 
@@ -270,7 +250,7 @@ Modify the previous exercise in such a way that the final output comes written o
 
 4. Close the file with the method `close()`.
 
-## Exercise 7 - File manipulation
+### Exercise 7 - File manipulation
 
 Modify the previous exercise in such a way that the final output comes red from an input file called `my_input.dat` with the following content:
 ```
@@ -288,3 +268,4 @@ Modify the previous exercise in such a way that the final output comes red from 
 4. Close the file.
 
 5. Print the result on screen and in the file `result.dat`.
+
