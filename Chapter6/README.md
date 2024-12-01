@@ -1,4 +1,4 @@
-# Chapter 6 - Algebra, armadillo, real RCDS problems
+## Chapter 6 - Algebra, armadillo, real RCDS problems
 
 - Real algebra: scalar product, matrix-vector product
 - Armadillo library
@@ -36,7 +36,7 @@ while all programs will be eliminated by using the folloing one:
 $ make clean
 ```
 
-## Exercsie 1 - Matrix manipulation
+### Exercsie 1 - Matrix manipulation
 
 Write a C++ program that computes the scalar product using dynamic arrays.
 
@@ -46,7 +46,7 @@ Write a C++ program that computes the scalar product using dynamic arrays.
 
 3. Print the elemnts of `s`.
 
-## Exercsie 2 - Scalar product
+### Exercsie 2 - Scalar product
 
 Write a C++ program that computes the scalar product using dynamic arrays.
 
@@ -60,7 +60,7 @@ Write a C++ program that computes the scalar product using dynamic arrays.
 
 5. Normalize `z` and print its values on the terminal.
 
-## Exercise 3 - Matrix-vector product
+### Exercise 3 - Matrix-vector product
 
 Write a C++ program that compute a matrix-vector product.
 
@@ -72,7 +72,7 @@ Write a C++ program that compute a matrix-vector product.
 
 3. Print the result and verify the solution `r = {34, 39, 7}`.
 
-## Exercise 4 - Scalar product, norm, transposed matrix
+### Exercise 4 - Scalar product, norm, transposed matrix
 
 Write a C++ program that computes the following algebra operations.
 
@@ -88,7 +88,7 @@ Test the function with `v` and `w` and print the result on screen.
 Apply this function to `M` (e.g. compute the transpose) and print the result on screen.
 
 
-## Exercise 5 - Data structure and complex numbers
+### Exercise 5 - Data structure and complex numbers
 
 Write a C++ program where complex numbers are saved as data structure
 
@@ -111,7 +111,7 @@ Test the function directly on the main passing `a` as argument.
 8. Implement a function `sum` of type `complex` thakes as arguments 2 objects `complex` and returns a new `complex`
 where the real and imaginary parts correspond to those of the sum of the arguments.
 
-## Exercise 6 - Second order equations
+### Exercise 6 - Second order equations
 
 Write a program in C++ that solves a second order equation `a x^2 + b x + c = 0`
 for all discriminants (>, < e = 0) and where the variables `a`, `b` e `c` come assigned with `cin`.
@@ -131,9 +131,7 @@ Verify the implementation for the following coefficients:
 - `a = 4`, `b = -4`, `c = 1` -> solutions`x1,2 = 0.5`.
 - `a = 1`, `b = 4`, `c = 5` -> solutions `x1 = -2 + i` e `x2 = -2 - i`.
 
-## Armadillo
-
-### 20. (Extra) Armadillo, for vectors and matrices
+### Armadillo, c++ library for vectors and matrices
 
 [Armadillo](http://arma.sourceforge.net/) is a linear algebra library for C++ which uses syntax quite similar to that used in Matlab or Python (with NumPy). Setup is different for different operating systems but the instructions are pretty good.
 
@@ -205,7 +203,7 @@ Compile:
 
 We should get the solution: *x* = 19, *y* = –14, *z* = –4.
 
-## Advanced - Rectilinear movement
+### Advanced - Rectilinear movement
 
 Write a C++ program that reads space and time coordinates of a falling particle from a file, computes the instant velocity for each measurement and the mean velocity, its standard deviation, the minimum and maximum values
 
@@ -222,7 +220,7 @@ wget https://github.com/ImperialCollegeLondon/RCDS-intro-cpp/blob/main/Chapter6/
 
 5. Verify the results.
 
-## Advanced - Estimate the mass of the Higgs boson
+### Advanced - Estimate the mass of the Higgs boson
 
 Write a C++ program that reads from a file the distribution of invariant mass for the production channel of 4 leptons to Higgs, measured at the ATLAS detector, and determine the most frequent (most likely) value for the mass.
 
@@ -249,7 +247,7 @@ wget https://github.com/ImperialCollegeLondon/RCDS-intro-cpp/blob/main/Chapter6/
 
 8. Determine the bin (lower-edge) of Higgs mass with highest frequence.
 
-## Advanced - Numerical integration
+### Advanced - Numerical integration
 
 Write a C++ program that computes the numerical integral of an analytical function usin the trapezoidal rule
 ```
