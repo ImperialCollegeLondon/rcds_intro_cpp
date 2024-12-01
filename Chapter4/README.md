@@ -1,4 +1,4 @@
-# Chapter 4 - Arrays & vectors, functions
+## Chapter 4 - Arrays & vectors, functions
 
 - Arrays and vectors.
 - Functions
@@ -36,7 +36,7 @@ while all programs will be eliminated by using the folloing one:
 $ make clean
 ```
 
-## Arrays
+### Arrays
 
 The use of arrays is a very powerful tool for both mathematical computations, and also for storing informationin an efficient way.
 Basic algebra is deeply relying in vector and matrix manipulation, so today we will focus on how to deal with multidimensional objects in C++. 
@@ -106,7 +106,7 @@ int main() {
 * Multidimensional arrays work too
     * `int magic_square[3][3] = {{4,9,2},{3,5,7},{8,1,6}};`
 
-## Functions
+### Functions
 
 Until now, we have been always writing all our code inside the main function.
 Writing functions that perform specific tasks allows us to do more complicated things in a sequential way.
@@ -297,7 +297,7 @@ Your turn:
 * Add a function `is_absolute_value_less_than_1`. Put it in its own file, add its declaration to the header file, make the main file output `is_absolute_value_less_than_1(n)`,  compile, and check that it works.
 * Harder version: Look up the data type for `true` and `false` in C++
 
-## Exercise 1 - Multiplication table
+### Exercise 1 - Multiplication table
 
 Create a C++ code that prints a 10x10 multiplication table.
 
@@ -307,7 +307,7 @@ Create a C++ code that prints a 10x10 multiplication table.
 
 3. Loop through all rows and columns again, `cout` ing appropriately the elements of the table.
 
-## Exercise 2 - Arrays and functions
+### Exercise 2 - Arrays and functions
 
 Write a C++ program where functions are used
 
@@ -326,7 +326,7 @@ of type `int` passed by reference.
 
 6. Write a function `sort_array` of type `void` that sorts out in increasing mode an array ot type `int`. Test the function with the array `v`.
 
-## Exercise 3 - Conversion temperature
+### Exercise 3 - Conversion temperature
 
 Recap of previous chapter. Write a C++ program where it is possible to convert a temperature from Celsius to Kelvin or Farenheit (using two-way selection `if` / `else`).
 
@@ -352,6 +352,12 @@ T(Fahrenheit) = T(Celsius) * 9.0 / 5.0 + 32.0
 6. Print the result in the following formato:
 ```text
 T(Celsius) = <input_value> -> T(<option>) = <converted_value>
+```
+
+Verify the next conversions:
+- 20 °C -> 68.0 °F
+- 20 °C -> 293.15 K
+
 ```
 
 Verify the next conversions:
