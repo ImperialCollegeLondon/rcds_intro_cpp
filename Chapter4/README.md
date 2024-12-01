@@ -36,12 +36,12 @@ while all programs will be eliminated by using the folloing one:
 $ make clean
 ```
 
-## Arrays and vectors
+## Arrays
 
 The use of arrays is a very powerful tool for both mathematical computations, and also for storing informationin an efficient way.
 Basic algebra is deeply relying in vector and matrix manipulation, so today we will focus on how to deal with multidimensional objects in C++. 
 Let's begin by editing the square numbers exercise of previos chapter, such that the square numbers are now stored in an array
-* Join in the following syntax in a C++ file, and save it as `square_numbers_array.cpp`.
+* Join in the following syntax in a C++ file, and save it as `square_numbers.cpp`.
 ```c++
 #include <iostream>
 #include <cmath>
@@ -102,73 +102,9 @@ int main() {
 * You can only use curly brackets like this at initialisation time.
 * We can also declare:
     * `int favourite_numbers[] = {3,1,-4,1};`
+
 * Multidimensional arrays work too
     * `int magic_square[3][3] = {{4,9,2},{3,5,7},{8,1,6}};`
-
-* As we see, arrays are a basic feature of the C++ language used to store a fixed-size sequential collection of elements of the same type.
-* Vectors, on the other and, are part of the C++ Standard Library (std::vector). They are dynamic arrays that can change size as needed.
-* Join in the following syntax in a C++ file, and save it as `square_numbers_vector.cpp`:
-```c++
-#include <iostream>
-#include <vector>
-using namespace std;
-
-int main() {
-
-    // Create an empty vector of integers
-    vector<int> vec;
-
-    // Add elements
-    vec.push_back(1);
-    vec.push_back(2);
-    vec.push_back(3);
-    vec.push_back(4);
-    vec.push_back(5);
-
-    // Display elements
-    cout << "Elements in the vector: ";
-    for (int i : vec) {
-        cout << i << " ";
-    }
-    cout << endl;
-
-    // Remove the last element
-    vec.pop_back();
-
-    // Display the elements
-    cout << "After pop_back(): ";
-    for (int i : vec) {
-        cout << i << " ";
-    }
-    cout << endl;
-
-    // Remove an element at a specific position (e.g., the second element)
-    vec.erase(vec.begin() + 1);
-
-    // Display elements after erasing the second element
-    cout << "After erase(vec.begin() + 1): ";
-    for (int i : vec) {
-        cout << i << " ";
-    }
-    cout << endl;
-
-    // Clear all elements in the vector
-    vec.clear();
-
-    // Display elements after clearing the vector
-    cout << "After clear(): ";
-    if (vec.empty()) {
-        cout << "Vector is empty";
-    } else {
-        for (int i : vec) {
-            cout << i << " ";
-        }
-    }
-    cout << endl;
-
-    return 0;
-}
-```
 
 ## Functions
 
@@ -290,14 +226,12 @@ Now we're going to split our sign_function and absolute_value functions into sep
 #include <iostream> // Not strictly necessary
 using namespace std;
 
-int sign_function(int n) {
-
-    // Return sign
+int sign_function(int n)
+{
     int sign;
-    
-    if(n > 0) {
+    if(n>0){
         sign = 1;
-    } else if(n == 0) {
+    } else if(n==0){
         sign = 0;
     } else {
         sign = -1;
