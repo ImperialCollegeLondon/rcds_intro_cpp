@@ -106,6 +106,7 @@ int main() {
 * Multidimensional arrays work too
     * `int magic_square[3][3] = {{4,9,2},{3,5,7},{8,1,6}};`
 
+
 ### Vectors
 
 Unlike arrays, which have a fixed size that must be known at compile time, vectors are dynamically resizable.
