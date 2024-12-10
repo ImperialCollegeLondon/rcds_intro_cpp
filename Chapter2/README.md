@@ -146,14 +146,14 @@ A key difference to understand about data types in C++ is signed vs unsigned.
 In signed variables, one bit is reserved for the sign (positive or negative), reducing the range of values.
 As an example, for a 4-byte (32-bit) signed integer, the range it can represent would be: -2,147,483,648 to 2,147,483,647.
 * Use when negative values are valid or necessary for your data. For example:
-- Temperature readings (e.g., -20°C to 50°C)
-- Financial data, involving credits and debts (positive and negative).
+1. Temperature readings (e.g., -20°C to 50°C)
+2. Financial data, involving credits and debts (positive and negative).
 
 With unsigned variables, no sign bit is required, so all bits are used for the value, effectively doubling the maximum range.
 For a 4-byte (32-bit) unsigned integer, tha range would be: 0 to 4,294,967,295.
 * Use when only non-negative values are valid, and you need a larger range of positive numbers. For example:
-- Counting objects (e.g., number of files, age, etc.).
-- Addressing memory locations (memory addresses are non-negative).
+1. Counting objects (e.g., number of files, age, etc.).
+2. Addressing memory locations (memory addresses are non-negative).
 
 ```cpp
 #include <iostream>
@@ -219,7 +219,7 @@ int main() {
 
     // Calls greet from Second namespace
     Second::greet();
-    
+
     return 0;
 }
 
@@ -230,17 +230,16 @@ from the C++ Standard Library, such as *cout*, *cin*, *vector*, and *string*.
 Although it may seem similar or equivalent to a *library*, there are some differences.
 
 * Namespace:
-- A logical grouping mechanism within the code.
-- Exists in the code structure (not as a separate file or entity).
-- Helps prevent name conflicts by separating identifiers with the same name.
+1. A logical grouping mechanism within the code.
+2. Exists in the code structure (not as a separate file or entity).
+3. Helps prevent name conflicts by separating identifiers with the same name.
 
 * Library:
-- A physical collection of precompiled code (functions, classes, etc.) stored in files (e.g., .lib, .dll, .so).
-- You include a library in your project to use its functionalities.
-- Libraries may or may not use namespaces internally.
+1. A physical collection of precompiled code (functions, classes, etc.) stored in files (e.g., .lib, .dll, .so).
+2. You include a library in your project to use its functionalities.
+3. Libraries may or may not use namespaces internally.
 
-
-As a summary, a *namespace* is a logical grouping for avoiding name conflicts, while a *Library* is a reusable collection of precompiled code.
+As a summary, a *namespace* is a logical grouping for avoiding name conflicts, while a *library* is a reusable collection of precompiled code.
 Multiple namespaces are possible and commonly used for modularity and clarity.
 
 ### Makefile
