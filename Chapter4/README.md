@@ -106,6 +106,78 @@ int main() {
 * Multidimensional arrays work too
     * `int magic_square[3][3] = {{4,9,2},{3,5,7},{8,1,6}};`
 
+### Vectors
+
+Unlike arrays, which have a fixed size that must be known at compile time, vectors are dynamically resizable.
+You can add or remove elements at runtime using methods like `push_back()` or `pop_back()`.
+
+```cpp
+#include <iostream>
+#include <vector>
+using namespace std;
+
+int main() {
+
+    // Declare variables
+    int arr[5] = {1, 2, 3, 4, 5};
+    vector<int> vec = {1, 2, 3, 4, 5};
+
+    // Access elements
+    cout << "\nArray elements:" << endl;
+    for (int i = 0; i < 5; i++) {
+        cout << arr[i] << " ";
+    }
+
+    // Access elements
+    cout << "\nVector elements:" << endl;
+    for (int i = 0; i < vec.size(); i++) {
+        cout << vec[i] << " ";
+    }
+
+    // Add element to vector
+    vec.push_back(6);
+    cout << "\nVector after adding element: ";
+    for (int i = 0; i < vec.size(); i++) {
+        cout << vec[i] << " ";
+    }
+
+    // Remove last element from vector
+    vec.pop_back(); // Removes the last element
+    cout << "\nVector after removing the last element: ";
+    for (int i = 0; i < vec.size(); i++) {
+        cout << vec[i] << " ";
+    }
+
+    return 0;
+
+}
+```
+
+You may encounter a compilation error when running the previous code.
+The error occurs because the initializer list syntax `({1, 2, 3, 4, 5})` for `std::vector` is supported only in **C++11** and later. 
+If your compiler defaults to an older C++ standard, you will need to enable C++11 or later explicitly.
+
+```bash
+g++ vectors.cpp -std=c++11 -o vectors
+```
+
+As a summary, key diffenrences between arrays and vectors in C++:
+
+1. **Size**:
+   - **Arrays**: Have a fixed size that must be known at compile time.
+   - **Vectors**: Are dynamically resizable. 
+
+2. **Flexibility**:
+   - **Arrays**: Cannot change size after declaration.
+   - **Vectors**: Automatically adjust their size to accommodate added or removed elements.
+
+3. **Library Support**:
+   - **Arrays**: Are part of the core language, no additional library required.
+   - **Vectors**: Require the `<vector>` header and provide a rich set of member functions.
+
+4. **Access and Iteration**:
+   - Both arrays and vectors can be accessed using indices and support similar syntax for iteration.
+
 ### Functions
 
 Until now, we have been always writing all our code inside the main function.
