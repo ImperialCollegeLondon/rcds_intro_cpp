@@ -139,6 +139,110 @@ Your turn:
 * Change the code so that it inputs two integers, *a* and *b*, and displays *a*/*b*.
 * Input *a* as 3, and *b* as 2. What do you notice?
 
+### Signed and unsigned variables
+
+A key difference to understand about data types in C++ is signed vs unsigned.
+
+In signed variables, one bit is reserved for the sign (positive or negative), reducing the range of values.
+As an example, for a 4-byte (32-bit) signed integer, the range it can represent would be: -2,147,483,648 to 2,147,483,647.
+* Use when negative values are valid or necessary for your data. For example:
+- Temperature readings (e.g., -20°C to 50°C)
+- Financial data, involving credits and debts (positive and negative).
+
+With unsigned variables, no sign bit is required, so all bits are used for the value, effectively doubling the maximum range.
+For a 4-byte (32-bit) unsigned integer, tha range would be: 0 to 4,294,967,295.
+* Use when only non-negative values are valid, and you need a larger range of positive numbers. For example:
+- Counting objects (e.g., number of files, age, etc.).
+- Addressing memory locations (memory addresses are non-negative).
+
+```cpp
+#include <iostream>
+using namespace std;
+
+int main() {
+
+    // Declare variables
+    signed int signed_var = -10;
+    unsigned int unsigned_var = 10;
+    unsigned int unsigned_wrap = 0;
+
+    // Substract 1 from the smallest possible value of unsigned variable
+    unsigned_wrap = unsigned_wrap - 1;
+
+    // Display values
+    cout << "Signed variable: " << signed_var << endl;
+    cout << "Unsigned variable: " << unsigned_var << endl;
+    cout << "When an unsigned variable wraps around: " << unsigned_wrap << endl;
+
+    // Input signed variable exceeding range
+    cout << "\nEnter a signed integer: ";
+    cin >> signed_var;
+    cout << "You entered: " << signed_var << endl;
+
+    // Input unsigned variable exceeding range
+    cout << "Enter an unsigned integer: ";
+    cin >> unsigned_var;
+    cout << "You entered: " << unsigned_var << endl;
+
+    return 0;
+
+}
+```
+
+### Namespaces and libraries
+
+A *namespace* in C++ is a way to group and organize related classes, functions, variables, and other identifiers to avoid name collisions.
+It provides a logical scope for the identifiers it contains. 
+
+```cpp
+#include <iostream>
+
+// First namespace
+namespace First {
+    void greet() {
+        std::cout << "Hello from First namespace!" << std::endl;
+    }
+}
+
+// Second namespace
+namespace Second {
+    void greet() {
+        std::cout << "Hello from Second namespace!" << std::endl;
+    }
+}
+
+// Main function
+int main() {
+
+    // Calls greet from First namespace
+    First::greet();
+
+    // Calls greet from Second namespace
+    Second::greet();
+    
+    return 0;
+}
+
+```
+The *std* namespace is the Standard Library namespace in C++. It contains all the identifiers (like functions, classes, objects) 
+from the C++ Standard Library, such as *cout*, *cin*, *vector*, and *string*.
+
+Although it may seem similar or equivalent to a *library*, there are some differences.
+
+* Namespace:
+- A logical grouping mechanism within the code.
+- Exists in the code structure (not as a separate file or entity).
+- Helps prevent name conflicts by separating identifiers with the same name.
+
+* Library:
+- A physical collection of precompiled code (functions, classes, etc.) stored in files (e.g., .lib, .dll, .so).
+- You include a library in your project to use its functionalities.
+- Libraries may or may not use namespaces internally.
+
+
+As a summary, a *namespace* is a logical grouping for avoiding name conflicts, while a *Library* is a reusable collection of precompiled code.
+Multiple namespaces are possible and commonly used for modularity and clarity.
+
 ### Makefile
 
 * Until now we are compiling all scripts directly on terminal as:
