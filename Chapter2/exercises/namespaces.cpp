@@ -2,6 +2,8 @@
 
 // First namespace
 namespace First {
+
+    // Void function printing greeting
     void greet() {
         std::cout << "Hello from First namespace!" << std::endl;
     }
@@ -9,6 +11,8 @@ namespace First {
 
 // Second namespace
 namespace Second {
+
+    // Void function printing greeting
     void greet() {
         std::cout << "Hello from Second namespace!" << std::endl;
     }

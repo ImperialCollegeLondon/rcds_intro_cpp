@@ -6,15 +6,15 @@ int main() {
     // Declare variables
     signed int signed_var = -10;
     unsigned int unsigned_var = 10;
-    unsigned int unsigned_wrap = 0;
+    unsigned int unsigned_min = 0;
 
     // Substract 1 from the smallest possible value of unsigned variable
-    unsigned_wrap = unsigned_wrap - 1;
+    unsigned_min = unsigned_min - 1;
 
     // Display values
     cout << "Signed variable: " << signed_var << endl;
     cout << "Unsigned variable: " << unsigned_var << endl;
-    cout << "When an unsigned variable wraps around: " << unsigned_wrap << endl;
+    cout << "Unsigned variable below minimum: " << unsigned_min << endl;
 
     // Input signed variable exceeding range
     cout << "\nEnter a signed integer: ";
@@ -22,7 +22,7 @@ int main() {
     cout << "You entered: " << signed_var << endl;
 
     // Input unsigned variable exceeding range
-    cout << "Enter an unsigned integer: ";
+    cout << "\nEnter an unsigned integer: ";
     cin >> unsigned_var;
     cout << "You entered: " << unsigned_var << endl;
 
