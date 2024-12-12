@@ -85,7 +85,90 @@ int main() {
 Your turn:
 * See what happens to the value of `*p` if we change the value of `x`.
 
+### Dynamic memory allocation
+
 Historically pointers were used instead of arrays.
+* Join in the following syntax in a C++ file, and save it as `pointer_array.cpp`
+
+```c++
+// Include libraries
+#include <iostream>
+using namespace std;
+
+// Function computing double of array
+void double_values(int* arr, int size);
+
+// Function printing elements od array
+void print_array(const int* arr, int size);
+
+// Main function
+int main() {
+
+    // Declare variables
+    int size;
+    int *arr = new int[size]; // Dynamic memory allocation for the array
+
+    // Assign values (even size is input now)
+    cout << "Enter the size of the array: ";
+    cin >> size;
+    cout << "Enter " << size << " elements separated by space: ";
+    for (int i = 0; i < size; ++i) {
+        cin >> arr[i];
+    }
+
+    // Print elements of array
+    cout << "Original array: ";
+    print_array(arr, size);
+
+    // Double values
+    double_values(arr, size);
+
+    // Print elements of doubled array
+    cout << "Doubled array: ";
+    print_array(arr, size);
+
+    // Free dynamically allocated memory
+    delete[] arr;
+
+    return 0;
+
+}
+
+// Function computing double of array
+void double_values(int* arr, int size) {
+
+    // Using pointer arithmetic to iterate and modify the array
+    
+    // Declares a pointer p of type int* and initializes it to point to the start of the array arr
+    // Iterate while p points to a between boundaries of the array
+    // Moves the pointer p to the next element in the array
+    for (int *p = arr; p < arr + size; ++p) {
+        *p = *p * 2;
+    }
+
+}
+
+// Function printing elements od array
+void print_array(const int* arr, int size) {
+
+    // Using pointer arithmetic to access and print the array elements
+    
+    // Declaring pointer as const ensures that values it points to cannot be altered
+    // Ensure printing function works in non destructive manner
+    for (const int *p = arr; p < arr + size; ++p) {
+        cout << *p << " ";
+    }
+    cout << endl;
+}
+```
+
+In C++, the placement of the `*` symbol in pointer declarations (`int* ptr` vs `int * ptr`) is a matter of style. Both styles are functionally equivalent, but each has different implications and preferences depending on the context. The compiler treats these declarations identically.
+- The `int* ptr` style (Often preferred in modern C++), highlights that `ptr` is a pointer type.
+- The `int * ptr` style, emphasizes the association of `*` with the variable name.
+
+Feel free to choose the style that best aligns with your conventions or personal preference. Both styles are valid and widely accepted.
+
+Another exercise to play with pointers and arrays.
 * Join in the following syntax in a C++ file, and save it as `pointer_array.cpp`
 
 ```c++
@@ -112,9 +195,6 @@ int main () {
 
 }
 ```
-
-Your turn:
-* See what `*(primes + 2)` outputs.
 
 ### Classes and OOP
 
@@ -263,7 +343,67 @@ Your turn:
 For extra practice:
 * Create a class `complex_number`. Set up some functions for adding and multiplying them.
 
-## Optimisation
+### Inheritance
+
+```c++
+#include <iostream>
+using namespace std;
+
+class Rectangle {
+   public:
+      // Length of rectangle
+      double width;
+      // Height of rectangle
+      double height;
+      // Method computing area
+      double area() {return width * height;}
+      // Method specifying dimensions
+      void set_dimensions(double, double);
+};
+
+void Rectangle::set_dimensions(double x, double y) {
+    width = x;
+    height = y;
+}
+
+// Square class inherits from Rectangle
+class Square : public Rectangle {
+   public:
+      // Constructor that ensures width and height are equal
+      Square(double side) {set_dimensions(side, side);}
+};
+
+int main() {
+
+    // Declare Rec1 and Rec2 of type Rectangle
+    Rectangle Rec1;
+    Rectangle Rec2;
+    Square Sq1(4);  // Square with side length 4
+    double area;
+
+    // Rectangles specification
+    Rec1.set_dimensions(5, 6);
+    Rec2.set_dimensions(3, 4);
+
+    // Compute area of Rec1
+    area = Rec1.area();
+    cout << "Area of Rec1: " << area << endl;
+
+    // Compute area of Rec2
+    area = Rec2.area();
+    cout << "Area of Rec2: " << area << endl;
+
+    // Compute area of Sq1 (Square)
+    area = Sq1.area();
+    cout << "Area of Sq1: " << area << endl;
+
+    return 0;
+
+}
+
+```
+
+### Optimisation
 
 * The first level optimization we can try is at the level of compilation. That is, at the stage of building of bulding the executable program out of our c++ syntax.
 When compiling, use the flag `-O2` to optimise for speed a little bit. Use `-O3` for more optimisation. `-O0` is the default. Example:
