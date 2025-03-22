@@ -12,19 +12,10 @@ A *compiler* is a program which takes the text file we have written and turns it
 
 When programming, we are generally going to have two windows open at the same time:
 
-- The text editor (for this code we are using as an example [VSCode](https://code.visualstudio.com/))
+- The text editor, where we write the code (we will use as example [VSCode](https://code.visualstudio.com/))
 - The command line, or terminal, where a C++ compiler has already been installed and set up
 
-*Integrated Development Environments* (IDEs) also exist, which often combine a text editor and compiler in one useful program: XCode, Code::Blocks and - to a lesser degree - Visual Studio Code are examples. In scientific computing, we typically develop on different machines to those we end up running on, so in this class we will keep the two ideas separate.
-
-### Getting C++ set up on the college computers running Windows
-
-1. Open a browser and navigate to Imperial College [Software Hub](https://softwarehub.imperial.ac.uk/?labs)
-2. Search for `Visual Studio Code` in the search box
-3. Visual Studio Code is one of the few search results. Just click `launch`  - done!
-4. Clear the search box and then search for `mingw` in the search box
-5. Among the small set of search results that pop up, launch `MinGW 1.0` (the newer version plays badly with Armadillo).
-6. You are all set!
+*Integrated Development Environments* (IDEs) also exist, which often combine a text editor and compiler in one useful program: XCode, Visual Studio Code, PyCharm, Netbeans, etc, are some examples. In scientific computing, we typically develop on different machines to those we end up running on, so in this class we will keep the two ideas separate.
 
 ### Terminal and bash
 
