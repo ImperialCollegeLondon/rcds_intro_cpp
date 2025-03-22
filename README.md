@@ -56,7 +56,10 @@ No prior experience on programming is required for the attendance of this course
 - Real RCDS problems: Rectilinear movement, estimate Higgs mass, numerical integration.
 
 ## Getting C++ set up on your own machine
-Follow the instructions below, depending on which type of machine you will use.
+
+We will be working with *Visual Studio Code* as main editor, and *g++* as compiler. Although recommended, they do not need to be installed in your local computers, since we will use `Codespaces` provided by `Github`, which already implement an interface ready to program an execute the code.
+
+For local instalation follow the instructions below, depending on which type of machine you will use.
 
 ### Step 1: Have a text editor ready
 We are going to be writing our code in a text editor. This is a program which lets us produce plain text files. There are lots of choices available, but we recommend downloading [VSCode](https://code.visualstudio.com/).
