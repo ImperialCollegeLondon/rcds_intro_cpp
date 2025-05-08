@@ -1,6 +1,4 @@
-/*
-  Exercise 7: Input file
-*/
+// Exercise 7: Read data from input file
 
 #include <iostream>
 #include <fstream>

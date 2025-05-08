@@ -1,6 +1,4 @@
-/*
-  Exercise 4: Collatz conjecture
-*/
+// Exercise 4: Collatz conjecture
 
 #include <iostream>
 #include <cmath>

@@ -1,6 +1,4 @@
-/*
-  Exercise 5: Fibonacci series
-*/
+// Exercise 5: Fibonacci series
 
 #include <iostream>
 using namespace std;

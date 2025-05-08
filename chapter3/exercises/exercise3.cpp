@@ -1,6 +1,4 @@
-/*
-  Exercise 3: Hello World with for, while,  do while
-*/
+// Exercise 3: Hello World with for, while,  do while
 
 #include <iostream>
 using namespace std;

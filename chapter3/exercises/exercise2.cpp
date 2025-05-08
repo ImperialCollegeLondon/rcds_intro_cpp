@@ -1,6 +1,4 @@
-/*
-  Exercise 2: even / odd numbers
-*/
+// Exercise 2: even / odd numbers
 
 #include <iostream>
 using namespace std;

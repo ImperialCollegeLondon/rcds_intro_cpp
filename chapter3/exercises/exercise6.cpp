@@ -1,6 +1,4 @@
-/*
-  Exsercise 6: Output file
-*/
+// Exercise 6: Write data to utput file
 
 #include <iostream>
 #include <fstream>
