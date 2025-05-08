@@ -1,7 +1,5 @@
-/*
-  Exercise 1: Hello World
-  Print the "Hello World!" message on screen
-*/
+// Exercise 1: Hello World
+// Print the "Hello World!" message on screen
 
 #include <iostream>
 using namespace std;
