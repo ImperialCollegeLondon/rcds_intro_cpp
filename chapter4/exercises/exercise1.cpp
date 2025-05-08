@@ -1,6 +1,4 @@
-/*
-  Exercise: Multiplication table
-*/
+// Exercise: Multiplication table
 
 #include <iostream>
 using namespace std;

@@ -1,6 +1,4 @@
-/*
-  Exercise: Arrays and functions
-*/
+// Exercise: Arrays and functions
 
 #include <iostream>
 using namespace std;

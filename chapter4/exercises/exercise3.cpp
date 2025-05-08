@@ -1,6 +1,4 @@
-/*
-  Exercise: Conversion temperature
-*/
+// Exercise: Conversion temperature
 
 #include <iostream>
 using namespace std;
