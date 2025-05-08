@@ -1,6 +1,4 @@
-/*
-  Exercise: Scalar product and normalization
-*/
+// Exercise: Scalar product and normalization
 
 #include <iostream>
 #include <cmath>

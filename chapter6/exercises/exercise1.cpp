@@ -1,6 +1,4 @@
-/*
-  Exercise: Matrix manipulation
-*/
+// Exercise: Matrix manipulation
 
 #include <iostream>
 using namespace std;

@@ -1,6 +1,4 @@
-/*
-  Exercise: Vector-matrix product
-*/
+// Exercise: Vector-matrix product
 
 #include <iostream>
 using namespace std;

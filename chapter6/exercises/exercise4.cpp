@@ -1,6 +1,4 @@
-/*
-  Exercise: Scalar product, norm, transpose matrix
-*/
+// Exercise: Scalar product, norm, transpose matrix
 
 #include <iostream>
 #include <cmath>

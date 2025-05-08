@@ -1,6 +1,4 @@
-/*
-  Exercise: Hello World struct
-*/
+// Exercise: Hello World struct
 
 #include <iostream>
 #include <cmath>
