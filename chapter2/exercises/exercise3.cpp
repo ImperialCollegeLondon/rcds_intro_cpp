@@ -1,6 +1,4 @@
-/*
-  Exercise 3: Input / output
-*/
+// Exercise 3: Input / output variables
 
 #include <iostream>
 using namespace std;

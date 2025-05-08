@@ -1,6 +1,4 @@
-/*
-  Exercise 5: Converting temperature
-*/
+// Exercise 5: Converting temperature
 
 #include <iostream>
 using namespace std;

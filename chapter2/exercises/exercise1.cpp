@@ -1,6 +1,4 @@
-/*
-  Exercise 1: Variables
-*/
+// Exercise 1: Variablesin C++
 
 #include <iostream>
 using namespace std;

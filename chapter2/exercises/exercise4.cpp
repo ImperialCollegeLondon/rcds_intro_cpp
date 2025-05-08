@@ -1,6 +1,4 @@
-/*
-  Exercise 4: Notation for cout
-*/
+// Exercise 4: Notation for cout
 
 #include <iostream>
 using namespace std;

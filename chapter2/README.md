@@ -331,7 +331,7 @@ Write a program in C++ that computes the area and perimeter of a rectangle.
 
 6. Run the code and check the output.
 
-### Exercise 3 - Input / output
+### Exercise 3 - Input / output variables
 
 Copy the file `exercise2.cpp` (area/perimeter rectangle) in a new file `exercise3.cpp`.
 
@@ -345,7 +345,7 @@ Copy file of the previous exercise in `exercise4.cc`.
 
 2. Print with `cout`, in any notation, the area and perimeter of the rectangle in the same row, separed by tabulation `\t`.
 
-3. Basic arithmetic works out of the box, as you've seen. For 'scientific calculator' stuff, we need the `<cmath>` library. Libraries are like toolboxes.
+3. Basic arithmetic works out of the box, as you've seen. For 'scientific calculator' stuff, we need the `<cmath>` library.
 
 ### Exercise 5 - Converting temperature
 

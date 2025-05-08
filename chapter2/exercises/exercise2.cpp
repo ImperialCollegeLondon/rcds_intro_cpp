@@ -1,6 +1,4 @@
-/*
-  Esercise 2: Area and perimeter
-*/
+// Exercise 2: Area and perimeter of a rectangle
 
 #include <iostream>
 using namespace std;
