@@ -4,7 +4,7 @@
 
 ### Imperial College London - 2024 / 2025
 
-<img src="/readme-images/grad-school-logo.png">
+<img src="/readme_figures/grad-school-logo.png">
 
 ### Find the content of the course in GitHub:
 [https://github.com/ImperialCollegeLondon/RCDS-intro-cpp](https://github.com/ImperialCollegeLondon/RCDS-intro-cpp)
