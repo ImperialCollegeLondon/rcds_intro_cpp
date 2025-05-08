@@ -1,6 +1,4 @@
-/*
-  Exercise: Pointers
-*/
+// Exercise: Pointers
 
 #include <iostream>
 using namespace std;

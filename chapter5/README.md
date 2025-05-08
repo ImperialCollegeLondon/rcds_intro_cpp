@@ -504,7 +504,7 @@ Write a C++ program where pointers are used.
 5. Create a dynamic array of type `double` and dimension 10, print the memory address for all components of the array. Print the memory
 address of all components of the array. Verify that the addresses are separated among each other with the number of bytes of type double `double`. (Remember to delete the array at the end of the main function).
 
-### Exercise 2 - Classes
+### Exercise 2 - Classes and inheritance
 
 Write a C++ program that instances two objects of the class Rectancle.
 

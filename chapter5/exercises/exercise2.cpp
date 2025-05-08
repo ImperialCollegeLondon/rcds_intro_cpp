@@ -1,3 +1,5 @@
+// Exercise 2: Classes and inheritance
+
 #include <iostream>
 
 using namespace std;

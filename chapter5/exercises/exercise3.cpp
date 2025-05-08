@@ -1,6 +1,4 @@
-/*
-  Exercise: Compute mean (input from file)
-*/
+// Exercise: Compute mean value (input from file)
 
 #include <iostream>
 #include <fstream>
