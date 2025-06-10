@@ -155,11 +155,11 @@ int main() {
 ```
 
 You may encounter a compilation error when running the previous code.
-The error occurs because the initializer list syntax `({1, 2, 3, 4, 5})` for `std::vector` is supported only in **C++11** and later. 
+The error occurs because the initializer list syntax `({1, 2, 3, 4, 5})` for `std::vector` is supported only in **C++11** and later versions. 
 If your compiler defaults to an older C++ standard, you will need to enable C++11 or later explicitly.
 
 ```bash
-g++ vectors.cpp -std=c++11 -o vectors
+g++ -std=c++11 vectors.cpp -o vectors
 ```
 
 As a summary, key diffenrences between arrays and vectors in C++:
@@ -369,6 +369,139 @@ c++ function_sign.cpp function_abs.cpp learning_functions.cpp -o learning_functi
 Your turn:
 * Add a function `is_absolute_value_less_than_1`. Put it in its own file, add its declaration to the header file, make the main file output `is_absolute_value_less_than_1(n)`,  compile, and check that it works.
 * Harder version: Look up the data type for `true` and `false` in C++
+
+### Vector and functions
+
+In the following example we will use a series of functions to compute some informative quantitives over vectors, such as min / max value, mean and mode.
+Note the different ways in which you can iterate over the elements of a vector.
+
+```c++
+// Import libraries
+#include <iostream>
+#include <vector>
+using namespace std;
+
+// Print elements of a vector
+void print_vector(vector<double> v) {
+
+    for (int i = 0; i < v.size(); i++) {
+        cout << v[i] << " ";
+    }
+    cout << "\n";
+
+}
+
+// Function to find maximum element
+int find_max(vector<double> v) {
+
+    // Handle empty vector
+    if (v.empty()) return 0.0;
+    
+    int max_val = v[0];
+    for (int i = 0; i < v.size(); i++) {
+        if (v[i] > max_val) {
+            max_val = v[i];
+        }
+    }
+    
+    return max_val;
+
+}
+
+// Function to find minimum element
+int find_min(vector<double> vec) {
+
+    // Handle empty vector
+    if (vec.empty()) return 0.0;
+    
+    int min_val = vec[0];
+    for (int i = 0; i < v.size(); i++) {
+        if (v[i] < min_val) {
+            min_val = v[i];
+        }
+    }
+
+    return min_val;
+
+}
+
+// Function to find mean value
+double find_mean(vector<double> vec) {
+
+    // Handle empty vector
+    if (vec.empty()) return 0.0;
+    
+    double sum = 0;
+    for (int num : vec) {
+        sum += num;
+    }
+
+    return sum / vec.size();
+
+}
+
+// Function to find most frequent element
+int find_mode(vector<double> vec) {
+
+    // Handle empty vector
+    if (vec.empty()) return 0.0;
+    
+    // Manually count frequencies
+    int max_freq = 0;
+    int mode = vec[0];
+    
+    for (size_t i = 0; i < vec.size(); ++i) {
+
+        int freq = 1;
+        for (size_t j = i + 1; j < vec.size(); ++j) {
+            if (vec[i] == vec[j]) {
+                freq++;
+            }
+        }
+        
+        if (freq > max_freq) {
+            max_freq = freq;
+            mode = vec[i];
+        }
+        
+    }
+
+    return mode;
+
+}
+
+// Main function
+int main() {
+
+    // Declare variables
+    int n;
+    cout << "Enter the size of a vector: "; cin >> n;
+    vector<double> vec(n);
+    cout << "Enter elements of vector separated by space: ";
+    for (int i = 0; i < n; i++) {
+        cin >> vec[i];
+    }
+
+    // Display original vector
+    print_vector(vec);
+
+    // Compute and display statistics
+    cout << "Max: " << find_max(vec) << endl;
+    cout << "Min: " << find_min(vec) << endl;
+    cout << "Mean: " << find_mean(vec) << endl;
+    cout << "Mode: " << find_mode(vec) << endl;
+
+    return 0;
+
+}
+```
+
+Agein, you may encounter a compilation error when running the code, since some syntax for `std::vector` is supported only in **C++11** or later versions. 
+If your compiler defaults to an older C++ standard, you will need to enable C++11 or later explicitly.
+
+```bash
+g++ -std=c++11 vectors.cpp -o vectors
+```
 
 ### Exercise 1 - Multiplication table
 

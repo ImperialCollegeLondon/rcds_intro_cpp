@@ -1,7 +1,9 @@
+// Import libraries
 #include <iostream>
 #include <vector>
 using namespace std;
 
+// Main function
 int main() {
 
     // Declare variables
