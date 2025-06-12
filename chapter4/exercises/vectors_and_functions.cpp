@@ -1,7 +1,45 @@
 // Import libraries
 #include <iostream>
 #include <vector>
+#include <chrono>
 using namespace std;
+using namespace std::chrono;
+
+// Print elements of a vector
+void print_vector(vector<double> v);
+
+// Compute inverse of a vector
+vector<double> inverse_vector(vector<double> v);
+
+// Main function
+int main() {
+
+    // Declare variables
+    int n;
+    cout << "Enter size of vector: "; cin >> n;
+
+    // Initialize vector
+    vector<double> vec(n);
+    cout << "Enter vector elements separated by space: "; 
+    for (int i = 0; i < n; i++) cin >> vec[i];
+
+    // Print vector elements
+    cout << "\nOriginal vector "; print_vector(vec);
+    cout << "Size of vector: " << sizeof(vector<double>) << " bytes \n";
+
+    // Measure time with chrono
+    auto start = high_resolution_clock::now();
+    vector<double> inv_vec = inverse_vector(vec);
+    auto end = high_resolution_clock::now();
+
+    // Print result and computation time
+    cout << "\nInverse vector: "; print_vector(inv_vec);
+    cout << "Size of inverse vector: " << sizeof(vector<double>) << " bytes \n";
+    cout << "Computation time: " << duration_cast<nanoseconds>(end - start).count() << " nanoseconds\n";
+
+    return 0;
+
+}
 
 // Print elements of a vector
 void print_vector(vector<double> v) {
@@ -13,106 +51,14 @@ void print_vector(vector<double> v) {
 
 }
 
-// Function to find maximum element
-int find_max(vector<double> v) {
+// Compute inverse of a vector
+vector<double> inverse_vector(vector<double> v) {
 
-    // Handle empty vector
-    if (v.empty()) return 0.0;
-    
-    int max_val = v[0];
     for (int i = 0; i < v.size(); i++) {
-        if (v[i] > max_val) {
-            max_val = v[i];
-        }
+        if (v[i] == 0) throw runtime_error("\nDivision by zero in inverse_vector");
+        v[i] = 1.0 / v[i];
     }
     
-    return max_val;
-
-}
-
-// Function to find minimum element
-int find_min(vector<double> vec) {
-
-    // Handle empty vector
-    if (vec.empty()) return 0.0;
-    
-    int min_val = vec[0];
-    for (int i = 0; i < v.size(); i++) {
-        if (v[i] < min_val) {
-            min_val = v[i];
-        }
-    }
-
-    return min_val;
-
-}
-
-// Function to find mean value
-double find_mean(vector<double> vec) {
-
-    // Handle empty vector
-    if (vec.empty()) return 0.0;
-    
-    double sum = 0;
-    for (int num : vec) {
-        sum += num;
-    }
-
-    return sum / vec.size();
-
-}
-
-// Function to find most frequent element
-int find_mode(vector<double> vec) {
-
-    // Handle empty vector
-    if (vec.empty()) return 0.0;
-    
-    // Manually count frequencies
-    int max_freq = 0;
-    int mode = vec[0];
-    
-    for (size_t i = 0; i < vec.size(); ++i) {
-
-        int freq = 1;
-        for (size_t j = i + 1; j < vec.size(); ++j) {
-            if (vec[i] == vec[j]) {
-                freq++;
-            }
-        }
-        
-        if (freq > max_freq) {
-            max_freq = freq;
-            mode = vec[i];
-        }
-        
-    }
-
-    return mode;
-
-}
-
-// Main function
-int main() {
-
-    // Declare variables
-    int n;
-    cout << "Enter the size of a vector: "; cin >> n;
-    vector<double> vec(n);
-    cout << "Enter elements of vector separated by space: ";
-    for (int i = 0; i < n; i++) {
-        cin >> vec[i];
-    }
-
-    // Display original vector
-    print_vector(vec);
-
-    // Compute and display statistics
-    cout << "Max: " << find_max(vec) << endl;
-    cout << "Min: " << find_min(vec) << endl;
-    cout << "Mean: " << find_mean(vec) << endl;
-    cout << "Mode: " << find_mode(vec) << endl;
-
-    return 0;
+    return v;
 
 }

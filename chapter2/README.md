@@ -191,8 +191,11 @@ int main() {
 
 ### Namespaces and libraries
 
-A *namespace* in C++ is a way to group and organize related classes, functions, variables, and other identifiers to avoid name collisions.
+A *namespace* in C++ is ike a container for names (functions, classes, variables, etc.) to avoid name conflicts.
 It provides a logical scope for the identifiers it contains. 
+
+Imagine you're working on a big project (or using a library), and two parts of the code both define a function called `print()`.
+How does the compiler know which one you mean? Namespaces help avoid this problem by **scoping names**.
 
 ```cpp
 #include <iostream>
@@ -201,7 +204,7 @@ It provides a logical scope for the identifiers it contains.
 namespace First {
 
     // Void function printing greeting
-    void greet() {
+    void print() {
         std::cout << "Hello from First namespace!" << std::endl;
     }
 }
@@ -210,7 +213,7 @@ namespace First {
 namespace Second {
 
     // Void function printing greeting
-    void greet() {
+    void print() {
         std::cout << "Hello from Second namespace!" << std::endl;
     }
 }
@@ -219,10 +222,10 @@ namespace Second {
 int main() {
 
     // Calls greet from First namespace
-    First::greet();
+    First::print();
 
     // Calls greet from Second namespace
-    Second::greet();
+    Second::print();
 
     return 0;
 }

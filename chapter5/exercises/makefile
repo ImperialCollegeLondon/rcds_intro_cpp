@@ -3,9 +3,9 @@
 
 # C++ compiler
 CC=g++
-
+FLAGS=-std=c++17 -Wall
 # All programs to be generated
-all: program1 program2 program3
+all: program1 program2 program3 pointer_array
 
 program1: exercise1.cpp
 	$(CC) -o $@ $<
@@ -16,7 +16,11 @@ program2: exercise2.cpp
 program3: exercise3.cpp
 	$(CC) -o $@ $<
 
+pointer_array: pointer_array.cpp
+	$(CC) $(FLAGS) $< -o $@
+
 clean:
-	rm -f program1
-	rm -f program2
-	rm -f program3
+	rm -rf program1
+	rm -rf program2
+	rm -rf program3
+	rm -rf pointer_array

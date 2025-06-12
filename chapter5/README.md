@@ -91,74 +91,75 @@ Historically pointers were used instead of arrays.
 * Join in the following syntax in a C++ file, and save it as `pointer_array.cpp`
 
 ```c++
-// Include libraries
+// Import libraries
 #include <iostream>
+#include <vector>
+#include <chrono>
 using namespace std;
+using namespace std::chrono;
 
-// Function computing double of array
-void double_values(int* arr, int size);
+// Print elements of a vector
+void print_vector(double* v, int size);
 
-// Function printing elements od array
-void print_array(const int* arr, int size);
+// Compute inverse of a vector
+double* inverse_vector(double* v, int size);
 
 // Main function
 int main() {
 
     // Declare variables
-    int size;
-    int *arr = new int[size]; // Dynamic memory allocation for the array
+    int n;
+    cout << "Enter size of vector: "; cin >> n;
+    
+    // Initialize dynamic array
+    double* vec = new double[n];
+    cout << "Enter vector elements separated by space: "; 
+    for (int i = 0; i < n; i++) cin >> vec[i];
 
-    // Assign values (even size is input now)
-    cout << "Enter the size of the array: ";
-    cin >> size;
-    cout << "Enter " << size << " elements separated by space: ";
-    for (int i = 0; i < size; ++i) {
-        cin >> arr[i];
-    }
+    // Print vector elements
+    cout << "\nOriginal vector "; print_vector(vec, n);
+    cout << "Size of dynamic vector: " << sizeof(double*) << " bytes \n";
 
-    // Print elements of array
-    cout << "Original array: ";
-    print_array(arr, size);
+    // Measure time with chrono
+    auto start = high_resolution_clock::now();
+    double* inv_vec = inverse_vector(vec, n);
+    auto end = high_resolution_clock::now();
 
-    // Double values
-    double_values(arr, size);
+    // Print result and computation time
+    cout << "\nInverse vector: "; print_vector(inv_vec, n);
+    cout << "Size of dynamic vector: " << sizeof(double*) << " bytes \n";
+    cout << "Computation time: " << duration_cast<nanoseconds>(end - start).count() << " nanoseconds\n";
 
-    // Print elements of doubled array
-    cout << "Doubled array: ";
-    print_array(arr, size);
-
-    // Free dynamically allocated memory
-    delete[] arr;
+    // Free allocated memory
+    delete[] vec;
+    delete[] inv_vec;
 
     return 0;
+}
+
+// Print elements of a vector
+void print_vector(double* v, int size) {
+
+    for (int i = 0; i < size; i++) {
+        cout << v[i] << " ";
+    }
+    cout << "\n";
 
 }
 
-// Function computing double of array
-void double_values(int* arr, int size) {
+// Compute inverse of a vector
+double* inverse_vector(double* v, int size) {
 
-    // Using pointer arithmetic to iterate and modify the array
-    
-    // Declares a pointer p of type int* and initializes it to point to the start of the array arr
-    // Iterate while p points to a between boundaries of the array
-    // Moves the pointer p to the next element in the array
-    for (int *p = arr; p < arr + size; ++p) {
-        *p = *p * 2;
+    // Allocate new array for inverse
+    double* inv = new double[size];
+
+    for (int i = 0; i < size; i++) {
+        if (v[i] == 0) throw runtime_error("\nDivision by zero in inverse_vector");
+        inv[i] = 1.0 / v[i];
     }
-
-}
-
-// Function printing elements od array
-void print_array(const int* arr, int size) {
-
-    // Using pointer arithmetic to access and print the array elements
     
-    // Declaring pointer as const ensures that values it points to cannot be altered
-    // Ensure printing function works in non destructive manner
-    for (const int *p = arr; p < arr + size; ++p) {
-        cout << *p << " ";
-    }
-    cout << endl;
+    return inv;
+
 }
 ```
 
