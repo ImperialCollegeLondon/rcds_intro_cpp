@@ -36,6 +36,212 @@ while all programs will be eliminated by using the folloing one:
 $ make clean
 ```
 
+### Object Oriented Programming
+
+Classes are one of the main things that separate C++ from C. Classes are ways for us to set up objects that have properties and functions which are particular to that type of object. That is why programming relying on classes and objects is commonly referred to as "Object Oriented Programming", or OOP.
+* Join the following syntax in a C++ file, and save it as `rectangles.cpp`
+```c++
+#include <iostream>
+using namespace std;
+
+class Rectangle {
+
+   public:
+      // Width of rectangle
+      double width;
+      // Height of rectangle
+      double height;
+
+};
+
+int main() {
+
+   // Declare Rec1 of type Rectangle
+   Rectangle Rec1;
+   
+   // Rec1 specification
+   Rec1.height = 5.0;
+   Rec1.width = 6.0;
+
+   // Declare variables
+   double area;
+
+   // Compute area of Rec1
+   area = Rec1.height * Rec1.width;
+   cout << "Area of Rec1: " << area << endl;
+
+   return 0;
+
+}
+```
+
+Your turn:
+* Add another rectangle, `Rec2`
+
+You should get something like:
+
+```c++
+#include <iostream>
+using namespace std;
+
+class Rectangle {
+
+   public:
+      // Width of rectangle
+      double width;
+      // Height of rectangle
+      double height;
+
+};
+
+int main() {
+
+   // Declare Rec1 and Rec2 of type Rectangle
+   Rectangle Rec1;
+   Rectangle Rec2;
+
+   // Rec1 specification
+   Rec1.height = 5.0;
+   Rec1.width = 6.0;
+
+   // Rec2 specification
+   Rec2.height = 10.0;
+   Rec2.width = 12.0;
+
+   // Declare variables
+   double area;
+
+   // Compute area of Rec1
+   area = Rec1.height * Rec1.width;
+   cout << "Area of Rec1: " << area << endl;
+
+   // Compute area of Rec2
+   area = Rec2.height * Rec2.width;
+   cout << "Area of Rec2: " << area << endl;
+
+   return 0;
+
+}
+```
+
+Same as when we declare variables of the class rectangle, we can also declare functios, or "methods".
+* Let's make area a 'member function' of the class rectangle, so we can call `Rec1.area()`, for example:
+
+```c++
+class Rectangle {
+
+   public:
+      // Length of rectangle
+      double width;
+      // Height of rectangle
+      double height;
+      // Method computing area
+      double area() {return width*height;}
+
+};
+
+```
+
+Your turn:
+* Replace `area = Rec1.height * Rec1.width;` with `area = Rec1.area();` and see that it works.
+* Add a member function `perimeter` which returns the length of the perimeter.
+
+Join in:
+* We're going to look at another way of creating a member function. This is entirely equivalent.
+* Just like how we forward declared functions earlier, we can forward declare them here.
+
+```c++
+class Rectangle {
+
+   public:
+      // Length of rectangle
+      double width;
+      // Height of rectangle
+      double height;
+      // Method computing area
+      double area() {return width*height;}
+      // Method specifying dimensions
+      void set_dimensions (double,double);
+
+};
+
+void Rectangle::set_dimensions (double x, double y) {
+
+  width = x;
+  height = y;
+
+}
+```
+
+Your turn:
+* Replace `Rec1.height = 5.0;` and `Rec1.width = 6.0;` with a call to `Rec1.set_dimensions`
+* If you want to use `Rectangle` in lots of files, it's annoying to define it every time.
+
+Your turn:
+* Put the class declaration and `set_dimensions` definition in a header file, `rectangle.hpp`, and call it from `rectangles.cpp`
+
+For extra practice:
+* Create a class `complex_number`. Set up some functions for adding and multiplying them.
+
+### Inheritance
+
+```c++
+#include <iostream>
+using namespace std;
+
+class Rectangle {
+   public:
+      // Length of rectangle
+      double width;
+      // Height of rectangle
+      double height;
+      // Method computing area
+      double area() {return width * height;}
+      // Method specifying dimensions
+      void set_dimensions(double, double);
+};
+
+void Rectangle::set_dimensions(double x, double y) {
+    width = x;
+    height = y;
+}
+
+// Square class inherits from Rectangle
+class Square : public Rectangle {
+   public:
+      // Constructor that ensures width and height are equal
+      Square(double side) {set_dimensions(side, side);}
+};
+
+int main() {
+
+    // Declare Rec1 and Rec2 of type Rectangle
+    Rectangle Rec1;
+    Rectangle Rec2;
+    Square Sq1(4);  // Square with side length 4
+    double area;
+
+    // Rectangles specification
+    Rec1.set_dimensions(5, 6);
+    Rec2.set_dimensions(3, 4);
+
+    // Compute area of Rec1
+    area = Rec1.area();
+    cout << "Area of Rec1: " << area << endl;
+
+    // Compute area of Rec2
+    area = Rec2.area();
+    cout << "Area of Rec2: " << area << endl;
+
+    // Compute area of Sq1 (Square)
+    area = Sq1.area();
+    cout << "Area of Sq1: " << area << endl;
+
+    return 0;
+
+}
+```
+
 ### Exercsie 1 - Matrix manipulation
 
 Write a C++ program that computes the scalar product using dynamic arrays.

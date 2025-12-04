@@ -42,6 +42,7 @@ int main() {
     delete[] inv_vec;
 
     return 0;
+    
 }
 
 // Print elements of a vector
