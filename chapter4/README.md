@@ -67,45 +67,7 @@ int main() {
 
 }
 ```
-* Note you can't `cout` an array
-* We can also define arrays like this:
-```c++
-int main() {
-
-    // Declare variables
-    int n = 10;
-    int square_numbers[10];
-    int favourite_numbers[10] = {3, 1, -4, 1}; // Note we haven't defined them all.;
-
-    // Iterate and store values in the array
-    for(int i = 0; i < n; ++i) {
-        square_numbers[i] = pow(i, 2);
-    }
-
-    // Print elements of the array
-    cout << "Square numbers: " << endl;
-    for(int i = 0; i < n; ++i) {
-        cout << square_numbers[i] << endl;
-    }
-
-    // Print elements of the array
-    cout << "Favourite numbers: " << endl;
-    for(int i = 0; i < n; ++i) {
-        cout << favourite_numbers[i] << endl;
-    }        
-
-    return 0;
-
-}
-
-```
-* You can only use curly brackets like this at initialisation time.
-* We can also declare:
-    * `int favourite_numbers[] = {3,1,-4,1};`
-
-* Multidimensional arrays work too
-    * `int magic_square[3][3] = {{4,9,2},{3,5,7},{8,1,6}};`
-
+* Note you can't `cout` an array. The only way to print them is to iterate over the elements and print each of them.
 
 ### Vectors
 
@@ -372,7 +334,7 @@ Your turn:
 
 ### Vector and functions
 
-In the following example we will use a series of functions to compute some informative quantitives over vectors, such as min / max value, mean and mode.
+In the following example we will use a series of functions to compute some informative quantitives over vectors, such as `min` / `max` value, mean and mode.
 We can write a separate function that prints the elements of the vector, and another one that computes the inverse.
 Note the different ways in which you can iterate over the elements of a vector.
 
@@ -443,11 +405,47 @@ vector<double> inverse_vector(vector<double> v) {
 }
 ```
 
-Agein, you may encounter a compilation error when running the code, since some syntax for `std::vector` is supported only in **C++11** or later versions. 
+Again, you may encounter a compilation error when running the code, since some syntax for `std::vector` is supported only in **C++11** or later versions. 
 If your compiler defaults to an older C++ standard, you will need to enable C++11 or later explicitly.
 
 ```bash
 g++ -std=c++11 vectors.cpp -o vectors
+```
+
+### Command-line argument interface
+
+Sometimes it is useful to provide some input arguments on the main function. This is done with the so called *command-line interface* argument count `argc`, and the argument vector `argv`. It allows your program to receive input from the command line without asking the user interactively.
+
+Create a file called `command_line_main.cpp` that takes `argc` and `argv` on tha main function, and prints on screen the command-line arguments that were passed to the program.
+```c++
+// Import librareis
+#include <iostream>
+
+// Main function
+int main(int argc, char* argv[]) {
+
+    // Print argc
+    std::cout << "Number of arguments: " << argc << "\n";
+
+    // Print argv
+    for (int i = 0; i < argc; ++i) {
+        std::cout << "argv[" << i << "] = " << argv[i] << "\n";
+    }
+
+    return 0;
+
+}
+```
+The `char*` means a pointer to a sequence of characters stored in memory. It is the usual way to declare the `argv[]`, which stores the list of inputs provided by keyboard.
+
+Compile it normally with 
+```bash
+g++ command_line_interface.cpp -o command_line_interface
+```
+
+And run it with
+```bash
+./command_line_interface hello 123 world
 ```
 
 ### Exercise 1 - Multiplication table
