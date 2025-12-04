@@ -1,12 +1,12 @@
 // Import libraries
 #include <iostream>
 #include <string>
+#include <fstream>
 using namespace std;
 
 // Function reversing a string
-string reverse_string(string input) {
+string reverse_string(const string& input) {
 
-    // Declare variables
     string reversed = "";
 
     // Iterate over input and fill reversed
@@ -15,22 +15,37 @@ string reverse_string(string input) {
     }
 
     return reversed;
-
 }
 
 // Main function
 int main() {
 
     // Declare variables
-    string original, reversed;
+    string original;
+
     cout << "Enter a string: ";
     // cin >> original; // Read string until space
     getline(cin, original); // Read entire line including spaces
 
-    // Reverse string and print result
-    cout << "Original string: " << original << endl;
-    cout << "Reversed string: " << reverse_string(original) << endl;
+    // Reverse the string
+    string reversed = reverse_string(original);
+
+    // Print results
+    cout << "\nOriginal string: " << original << endl;
+    cout << "Reversed string: " << reversed << endl;
+
+    // Append reversed string to existing file
+    ofstream file("greetings.txt", ios::app);
+    if (!file) {
+        cout << "Error: Could not open file for appending.\n";
+        return 1;
+    }
+
+    file << reversed << "\n";
+    file.close();
+    
+    cout << "\nReversed string appended to greetings.txt\n";
 
     return 0;
-
+    
 }
