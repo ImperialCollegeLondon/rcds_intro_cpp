@@ -85,6 +85,47 @@ int main() {
 Your turn:
 * See what happens to the value of `*p` if we change the value of `x`.
 
+In C++, the placement of the `*` symbol in pointer declarations (`int* ptr` vs `int * ptr`) is a matter of style. Both styles are functionally equivalent, but each has different implications and preferences depending on the context. The compiler treats these declarations identically.
+- The `int* ptr` style (Often preferred in modern C++), highlights that `ptr` is a pointer type.
+- The `int * ptr` style, emphasizes the association of `*` with the variable name.
+
+Feel free to choose the style that best aligns with your conventions or personal preference. Both styles are valid and widely accepted.
+
+Another exercise to play with pointers and arrays.
+* Join in the following syntax in a C++ file, and save it as `pointer_array.cpp`
+
+```c++
+#include <iostream>
+using namespace std;
+
+int main () {
+
+   // Declare variables
+   int primes[3] = {2, 3, 5};
+   int *p;
+
+   // Set the pointer to point at the start of the array
+   p = primes;
+
+   // Iterate over the values of the pointer
+   for (int i = 0; i < 3; i++) {
+      cout << "Reference to primes is " << &p << endl; // 
+      cout << "Address of primes[" << i << "] is " << p << endl;
+      cout << "Value of primes[" << i << "] is " << *p << endl;
+      cout << "\n";
+      ++p;
+   }
+
+   return 0;
+
+}
+```
+
+Important distinction to note here:
+* The variable `&p` is the *reference*, the address of the pointer itself. This is a single fixed location, where the pointer is stored.
+* The variable `p` is the *pointer variable*, that prints the address of the current array element that `p` points to.
+* The variable `*p` is the *value stored* at the memory location that `p` points to.
+
 ### Dynamic memory allocation
 
 Historically pointers were used instead of arrays.
@@ -159,40 +200,6 @@ double* inverse_vector(double* v, int size) {
     }
     
     return inv;
-
-}
-```
-
-In C++, the placement of the `*` symbol in pointer declarations (`int* ptr` vs `int * ptr`) is a matter of style. Both styles are functionally equivalent, but each has different implications and preferences depending on the context. The compiler treats these declarations identically.
-- The `int* ptr` style (Often preferred in modern C++), highlights that `ptr` is a pointer type.
-- The `int * ptr` style, emphasizes the association of `*` with the variable name.
-
-Feel free to choose the style that best aligns with your conventions or personal preference. Both styles are valid and widely accepted.
-
-Another exercise to play with pointers and arrays.
-* Join in the following syntax in a C++ file, and save it as `pointer_array.cpp`
-
-```c++
-#include <iostream>
-using namespace std;
-
-int main () {
-
-   // Declare variables
-   int primes[3] = {2, 3, 5};
-   int *p;
-
-   // Set the pointer to point at the start of the array
-   p = primes;
-
-   // Iterate over the values of the pointer
-   for (int i = 0; i < 3; i++) {
-      cout << "Address of primes[" << i << "] is " << p << endl;
-      cout << "Value of primes[" << i << "] is " << *p << endl;
-      ++p;
-   }  
-
-   return 0;
 
 }
 ```
