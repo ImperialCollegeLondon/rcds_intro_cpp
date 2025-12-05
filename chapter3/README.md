@@ -200,7 +200,7 @@ To recap what we have seen today, write C++ that takes a string by keyboard, rev
 using namespace std;
 
 // Function reversing a string
-string reverse_string(const string& input) {
+string reverse_string(string input) {
 
     string reversed = "";
 
