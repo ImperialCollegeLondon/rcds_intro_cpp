@@ -302,6 +302,8 @@ make clean
 ```
 * Note you need a tab at the beginning, not spaces. Might need to be careful in most text editors. If it doesn't work try disabling 'soft tab' setting or use another editor like Notepad++.
 
+* For a detailed description about Makefiles find the following [https://makefiletutorial.com](https://makefiletutorial.com)
+
 ### Exercise 1 - Variables in C++
 
 Write a program in C++ that declares an integer variable, two double variables, and prints them on screen.
