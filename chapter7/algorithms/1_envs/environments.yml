@@ -1,0 +1,11 @@
+name: gigaton_physics
+
+channels:
+    - conda-forge
+
+dependencies:
+    - python=3.12
+    - numpy=1.26
+    - pandas=2.2
+    - matplotlib=3.8
+

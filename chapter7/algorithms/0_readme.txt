@@ -9,3 +9,15 @@ https://pytorch.org/tutorials/advanced/cpp_extension.html
 
 And the article where we apply both, the custom TF ops and the GPU/CUDA opt for fitting "parton" dynasics (quarks and gluons inside the proton):
 https://arxiv.org/abs/1909.10547
+
+
+Prepare envs
+```
+conda env create -f 1_envs/environments.yml
+conda activate gigaton_physics
+```
+
+Prepare for reading runcard
+```
+curl -o json.hpp https://raw.githubusercontent.com/nlohmann/json/develop/single_include/nlohmann/json.hpp
+```
