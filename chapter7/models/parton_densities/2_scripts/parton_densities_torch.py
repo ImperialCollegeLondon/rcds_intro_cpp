@@ -29,7 +29,7 @@ ALPHA = 0.3
 BETA = 3.0
 
 # Hyperparameters
-N_REPLICAS = 20
+N_REPLICAS = 10
 N_EPOCHS = 500
 LR = 0.5
 
@@ -43,7 +43,7 @@ def fk_kernel(x):
 
 def convolute(pdf_vals, x_grid):
     """Numerical convolution: sigma = integral f(x)*K(x) dx via trapezoid"""
-    return np.trapezoid(pdf_vals * fk_kernel(x_grid), x_grid)
+    return np.trapz(pdf_vals * fk_kernel(x_grid), x_grid)
 
 
 
@@ -58,17 +58,15 @@ x_grid = np.load("data/fk_tables/x_grid.npy")
 x_cuts = np.load("data/fk_tables/x_cuts.npy")
 FK = np.load("data/fk_tables/FK.npy") # simulated toy example with shape (20, 50)
 
-# Generate N_data "experimental" observables at different x cuts
-# Each observable is sigma above x_min: int_{x_min}^1 f(x) * K(x) dx
-data_true = np.array([convolute(truth_pdf(x_grid[x_grid > xc]), x_grid[x_grid > xc]) for xc in x_cuts])
-noise_level = 0.05 # 5% experimental uncertainty
-sigma_exp = data_true * noise_level
+# Load N_data experimental observables at different x cuts
+obs_true  = np.load("data/cross_sections/obs_true.npy")
+obs_noise = np.load("data/cross_sections/obs_noise.npy")
 
 # # Explore data
 # print(f"x_grid\n{x_grid[0:5]}")
 # print(f"x_cuts\n{x_grid[0:5]}")
 # print(f"Partonic FK\n{FK[0:5, ]}")
-# print(f"Hadronic obs\n{sigma_exp[0:5, ]}")
+# print(f"Hadronic obs\n{obs_noise[0:5, ]}")
 
 # import pdb
 # pdb.set_trace()
@@ -85,12 +83,15 @@ class PDFNet(nn.Module):
         super().__init__()
         self.hidden1 = nn.Linear(2, 8)
         self.hidden2 = nn.Linear(8, 4)
+        # self.hidden2 = nn.Linear(8, 32)
+        # self.hidden3 = nn.Linear(32, 4)
         self.output = nn.Linear(4, 1)
         self.sigmoid = nn.Sigmoid()
 
         # Glorot normal initialisation (as in n3fit, Table 4)
         nn.init.xavier_normal_(self.hidden1.weight)
         nn.init.xavier_normal_(self.hidden2.weight)
+        # nn.init.xavier_normal_(self.hidden3.weight)
         nn.init.xavier_normal_(self.output.weight)
 
     def forward(self, x):
@@ -100,6 +101,7 @@ class PDFNet(nn.Module):
         x_in  = torch.cat([x, x_log], dim = 1)
         h = self.sigmoid(self.hidden1(x_in))
         h = self.sigmoid(self.hidden2(h))
+        # h = self.sigmoid(self.hidden3(h))
         out = self.output(h)
 
         # Preprocessing factor: x^{-alpha} * (1-x)^{beta}  (Eq. 1 of paper)
@@ -111,7 +113,7 @@ class PDFNet(nn.Module):
 # Single replica fit ..............................................................................
 
 # Fit one PDF replica to noise-perturbed data. Returns f(x) predictions
-def fit_replica(data_noisy, x_grid, x_cuts, sigma_exp, n_epochs = N_EPOCHS, lr = LR):
+def fit_replica(data_noisy, x_grid, x_cuts, obs_noise, n_epochs = N_EPOCHS, lr = LR):
 
     # Generate model
     model = PDFNet()
@@ -119,6 +121,10 @@ def fit_replica(data_noisy, x_grid, x_cuts, sigma_exp, n_epochs = N_EPOCHS, lr =
 
     # Prepare for training
     x_t = torch.tensor(x_grid, dtype = torch.float32).unsqueeze(1)
+
+    # Precompute FK tensor and loss tracker
+    FK_t = torch.tensor(FK, dtype = torch.float32)
+    losses = []
 
     # Train model
     for epoch in range(n_epochs):
@@ -132,32 +138,30 @@ def fit_replica(data_noisy, x_grid, x_cuts, sigma_exp, n_epochs = N_EPOCHS, lr =
         pred = np.array([convolute(f_pred[x_grid > xc], x_grid[x_grid > xc]) for xc in x_cuts])
 
         # Compute chi2 loss (Eq. 2 of paper)
-        residuals = (data_noisy - pred) / sigma_exp
+        residuals = (data_noisy - pred) / obs_noise
         loss_val = float(np.sum(residuals**2))
 
         # Manual gradient step (compute loss outside autograd here for simplicity): Use autograd-compatible version below
         f_pred_t = model(x_t).squeeze()
-        
-        # # OLD
-        # pred_t = torch.stack([torch.trapezoid(f_pred_t[x_grid > xc] * torch.tensor(...)) for xc in x_cuts])
-
+       
         # NEW: single matrix multiply, fully differentiable
-        FK_t = torch.tensor(FK, dtype = torch.float32)          # (20, 50)
-        pred_t = FK_t @ f_pred_t                                # (20,)
+        pred_t = FK_t @ f_pred_t
 
         # Prepare truth and loss for gradient
         data_t = torch.tensor(data_noisy, dtype = torch.float32)
-        sigma_t = torch.tensor(sigma_exp,  dtype = torch.float32)
+        sigma_t = torch.tensor(obs_noise,  dtype = torch.float32)
         loss = torch.sum(((data_t - pred_t) / sigma_t)**2)
 
         # Backpropagation
         loss.backward()
         optimizer.step()
+        losses.append(float(loss))
 
     # Return final PDF prediction
     with torch.no_grad():
-        f_fit = model(x_t).squeeze().numpy()
-    return f_fit
+        pdf_final = model(x_t).squeeze().numpy()
+
+    return pdf_final, losses
 
 
 
@@ -168,25 +172,26 @@ print(f"Fitting {N_REPLICAS} MC replicas...")
 # Prepare replicas for uncertainty quantification
 replicas = []
 times = []
-chi2_per_replica = []
+losses_all = []
 
 # Print results
 for i in range(N_REPLICAS):
 
     # Generate noise-perturbed data for this replica (MC approach, Section 2.1)
     print(f"\nReplica {i+1}/{N_REPLICAS}")
-    data_noisy = data_true + np.random.normal(0, sigma_exp)
+    data_noisy = obs_true + np.random.normal(0, obs_noise)
 
     # Time training
     start = time.perf_counter()
-    f_fit = fit_replica(data_noisy, x_grid, x_cuts, sigma_exp)
+    pdf_final, loss_curve = fit_replica(data_noisy, x_grid, x_cuts, obs_noise)
     end = time.perf_counter()
 
-    print(f"PDF final: {f_fit[0:5]} ...")
+    print(f"PDF final: {pdf_final[0:5]} ...")
 
     # Append result and time
-    replicas.append(f_fit)
+    replicas.append(pdf_final)
     times.append(end - start)
+    losses_all.append(loss_curve)
 
 print(f"\nTraining time (avg per replica): {np.mean(times):.4f} s")
 replicas = np.array(replicas)
@@ -198,9 +203,9 @@ f_std = replicas.std(axis = 0)
 # Plot ............................................................................................
 
 # Prepare figure
-fig, axes = plt.subplots(1, 2, figsize = (12, 5))
+fig, axes = plt.subplots(1, 3, figsize = (12, 5))
 
-# Left: PDF replicas + truth (mirrors Fig. 6 of paper)
+# Subfigure: PDF replicas + truth (mirrors Fig. 6 of paper)
 ax = axes[0]
 for i, rep in enumerate(replicas):
     ax.plot(x_grid, x_grid * rep, color = '#378ADD', lw = 0.8, alpha = 0.4, label = 'replicas' if i == 0 else None)
@@ -214,11 +219,11 @@ ax.set_ylabel('x f(x)')
 ax.set_title(f'{N_REPLICAS} PDF replicas with architecture: (x, log x) → 8 → 4 → 1', fontsize = 9)
 ax.legend(fontsize = 8)
 
-# Right: chi2 per replica (mirrors Table 5 / Fig. 5 of paper)
+# Subfigure: chi2 per replica (mirrors Table 5 / Fig. 5 of paper)
 chi2_per_replica = []
 for rep in replicas:
     pred = np.array([convolute(rep[x_grid > xc], x_grid[x_grid > xc]) for xc in x_cuts])
-    chi2 = np.sum(((data_true - pred) / sigma_exp)**2) / len(x_cuts)
+    chi2 = np.sum(((obs_true - pred) / obs_noise)**2) / len(x_cuts)
     chi2_per_replica.append(chi2)
 
 ax = axes[1]
@@ -226,7 +231,18 @@ ax.hist(chi2_per_replica, bins = 10, color = '#185FA5', alpha = 0.7, edgecolor =
 ax.axvline(np.mean(chi2_per_replica), color = '#D85A30', lw = 2, label = f'mean χ²/n = {np.mean(chi2_per_replica):.2f}')
 ax.set_xlabel('χ²/n per replica')
 ax.set_ylabel('count')
-ax.set_title('χ² of fit per replica (good fit: χ²/n ≈ 1)', fontsize = 9)
+ax.set_title(r'$\chi^2$ per replica (good fit: $\frac{\chi^2}{n} ≈ 1$)', fontsize = 9)
+ax.legend(fontsize = 8)
+
+# Subfigure: loss curve per replica
+ax = axes[2]
+for i, lc in enumerate(losses_all):
+    ax.plot(lc, color = '#1D9E75', lw = 0.8, alpha = 0.4, label = 'replicas' if i == 0 else None)
+ax.plot(np.mean(losses_all, axis = 0), color = '#0F6E56', lw = 2, label = 'mean')
+ax.set_yscale('log')
+ax.set_xlabel('epoch')
+ax.set_ylabel('chi2 loss')
+ax.set_title('Loss curve per replica\n(train only — no val split yet)', fontsize = 9)
 ax.legend(fontsize = 8)
 
 # Set figure titles and save
@@ -234,3 +250,4 @@ fig.suptitle('Toy PDF fit with PyTorch: NPDF/n3fit methodology (arXiv:1907.05075
 plt.tight_layout()
 plt.savefig(f'results/pdf_toy_torch_{N_REPLICAS}replicas_{N_EPOCHS}epochs_{LR}lr.png', dpi = 150, bbox_inches = 'tight')
 print("Saved PyTorch results")
+plt.show()

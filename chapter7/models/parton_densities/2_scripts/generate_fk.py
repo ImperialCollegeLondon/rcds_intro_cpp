@@ -63,14 +63,44 @@ print(f"x_cuts shape:  {x_cuts.shape}")
 
 # Save to disk ....................................................................................
 
-outdir = "data/fk_tables"
-os.makedirs(outdir, exist_ok=True)
-np.save(f"{outdir}/FK.npy",     FK)
-np.save(f"{outdir}/x_grid.npy", x_grid)
-np.save(f"{outdir}/x_cuts.npy", x_cuts)
+outdir_fk = "data/fk_tables"
+os.makedirs(outdir_fk, exist_ok = True)
+np.save(f"{outdir_fk}/FK.npy",     FK)
+np.save(f"{outdir_fk}/x_grid.npy", x_grid)
+np.save(f"{outdir_fk}/x_cuts.npy", x_cuts)
 print("\nsaved fk_tables/FK.npy")
 print("saved fk_tables/x_grid.npy")
 print("saved fk_tables/x_cuts.npy")
+
+
+
+# Generate truth observables .....................................................................
+
+# In reality these would be experimental measurements loaded from file.
+# Here we generate them from a known truth PDF as a toy substitute.
+# obs_true[n] = FK[n, :] @ f_true = int_{x_cut[n]}^1 f(x) * K(x) dx
+
+ALPHA, BETA = 0.3, 3.0
+noise_level = 0.05
+
+f_true    = x_grid**(-ALPHA) * (1 - x_grid)**BETA   # truth PDF [shape (N_x,)]
+obs_true  = (FK @ f_true).astype(np.float32)         # hadronic observables [shape (N_obs,)]
+obs_noise = (obs_true * noise_level).astype(np.float32)  # experimental uncertainties [shape (N_obs,)]
+
+
+
+# Save to disk ....................................................................................
+
+outdir_cs = "data/cross_sections"
+os.makedirs(outdir_cs, exist_ok = True)
+np.save(f"{outdir_cs}/obs_true.npy",  obs_true)
+np.save(f"{outdir_cs}/obs_noise.npy", obs_noise)
+print("saved cross_sections/obs_true.npy")
+print("saved cross_sections/obs_noise.npy")
+
+print(f"\nobs_true shape:  {obs_true.shape}")
+print(f"obs_noise shape: {obs_noise.shape}")
+print(f"obs_true[:5]:    {obs_true[:5]}")
 
 
 
@@ -78,11 +108,7 @@ print("saved fk_tables/x_cuts.npy")
 
 # pred = FK @ f_true should match manual trapezoid convolution
 
-ALPHA, BETA = 0.3, 3.0
-f_true = x_grid**(-ALPHA) * (1 - x_grid)**BETA
-
 pred_fk = FK @ f_true
 pred_manual = np.array([np.trapezoid(f_true[x_grid > xc] * fk_kernel(x_grid[x_grid > xc]), x_grid[x_grid > xc]) for xc in x_cuts])
-
 max_err = np.max(np.abs(pred_fk - pred_manual))
 print(f"\nSanity check — max error FK @ f vs manual trapezoid: {max_err:.2e}")
