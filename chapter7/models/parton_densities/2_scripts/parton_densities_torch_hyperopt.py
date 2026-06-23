@@ -20,9 +20,6 @@ import torch
 import torch.nn as nn
 import matplotlib.pyplot as plt
 
-import sys
-sys.path.insert(0, '2_scripts')
-import fk_convolution as fk_cpp
 
 
 # Truth PDF and toy FK convolution ................................................................
@@ -101,7 +98,7 @@ class PDFNet(nn.Module):
 
         # Input preprocessing: (x, log x) — fixed first layer as in NNPDF
         x_log = torch.log(x)
-        x_in = torch.cat([x, x_log], dim = 1)
+        x_in  = torch.cat([x, x_log], dim = 1)
         h = self.sigmoid(self.hidden1(x_in))
         h = self.sigmoid(self.hidden2(h))
         # h = self.sigmoid(self.hidden3(h))
@@ -110,25 +107,6 @@ class PDFNet(nn.Module):
         # Preprocessing factor: x^{-alpha} * (1-x)^{beta}  (Eq. 1 of paper)
         pre = x**(-ALPHA) * (1 - x)**BETA
         return out * pre
-
-# Implement custom gradient following C++ convolution
-class FKConvolute(torch.autograd.Function):
-    """FK convolution with explicit backward pass.
-    forward:  pred = FK @ pdf          (C++ op)
-    backward: grad_pdf = FK^T @ grad   (analytical)
-    """
-    @staticmethod
-    def forward(ctx, FK_t, pdf):
-        ctx.save_for_backward(FK_t)
-        pred_np = fk_cpp.fk_convolute(FK_t.numpy(),
-                                      pdf.detach().numpy())
-        return torch.tensor(pred_np, dtype=torch.float32)
-
-    @staticmethod
-    def backward(ctx, grad_output):
-        FK_t, = ctx.saved_tensors
-        grad_pdf = FK_t.T @ grad_output   # FK^T @ grad_pred
-        return None, grad_pdf             # None: FK not learnable
 
 
 
@@ -146,8 +124,6 @@ def fit_replica(data_noisy, x_grid, x_cuts, obs_noise, n_epochs = N_EPOCHS, lr =
 
     # Precompute FK tensor and loss tracker
     FK_t = torch.tensor(FK, dtype = torch.float32)
-    data_t = torch.tensor(data_noisy, dtype = torch.float32)
-    sigma_t = torch.tensor(obs_noise, dtype = torch.float32)
     losses = []
 
     # Train model
@@ -165,15 +141,15 @@ def fit_replica(data_noisy, x_grid, x_cuts, obs_noise, n_epochs = N_EPOCHS, lr =
         residuals = (data_noisy - pred) / obs_noise
         loss_val = float(np.sum(residuals**2))
 
-        # JUE: default NumPy matmul (FK @ pdf)
+        # Manual gradient step (compute loss outside autograd here for simplicity): Use autograd-compatible version below
         f_pred_t = model(x_t).squeeze()
-        f_pred_t = model(x_t).squeeze()
-
-        # JUE: optimized C++ pybind11 op
+       
+        # NEW: single matrix multiply, fully differentiable
         pred_t = FK_t @ f_pred_t
-        pred_t = FKConvolute.apply(FK_t, f_pred_t)
 
         # Prepare truth and loss for gradient
+        data_t = torch.tensor(data_noisy, dtype = torch.float32)
+        sigma_t = torch.tensor(obs_noise,  dtype = torch.float32)
         loss = torch.sum(((data_t - pred_t) / sigma_t)**2)
 
         # Backpropagation

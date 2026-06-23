@@ -20,6 +20,10 @@ import keras
 import tensorflow as tf
 import matplotlib.pyplot as plt
 
+import sys
+sys.path.insert(0, '2_scripts')
+import fk_convolution as fk_cpp
+
 
 
 # Truth PDF and toy FK convolution ................................................................
@@ -106,6 +110,29 @@ def build_model():
 
 # FK convolution as TF operation ..................................................................
 
+FK_const = tf.constant(FK, dtype = tf.float32)
+
+# Implement custom gradient following C++ convolution
+def fk_convolute_with_grad(pdf_flat):
+    """FK convolution with explicit backward pass via tf.custom_gradient.
+    forward:  pred = FK @ pdf          (C++ op via tf.py_function)
+    backward: grad_pdf = FK^T @ grad   (analytical, stays in TF graph)
+    """
+    def _forward(pdf_np):
+        return fk_cpp.fk_convolute(FK, pdf_np.numpy().astype(np.float32))
+
+    @tf.custom_gradient
+    def _inner(pdf):
+        pred = tf.py_function(_forward, [pdf], tf.float32)
+        pred.set_shape([FK.shape[0]])
+
+        def grad_fn(upstream):
+            return tf.linalg.matvec(tf.transpose(FK_const), upstream)
+
+        return pred, grad_fn
+
+    return _inner(pdf_flat)
+
 # This is what the custom C++ op will replace
 def fk_convolute_tf(pdf_vals, x_grid_tf, x_cuts):
     """
@@ -166,8 +193,14 @@ def fit_replica(data_noisy, x_grid, x_cuts, obs_noise, n_epochs = N_EPOCHS, lr =
 
             pdf_pred = model(x_t, training = True)
             pdf_flat = tf.squeeze(pdf_pred, axis = 1)
-            # pred_t = FK_t @ pdf_flat
-            pred_t = tf.linalg.matvec(FK_t, pdf_flat)
+
+            # # JUE: optional NumPy matmul (FK @ pdf)
+            # pred_t = tf.linalg.matvec(FK_t, pdf_flat)
+
+            # JUE: optimized C++ pybind11 op
+            pred_np = fk_cpp.fk_convolute(FK, pdf_flat.numpy())
+            pred_t = fk_convolute_with_grad(pdf_flat)
+
             loss = chi2_loss(data_t, pred_t, sigma_t)
 
         grads = tape.gradient(loss, model.trainable_variables)

@@ -1,6 +1,6 @@
 # JUE260613
 
-# Toy PDF fit: minimal PyTorch implementation.
+# Toy PDF fit: minimal TensorFlow implementation.
 # Architecture mirrors NNPDF n3fit (Fig.1, Eq.1 of arXiv:1907.05075)
 
 # Truth PDF: f(x) = x^{-alpha} * (1-x)^{beta}
@@ -16,13 +16,10 @@
 
 import time
 import numpy as np
-import torch
-import torch.nn as nn
+import keras
+import tensorflow as tf
 import matplotlib.pyplot as plt
 
-import sys
-sys.path.insert(0, '2_scripts')
-import fk_convolution as fk_cpp
 
 
 # Truth PDF and toy FK convolution ................................................................
@@ -49,14 +46,13 @@ def convolute(pdf_vals, x_grid):
     return np.trapz(pdf_vals * fk_kernel(x_grid), x_grid)
 
 
-
 # Generate toy data ...............................................................................
 
 # Version 0: pure simulation
 # x_grid = np.logspace(-4, -0.01, 50).astype(np.float32)
 # x_cuts = np.linspace(0.01, 0.5, 20).astype(np.float32)
 
-# Load FK table and grids from disk
+# Version 1: load from disk
 x_grid = np.load("data/fk_tables/x_grid.npy")
 x_cuts = np.load("data/fk_tables/x_cuts.npy")
 FK = np.load("data/fk_tables/FK.npy") # simulated toy example with shape (20, 50)
@@ -78,57 +74,69 @@ obs_noise = np.load("data/cross_sections/obs_noise.npy")
 
 # Neural network ..................................................................................
 
-# Torch class PDFNet: mirrors n3fit graph structure (Fig. 1 of paper) 
+# Keras functional API: mirrors n3fit graph structure (Fig. 1 of paper)
 # Architecture (x, log x) -> [8] -> [4] -> [1] (input preprocessing, sigmoid hidden, linear output)
-class PDFNet(nn.Module):
+def build_model():
 
-    def __init__(self):
-        super().__init__()
-        self.hidden1 = nn.Linear(2, 8)
-        self.hidden2 = nn.Linear(8, 4)
-        # self.hidden2 = nn.Linear(8, 32)
-        # self.hidden3 = nn.Linear(32, 4)
-        self.output = nn.Linear(4, 1)
-        self.sigmoid = nn.Sigmoid()
+    # Input: single x value
+    x_input = tf.keras.Input(shape = (1,), name = 'x_input')
 
-        # Glorot normal initialisation (as in n3fit, Table 4)
-        nn.init.xavier_normal_(self.hidden1.weight)
-        nn.init.xavier_normal_(self.hidden2.weight)
-        # nn.init.xavier_normal_(self.hidden3.weight)
-        nn.init.xavier_normal_(self.output.weight)
+    # Fixed preprocessing layer: (x, log x):as in NNPDF Eq.1
+    x_log = tf.keras.layers.Lambda(lambda x: tf.math.log(x), name = 'log_x')(x_input)
+    x_pre = tf.keras.layers.Concatenate(name = 'preprocessing')([x_input, x_log])
 
-    def forward(self, x):
+    # Hidden layers: sigmoid activation, Glorot normal init (Table 4)
+    h = tf.keras.layers.Dense(8, activation = 'sigmoid', kernel_initializer = 'glorot_normal', name = 'hidden1')(x_pre)
+    h = tf.keras.layers.Dense(4, activation = 'sigmoid', kernel_initializer = 'glorot_normal', name = 'hidden2')(h)
+    # h = tf.keras.layers.Dense(32, activation = 'sigmoid', kernel_initializer = 'glorot_normal', name = 'hidden2')(h)
+    # h = tf.keras.layers.Dense(4,  activation = 'sigmoid', kernel_initializer = 'glorot_normal', name = 'hidden3')(h)
 
-        # Input preprocessing: (x, log x) — fixed first layer as in NNPDF
-        x_log = torch.log(x)
-        x_in = torch.cat([x, x_log], dim = 1)
-        h = self.sigmoid(self.hidden1(x_in))
-        h = self.sigmoid(self.hidden2(h))
-        # h = self.sigmoid(self.hidden3(h))
-        out = self.output(h)
+    # Output: linear, one flavour
+    nn_out = tf.keras.layers.Dense(1, activation = 'linear', kernel_initializer = 'glorot_normal', name = 'nn_output')(h)
 
-        # Preprocessing factor: x^{-alpha} * (1-x)^{beta}  (Eq. 1 of paper)
-        pre = x**(-ALPHA) * (1 - x)**BETA
-        return out * pre
+    # Preprocessing factor: x^{-alpha} * (1-x)^{beta}  (Eq. 1 of paper)
+    preproc = tf.keras.layers.Lambda(lambda x: x**(-ALPHA) * (1 - x)**BETA, name = 'pdf_preproc')(x_input)
 
-# Implement custom gradient following C++ convolution
-class FKConvolute(torch.autograd.Function):
-    """FK convolution with explicit backward pass.
-    forward:  pred = FK @ pdf          (C++ op)
-    backward: grad_pdf = FK^T @ grad   (analytical)
+    # PDF output: NN * preprocessing
+    pdf_out = tf.keras.layers.Multiply(name = 'pdf_output')([nn_out, preproc])
+
+    return tf.keras.Model(inputs = x_input, outputs = pdf_out, name = 'PDFNet')
+
+
+
+# FK convolution as TF operation ..................................................................
+
+# This is what the custom C++ op will replace
+def fk_convolute_tf(pdf_vals, x_grid_tf, x_cuts):
     """
-    @staticmethod
-    def forward(ctx, FK_t, pdf):
-        ctx.save_for_backward(FK_t)
-        pred_np = fk_cpp.fk_convolute(FK_t.numpy(),
-                                      pdf.detach().numpy())
-        return torch.tensor(pred_np, dtype=torch.float32)
+    Toy FK convolution using tf.numpy_function.
+    For each x_cut: sigma_i = integral_{x_cut}^1 f(x)*K(x) dx
+    In the real n3fit this is: O^n = FK^n_{ialpha jbeta} L_{ialpha jbeta} (Eq. 4)
+    """
+    x_grid_np = x_grid_tf.numpy()
 
-    @staticmethod
-    def backward(ctx, grad_output):
-        FK_t, = ctx.saved_tensors
-        grad_pdf = FK_t.T @ grad_output   # FK^T @ grad_pred
-        return None, grad_pdf             # None: FK not learnable
+    def convolute_np(pdf_np):
+        
+        # Initalize empty
+        result = []
+        for xc in x_cuts:
+            mask = x_grid_np > xc
+            if mask.sum() > 1:
+                val = np.trapezoid(pdf_np[mask] * fk_kernel(x_grid_np[mask]), x_grid_np[mask])
+            else:
+                val = 0.0
+            result.append(val)
+        return np.array(result, dtype = np.float32)
+
+    return tf.numpy_function(convolute_np, [pdf_vals], tf.float32)
+
+
+
+# Chi2 loss .......................................................................................
+
+def chi2_loss(data, pred, sigma):
+    """chi2 = sum_i (D_i - P_i)^2 / sigma_i^2  (Eq. 2 of paper)"""
+    return tf.reduce_sum(((data - pred) / sigma)**2)
 
 
 
@@ -138,52 +146,37 @@ class FKConvolute(torch.autograd.Function):
 def fit_replica(data_noisy, x_grid, x_cuts, obs_noise, n_epochs = N_EPOCHS, lr = LR):
 
     # Generate model
-    model = PDFNet()
-    optimizer = torch.optim.Adadelta(model.parameters(), lr = lr)
+    model = build_model()
+    optimizer = tf.keras.optimizers.Adadelta(learning_rate = lr)
 
     # Prepare for training
-    x_t = torch.tensor(x_grid, dtype = torch.float32).unsqueeze(1)
+    x_t = tf.constant(x_grid[:, None], dtype = tf.float32)
+    data_t = tf.constant(data_noisy, dtype = tf.float32)
+    sigma_t = tf.constant(obs_noise, dtype = tf.float32)
+    x_grid_t = tf.constant(x_grid, dtype = tf.float32)
 
-    # Precompute FK tensor and loss tracker
-    FK_t = torch.tensor(FK, dtype = torch.float32)
-    data_t = torch.tensor(data_noisy, dtype = torch.float32)
-    sigma_t = torch.tensor(obs_noise, dtype = torch.float32)
+    # FK convolution in pure TF: keeps gradient graph intact
+    FK_t = tf.constant(FK, dtype = tf.float32) # precompute once
     losses = []
 
     # Train model
     for epoch in range(n_epochs):
 
-        optimizer.zero_grad()
+        with tf.GradientTape() as tape:
 
-        # Forward: get PDF on x_grid
-        f_pred = model(x_t).squeeze().detach().numpy()
+            pdf_pred = model(x_t, training = True)
+            pdf_flat = tf.squeeze(pdf_pred, axis = 1)
+            # pred_t = FK_t @ pdf_flat
+            pred_t = tf.linalg.matvec(FK_t, pdf_flat)
+            loss = chi2_loss(data_t, pred_t, sigma_t)
 
-        # Convolute with FK kernel at each x_cut (toy observable)
-        pred = np.array([convolute(f_pred[x_grid > xc], x_grid[x_grid > xc]) for xc in x_cuts])
-
-        # Compute chi2 loss (Eq. 2 of paper)
-        residuals = (data_noisy - pred) / obs_noise
-        loss_val = float(np.sum(residuals**2))
-
-        # JUE: default NumPy matmul (FK @ pdf)
-        f_pred_t = model(x_t).squeeze()
-        f_pred_t = model(x_t).squeeze()
-
-        # JUE: optimized C++ pybind11 op
-        pred_t = FK_t @ f_pred_t
-        pred_t = FKConvolute.apply(FK_t, f_pred_t)
-
-        # Prepare truth and loss for gradient
-        loss = torch.sum(((data_t - pred_t) / sigma_t)**2)
-
-        # Backpropagation
-        loss.backward()
-        optimizer.step()
+        grads = tape.gradient(loss, model.trainable_variables)
+        optimizer.apply_gradients(zip(grads, model.trainable_variables))
         losses.append(float(loss))
 
-    # Return final PDF prediction
-    with torch.no_grad():
-        pdf_final = model(x_t).squeeze().numpy()
+    # Return final PDF
+    pdf_final = model(x_t, training = False).numpy().squeeze()
+    print(f"PDF final: {pdf_final[0:5]} ...")
 
     return pdf_final, losses
 
@@ -191,29 +184,25 @@ def fit_replica(data_noisy, x_grid, x_cuts, obs_noise, n_epochs = N_EPOCHS, lr =
 
 # MC replica loop .................................................................................
 
-print(f"Fitting {N_REPLICAS} MC replicas...")
+print(f"Fitting {N_REPLICAS} MC replicas (TensorFlow)...")
 
 # Prepare replicas for uncertainty quantification
 replicas = []
-times = []
 losses_all = []
-
-# Print results
+times = []
 for i in range(N_REPLICAS):
 
     # Generate noise-perturbed data for this replica (MC approach, Section 2.1)
     print(f"\nReplica {i+1}/{N_REPLICAS}")
-    data_noisy = obs_true + np.random.normal(0, obs_noise)
+    data_noisy = (obs_true + np.random.normal(0, obs_noise)).astype(np.float32)
 
     # Time training
     start = time.perf_counter()
-    pdf_final, loss_curve = fit_replica(data_noisy, x_grid, x_cuts, obs_noise)
+    f_fit, loss_curve = fit_replica(data_noisy, x_grid, x_cuts, obs_noise)
     end = time.perf_counter()
 
-    print(f"PDF final: {pdf_final[0:5]} ...")
-
     # Append result and time
-    replicas.append(pdf_final)
+    replicas.append(f_fit)
     times.append(end - start)
     losses_all.append(loss_curve)
 
@@ -232,10 +221,10 @@ fig, axes = plt.subplots(1, 3, figsize = (12, 5))
 # Subfigure: PDF replicas + truth (mirrors Fig. 6 of paper)
 ax = axes[0]
 for i, rep in enumerate(replicas):
-    ax.plot(x_grid, x_grid * rep, color = '#378ADD', lw = 0.8, alpha = 0.4, label = 'replicas' if i == 0 else None)
+    ax.plot(x_grid, x_grid * rep, color = '#1D9E75', lw = 0.8, alpha = 0.4, label = 'replicas' if i == 0 else None)
 
-ax.plot(x_grid, x_grid * f_mean, color = '#0C447C', lw = 2, label = 'mean')
-ax.fill_between(x_grid, x_grid * (f_mean - f_std), x_grid * (f_mean + f_std), color = '#378ADD', alpha = 0.2, label = '1σ band')
+ax.plot(x_grid, x_grid * f_mean, color='#0F6E56', lw = 2, label = 'mean')
+ax.fill_between(x_grid, x_grid * (f_mean - f_std), x_grid * (f_mean + f_std), color = '#1D9E75', alpha = 0.2, label = ' 1σ band')
 ax.plot(x_grid, x_grid * truth_pdf(x_grid),  color = '#D85A30', lw = 2, ls = '--', label = 'truth')
 ax.set_xscale('log')
 ax.set_xlabel('x')
@@ -243,7 +232,7 @@ ax.set_ylabel('x f(x)')
 ax.set_title(f'{N_REPLICAS} PDF replicas with architecture: (x, log x) → 8 → 4 → 1', fontsize = 9)
 ax.legend(fontsize = 8)
 
-# Subfigure: chi2 per replica (mirrors Table 5 / Fig. 5 of paper)
+# Subfigure: Chi2 per replica (mirrors Table 5 / Fig. 5 of paper)
 chi2_per_replica = []
 for rep in replicas:
     pred = np.array([convolute(rep[x_grid > xc], x_grid[x_grid > xc]) for xc in x_cuts])
@@ -251,7 +240,7 @@ for rep in replicas:
     chi2_per_replica.append(chi2)
 
 ax = axes[1]
-ax.hist(chi2_per_replica, bins = 10, color = '#185FA5', alpha = 0.7, edgecolor = 'black')
+ax.hist(chi2_per_replica, bins = 10, color='#1D9E75', alpha = 0.7, edgecolor = 'black')
 ax.axvline(np.mean(chi2_per_replica), color = '#D85A30', lw = 2, label = f'mean χ²/n = {np.mean(chi2_per_replica):.2f}')
 ax.set_xlabel('χ²/n per replica')
 ax.set_ylabel('count')
@@ -270,8 +259,8 @@ ax.set_title('Loss curve per replica\n(train only — no val split yet)', fontsi
 ax.legend(fontsize = 8)
 
 # Set figure titles and save
-fig.suptitle('Toy PDF fit with PyTorch: NPDF/n3fit methodology (arXiv:1907.05075)', fontsize = 10)
+fig.suptitle('Toy PDF fit with TF: NNPDF/n3fit methodology (arXiv:1907.05075)', fontsize = 10)
 plt.tight_layout()
-plt.savefig(f'results/pdf_toy_torch_{N_REPLICAS}replicas_{N_EPOCHS}epochs_{LR}lr.png', dpi = 150, bbox_inches = 'tight')
-print("Saved PyTorch results")
+plt.savefig(f'results/pdf_toy_tf_{N_REPLICAS}replicas_{N_EPOCHS}epochs_{LR}lr.png', dpi = 150, bbox_inches = 'tight')
+print("Saved TF results")
 plt.show()
